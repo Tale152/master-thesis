@@ -1,10 +1,24 @@
 \documentclass[12pt,a4paper]{report}
 % Import all the packages
 \input{settings/imports}
+\addbibresource{document/bibliography.bib}
 
 \begin{document}
 
 \input{document/title-page}
+
+\tableofcontents
+
+\newpage
+
+\listoffigures
+
+\newpage
+
 \input{document/content}
+
+\newpage
+
+\printbibliography
 
 \end{document}
