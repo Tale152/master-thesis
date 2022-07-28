@@ -7,8 +7,11 @@
 ➡️ [Get latest PDF draft here](https://github.com/Tale152/master-thesis/releases/latest) ⬅️
 
 ## About the thesis
-### Title:
-__Integrating mobile devices into Grid Computing__
+### Title: __Integrating mobile devices into Grid Computing__
+
+### Presented by: [Alessandro Talmi](https://github.com/Tale152)
+
+### Supervised by: [Alessandro Ricci](https://www.unibo.it/sitoweb/a.ricci)
 
 ### Abstract:
 The idea of Grid Computing originated at the beginning of the nineties and found its concrete applications in contexts like the SETI@home project; in said project, a lot of computers (offered by volunteers) cooperated performing distributed computations in the Grid environment trying to analyze radio signals trying to find extraterrestrial life.  
