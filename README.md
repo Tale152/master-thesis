@@ -8,12 +8,9 @@
 
 ## About the thesis
 ### Title:
-__Integrating mobile devices in distributed computation__
+__Integrating mobile devices into Grid Computing__
 
 ### Abstract:
-TODO
-
-### Outline:
 TODO
 
 ## How to trigger document CD
