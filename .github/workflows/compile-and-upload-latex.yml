@@ -16,8 +16,8 @@ jobs:
           root_file: main.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode --shell-escape
       - name: Rename file
-        run: mv main.pdf "${{ github.event.repository.name }}-${{ github.ref_name }}.pdf"
+        run: mv main.pdf "Integrating mobile devices into Grid Computing - Alessandro Talmi and Alessandro Ricci - ${{ github.ref_name }}.pdf"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ github.event.repository.name }}-${{ github.ref_name }}.pdf
+          files: Integrating mobile devices into Grid Computing - Alessandro Talmi and Alessandro Ricci - ${{ github.ref_name }}.pdf
