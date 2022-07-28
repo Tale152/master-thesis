@@ -19,6 +19,15 @@ Here we propose a solution for performing distributed computations over a Grid C
 
 The work starts with a high-level introduction, discussing what Grid Computing is, the evolution of mobile devices, the idea of integrating such devices into the Grid and, last but not least, how to convince device owners to participate in the Grid. Following the introduction the tone gets more technical, starting with an explanation on how Grid Computing actually works, followed by the technical challenges of integrating mobile devices into the Grid. A brief explanation of the MapReduce paradigm is then provided, since it will be useful to understand the solution proposed by this work. Once all the required knowledge is presented, the model, that constitutes the solution offered by this work, is explained. Following the mode, the work continues presenting a chapter regarding the realization of a prototype that tries to prove the feasibility of distributed computations over a Grid composed by both mobile and desktop devices. To conclude, a last chapter presents future developments and ideas to improve this project.
 
+## Requirements to Compile the Document on VSCode
+### Install the recommended dependencies
+Upon opening the project VSCode will ask you if you want to install the required dependencies; proceed to install them.  
+
+Alternatively, recommended dependencies can be found under the extensions tab typing _@recommended_ in the search bar.
+
+### Install required software (Windows)
+Follow [this](https://www.youtube.com/watch?v=4lyHIQl4VM8) tutorial to install the required software on Windows (if you installed the recommended dependencies you will already have LaTeX Workshop on VSCode).
+
 ## How to trigger document CD
 First create a new tag, including a message that sums up the notes for the new release.  
 ```console
