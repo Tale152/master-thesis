@@ -20,12 +20,13 @@ The architecture is organized in a layer structure (\textit{figure \ref{fig:grid
 \subsection{Fabric layer}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.3]{document/chapters/chapter_2/images/fabric_layer.png}
-    \caption{Fabric layer}
+    \includegraphics[scale=0.35]{document/chapters/chapter_2/images/fabric_layer.png}
+    \caption{Layered Grid Architecture - Fabric layer}
     \label{fig:fabric_layer}
 \end{figure}
-This is the layer that implements the local, resource-specific operations that occur on specific resources (whether physical or logical) as a result of sharing operations at higher levels. The external access to such resources is mediated by protocols defined in the Grid, while the internal working of this layer depends on the specific implementation that runs on a machine; this organization results in a relatively tight interdependence on the operations defined in this layer and the operations defined in higher layers.
-\vspace{40mm}
+
+\noindent This is the layer that implements the local, resource-specific operations that occur on specific resources (whether physical or logical) as a result of sharing operations at higher levels. The external access to such resources is mediated by protocols defined in the Grid, while the internal working of this layer depends on the specific implementation that runs on a machine; this organization results in a relatively tight interdependence on the operations defined in this layer and the operations defined in higher layers.
+\vspace{30mm}
 
 Operations in this layer should be as simple and minimal as possible in order to easily extend compatibility with as many devices as possible; said operations must involve:
 \begin{itemize}
@@ -34,9 +35,30 @@ Operations in this layer should be as simple and minimal as possible in order to
     \item \textit{Resource management mechanisms}\\
     Allow performing operations using the resources offered by the Node, such as access to storage, computation and network.
 \end{itemize} 
+\vspace{5mm}
 
 \subsection{Connectivity layer}
-TODO
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.35]{document/chapters/chapter_2/images/connectivity_layer.png}
+    \caption{Layered Grid Architecture - Connectivity layer}
+    \label{fig:connectivity_layer}
+\end{figure}
+\vspace{5mm}
+
+\noindent This layer defines core communication and authentication protocols that are used for network transactions inside the Grid in order to enable the exchange of data between fabric layer resources.
+\begin{itemize}
+    \item \textit{Communication protocols}\\
+    This protocols handle transport, routing and naming. Technologies here are mapped to the TCP/IP stack, in particular to the Internet, Transport and Application layers; communication is built on already well established protocols like IP, TCP, UDP, DNS, etc... 
+    \item \textit{Authentication protocols}\\
+    Mechanisms regarding authentication must possess the following characteristics:
+    \begin{itemize}
+        \item Single sign-on: users authenticate just once and then have access to a multitude of resources;
+        \item Delegation: a user should allow executing authorized instructions on its machine; 
+        \item Integration with various local security solutions: the layer should include security solutions provided by the local machine;
+        \item Enable users control over authorization: the user must be able to change authorizations regarding the resources that its machine offers.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Resource layer}
 TODO
