@@ -18,7 +18,22 @@ The architecture is organized in a layer structure (\textit{figure \ref{fig:grid
 \end{figure}
 
 \subsection{Fabric layer}
-TODO
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.3]{document/chapters/chapter_2/images/fabric_layer.png}
+    \caption{Fabric layer}
+    \label{fig:fabric_layer}
+\end{figure}
+This is the layer that implements the local, resource-specific operations that occur on specific resources (whether physical or logical) as a result of sharing operations at higher levels. The external access to such resources is mediated by protocols defined in the Grid, while the internal working of this layer depends on the specific implementation that runs on a machine; this organization results in a relatively tight interdependence on the operations defined in this layer and the operations defined in higher layers.
+\vspace{40mm}
+
+Operations in this layer should be as simple and minimal as possible in order to easily extend compatibility with as many devices as possible; said operations must involve:
+\begin{itemize}
+    \item \textit{Enquiry mechanisms}\\
+    Allow to discover the Node inside the Grid, as well as describe its resources and status. Resources description provides info about software and hardware capabilities, while status handling offers mechanisms to enquiry current load and queue state.
+    \item \textit{Resource management mechanisms}\\
+    Allow performing operations using the resources offered by the Node, such as access to storage, computation and network.
+\end{itemize} 
 
 \subsection{Connectivity layer}
 TODO
