@@ -82,12 +82,30 @@ Two protocol classes are defined at this level:
 \subsection{Collective layer}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.35]{document/chapters/chapter_2/images/collective_layer.png}
+    \includegraphics[scale=0.34]{document/chapters/chapter_2/images/collective_layer.png}
     \caption{Layered Grid Architecture - Collective layer}
     \label{fig:collective_layer}
 \end{figure}
 
-\noindent TODO
+\noindent Here the main focus shifts from the management of a single specific resource to dealing with questions that are global in nature, capturing interactions across collections of resources. Previous layers dominated the realm of a single machine (with its resources) acting as an endpoint, but this layer changes context becoming a cloud-based domain.
+
+If the limited number of protocols at the Resource layer are well-designed, this layer can offer a wide variety of sharing behaviors that build upon those protocols. Such sharing behaviors depend on what capabilities the Grid wants to offer. Those behaviors, that are then accessed by using APIs, \textit{can} include:
+\begin{itemize}
+    \item \textit{Directory protocols}\\
+    Used to discover and query resources by name and/or attributes like availability, type and workload.
+    \item \textit{Co-allocation, scheduling and brokering protocols}\\
+    With such protocols, resources are assigned and allocated for a specific purpose in order to execute a scheduled task.
+    \item \textit{Monitoring and diagnostics protocols}\\
+    Through these protocols resources are monitored for failure, overload, external attacks, etc...
+    \item \textit{Data replication protocols}\\
+    In order to maximize performances, these protocols manage data replication to increase reliability while reducing response time.
+    \item \textit{Workload management protocols}\\
+    Used to solve situations where, through information obtained using discovery protocols, an excessive workload is detected.
+    \item \textit{Community accounting and payment protocols}\\
+    Such protocols collect information about Grid usage; with such information payments involving resources usage can occur.
+    \item \textit{Grid-enabled programming systems protocols}\\
+    Lastly, these protocols offers familiar grid-enabled programming models and paradigms to be used to perform computations inside the Grid. 
+\end{itemize}
 
 \subsection{Application layer}
 TODO
