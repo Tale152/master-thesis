@@ -30,14 +30,14 @@ The architecture is organized in a layer structure (\textit{figure \ref{fig:grid
 
 Operations in this layer should be as simple and minimal as possible in order to easily extend compatibility with as many devices as possible; said operations must involve:
 \begin{itemize}
-    \item \textit{Enquiry mechanisms}\\
+    \item \textit{Enquiry functions}\\
     Allow to discover the Node inside the Grid, as well as describe its resources and status. Resources description provides info about software and hardware capabilities, while status handling offers mechanisms to enquiry current load and queue state.
     \item \textit{Resource management mechanisms}\\
     Allow performing operations using the resources offered by the Node, such as access to storage, computation and network.
 \end{itemize} 
 \vspace{5mm}
 
-\subsection{Connectivity layer}
+\subsection{Connectivity functions}
 \begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.35]{document/chapters/chapter_2/images/connectivity_layer.png}
