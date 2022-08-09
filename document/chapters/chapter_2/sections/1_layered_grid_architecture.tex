@@ -68,7 +68,16 @@ Operations in this layer should be as simple and minimal as possible in order to
     \label{fig:resource_layer}
 \end{figure}
 
-\noindent TODO
+\noindent In the Resource layer, the primary focus is the secure negotiation, initiation, monitoring, control, accounting and payment of \textit{individual} resources; this means that this layer is not concerned about global state the Grid is in (that will be handled in the Collective layer), but just deals with communicating with a single machine. Here, protocols should be limited to a small set that capture fundamental mechanisms of sharing across different resource types while, at the same time, not overly constraining higher protocols defined in the Collective and Application layers.
+
+Implementations of the Resource layer rely upon functions defined at fabric layer in combination with previous layer's communication and authentication protocols, resulting in creating APIs used to utilize this layer's capabilities.
+Two protocol classes are defined at this level:
+\begin{itemize}
+    \item \textit{Information protocols}\\
+    Provide information about the structure and state of a resource (ex: configuration, current load, usage policy, etc...).
+    \item \textit{Management protocols}\\
+    Deal with the negotiation process performed in order to access a shared resource (resource requirements, operations to be performed and applying usage policies).
+\end{itemize} 
 
 \subsection{Collective layer}
 \begin{figure}[!ht]
