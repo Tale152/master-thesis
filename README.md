@@ -4,10 +4,10 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/Tale152/master-thesis)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Tale152/master-thesis/latest)
 
-➡️ [Get latest PDF draft here](https://github.com/Tale152/master-thesis/releases/latest) ⬅️
+➡️ [Get the latest PDF draft here](https://github.com/Tale152/master-thesis/releases/latest) ⬅️
 
 ## About the thesis
-### Title: __Integrating mobile devices into Grid Computing__
+### Title: __Integrating mobile devices into a scalable Grid Computing architecture designed to perform distributed map-reduce operations__
 
 ### Presented by: [Alessandro Talmi](https://github.com/Tale152)
 
