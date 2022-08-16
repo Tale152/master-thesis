@@ -13,7 +13,7 @@ Obviously, an important interoperability issue comes from the fact that \textbf{
 
 Another resource where nodes differ is the network capabilities that they can offer. Even though this is not a differentiation, in a narrow sense, that comes from the machine in itself but from the environment where it operates, this still becomes an interoperability problem inside a Grid system; for this reason the architecture has to be designed taking in consideration that different nodes will offer \textbf{different levels of reliability and speed for their network connection}, requiring mechanisms for handling errors, disconnections and distributing work accordingly to the network's speed of the node. 
 
-\subsection{Security}
+\subsection{Security}\label{security}
 Security is an essential prerequisite in every system and the Grid makes no exception. First of, in order to access to the Grid it is necessary to have an authentication mechanism (as discussed in section \textit{\ref{connectivity_layer}}); said mechanism must \textbf{uniquely identify every user/entity alongside their unique machines inside the Grid}. While being fundamental in order to grant security, this mechanism is also required by the resources discovery and selection problem (\textit{section \ref{resources_discovery_and_selection}}).
 
 Having a unique identity given by the authentication is also required for another important security problem: respecting resources \textbf{access policies} defined by the nodes providers. Said policies define what resources are offered by a machine, as well as who is authorized to use them. Mechanisms that regulate the enforcement of access policies must also take in consideration the dynamic nature of said policies, since they can be changed by a user at any time.
@@ -24,8 +24,28 @@ Regarding \textbf{privacy}, once authentication is granted it is also important 
 
 Finally, countermeasures has to be taken in order to \textbf{avoid the execution of malicious code}; despite the accountability of uniquely identified users helps to reduce this possibility, in is fundamental implementing security measures for avoiding the access to everything that is outside the defined access policies.
 
-\subsection{Geographical distribution, scalability and load balancing}
-TODO
+\subsection{Scalability, geographical distribution and load balancing}\label{scalabilitu_geographical_distribution_and_load_balancing}
+The main strength of the Grid is its ability to scale, becoming a central principle that guides the design of the system. In such a system, it is possible to identify two main contexts where it is necessary to design \textbf{horizontal scalability}:
+\vspace{5mm}
+\begin{itemize}
+    \item \textit{The nodes' context}, i.e. the ability for the system to work with a varying amount of machines offered by volunteers;
+    \item \textit{The cloud's context}, i.e. the capability of the cloud architecture to scale in order to support efficiently the nodes' context.
+\end{itemize}
+
+It is clear the cloud's context is the foundation of the system, so here it is necessary to design a \textbf{load balancing mechanism for the cloud services}, increasing/decreasing the number of machines running such services depending on the number of nodes that are participating in the Grid in a certain moment.
+
+Moreover, this load balancing has to implement a \textbf{geographically-aware behavior}, since the nodes are scattered around the planet without a fixated location; this results in the necessity of creating new replicas of the cloud services' servers in a geographical location that takes in consideration not only the costs of running such server, but also optimizes the proximity with as many nodes as possible in order to reduce latency. Once a server is instantiated, it is necessary to let the new instance take charge of the handling of part of the nodes connected to the overloaded service. Vice versa, if there is not an excessive amount of traffic, an instance might be removed and its nodes given to another previously instantiated server.
+Since the load balancing introduces a problem of reachability for both the cloud services and the nodes (the dynamically instantiated services with a geographically-aware behavior lack a fixed address), it is necessary to also introduce \textbf{discovery services} that, on the contrary, have a static address and act as intermediaries, providing the address of the required service instances.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{document/chapters/chapter_2/images/server_instantiation.png}
+    \caption{Example of load balancing with the appearance of a new node}
+    \label{fig:server_instantiation}
+\end{figure}
+
+On a final note, this dynamic instantiation in the nodes' context has to be considered while designing the authentication mechanism (discussed in \textit{section \ref{security}}), requiring for it to work even if something changes with the servers' status.
+
 
 \subsection{Resources discovery and selection}\label{resources_discovery_and_selection}
 TODO
@@ -34,4 +54,5 @@ TODO
 TODO
 
 \subsection{Fault tolerance and Quality of Service (QoS)}
+Dipende da praticamente tutto ciò che è stato detto prima.
 TODO
