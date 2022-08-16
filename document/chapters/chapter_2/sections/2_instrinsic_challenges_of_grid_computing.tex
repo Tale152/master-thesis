@@ -54,9 +54,7 @@ Cloud services devolved to this duty build a \textbf{map of all the nodes connec
 
 The map of the nodes connected to the Grid has to be designed to be stored in multiple server instances in order to respect the scalability discussed in the previous section.
 
-\subsection{Job scheduling, replication, migration and monitoring}
-TODO
+\subsection{Scheduling, fault tolerance and Quality of Service (QoS)}
+An operation that needs to be performed inside the Grid needs a \textbf{scheduling mechanism} in order to handle the execution of said operations. Since the operations are executed in a distributed environment prone to errors, \textbf{replication of data} needs to be performed between multiple nodes; this is done to increase \textbf{fault tolerance} since any node can fail in any moment. Increasing the replication factor to strengthen the tolerance to errors means necessarily a worsening of the performances inside the distributed system and vice versa. The correct replication factor highly depends on the tasks that the Grid need to perform and how performances are valued compared to availability.
 
-\subsection{Fault tolerance and Quality of Service (QoS)}
-Dipende da praticamente tutto ciò che è stato detto prima.
-TODO
+All these factors (along what discussed in the previous sections) influence the quality of service that the Grid can offer. Every design decision for the Grid has to be made with the intent of \textbf{maximizing the QoS}, increasing performances as much as possible while, at the same time, offering good fault tolerance, scalability, and security.
