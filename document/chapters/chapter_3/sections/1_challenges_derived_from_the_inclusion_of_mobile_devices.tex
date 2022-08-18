@@ -5,13 +5,29 @@ TODO
 TODO
 
 \subsection{Battery consumption}
-TODO 
+Having devices that run on battery and are not connected to a reliable power source can be a source of problems for the Grid. \textbf{Sudden disconnections or failures has to be monitored anyway} since devices connected to a power source may be subjected to a sudden interruption of energy from the energy source or, more in general, can incur in any kind of error. \textbf{The problem with mobile devices is more about the increased possibility of unplanned interruptions due to energy exhaustion of the battery}.
+There are \textbf{five main factors} that \textbf{affect power usage} in mobile devices \cite{mobile_power_consumption}:
+\begin{enumerate}
+    \item \textbf{Hardware} (CPU, GPU, memory, storage, display, sensors);
+    \item \textbf{Signaling and networking modules} (cellular network, Bluetooth, hotspot, Wi-Fi, GPS, FM radio);
+    \item \textbf{Software} (operating system, background applications)
+    \item \textbf{Usage patterns} (calling, internet browsing, social networks usage, gaming, music playback, video playback, running heavy applications);
+    \item \textbf{Other factors} (inter-device communication, heating, aging and faulty battery).
+\end{enumerate}
+\textbf{How long the battery of a mobile device depends on a combination of such factors}, ranging from days to (in extreme cases) only hours.
 
-% https://link.springer.com/chapter/10.1007/978-3-642-21726-5_2
+There are a set of \textbf{possible countermeasures} that limit the participation to the Grid only to devices that respect certain prerequisites that aims to mitigate this problem:
+\begin{itemize}
+    \item \textbf{External power source}\\
+    The first obvious countermeasure is to only allow devices to contribute to the Grid while connected to a reliable power source. While certainly effective and totally feasible (since commonly mobile devices tend to be charged every day), on the other hand this can limit the percentage of contributors active in a certain moment;
+    \item \textbf{Battery health status}\\
+    Another method is checking for the device's battery health, allowing contribution to the Grid while disconnected from an external power source only to devices that have healthy battery units.
+    \item \textbf{Battery percentage}\\
+    The final countermeasure is allowing battery-powered contribution only when the device's battery is above a certain battery percentage.
+\end{itemize}
+The \textbf{best solution} to mitigate this problem is \textbf{a combination of the three countermeasures}, allowing healthy devices to contribute while above a certain battery percentage and limiting devices with an aged battery to only contribute while connected to a power source.
 
-% https://dl.acm.org/doi/abs/10.1145/2494232.2466586?casa_token=GWHJWfUGBmIAAAAA:clpjbVelNJzekDYVk1HEq1kmZ-7VeQ785Kuq414PfNrjfy9wKZ-WPfjD-B_VgsNvdjAITqh_8coFVg
-
-% https://ieeexplore.ieee.org/abstract/document/8930492
+On a final note, what discussed in this section can be mostly applied also to laptops, even though people usually tend to use them while connected to a power source.
 
 \subsection{Limited resources}
 TODO
