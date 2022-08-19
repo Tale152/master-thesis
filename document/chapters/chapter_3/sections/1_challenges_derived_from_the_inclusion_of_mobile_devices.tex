@@ -2,7 +2,43 @@
 While the intrinsic challenges described in \textit{section \ref{intrinsic_challenges_of_grid_computing}} remain still valid, the inclusion of mobile devices in the Grid arises new issues that have to be taken in consideration while designing the system. Some challenges have been resolved by the evolution of technology and the new behaviors adopted by mobile users (\textit{section \ref{previous_works_and_limitations}}) but other ones still need to be dealt with.
 
 \subsection{Network instability}
-TODO
+Compared to a computer, \textbf{a mobile device is afflicted from network instability more often}. This issue is linked to the \textbf{mobility factor} \cite{integrating_mobile_devices_into_grid} that comes with such devices, creating a \textbf{more dynamic and less reliable environment connection-wise}.
+
+Aside from Wi-Fi connection (that still can suffer from instability but is generally stabler), the \textbf{main source of instability} comes from \textbf{mobile data connection}.
+Enormous progress in mobile data connection technologies has been made but still the reliability suffers, especially in use cases where having a stable connection is required. Recently, \textbf{5G technology is slowly emerging as the new technological leap}. But, as other works have observed \cite{5g_performances}, 5G is still in its infancy and, while offering \textbf{great performances under optimal condition}, it is affected by \textbf{greater instability compared to 4G}.
+
+While discussing properties about mobile data technology it is important to first understand the concept of handoff:
+\begin{itemize}
+    \item \textbf{Horizontal handoff}: occurs when the connection switches from one repeater to another. In the case of 5G this happens more often since the technology requires a greater number of repeaters in order to work because of the different wave lengths used.
+    \item \textbf{Vertical handoff}: occurs when the networking technology changes. This is still particularly a problem for 5G connections since, being less stable, they often require a switch to 4G ones.  
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{document/chapters/chapter_3/images/5G_performances.png}
+    \caption{5G's throughput under different circumstances \cite{5g_performances}}
+    \label{fig:5G_performances_graphs}
+\end{figure}
+
+Here are a few more relevant factors affecting the quality and performance of a mobile network:
+\begin{itemize}
+    \item \textbf{Traveling speed}\\
+    Moving through space causes fluctuation in the stability of the connection, with usually better performances while standing still, a slight worsening while moving at walking pace and, finally, a progressive drop of performance with higher speeds. \textit{Figure \ref{fig:5G_performances_graphs} (a)} shows how a 5G network throughput vary over time by simply walking for 700 meters; in this graph, dots represent horizontal and/or vertical handoffs, showing how unstable mobile connections (especially 5G ones) are.
+    \item \textbf{Obstacles}\\
+    Having obstacles between the device and the connection source alters significantly performances. In simple terms, 4G utilizes signal waves in a more sparse way; on the other hand, 5G utilizes waves that are highly focused, requiring a trajectory to reach the device, whether being on LoS (line-of-sight, i.e. there are no obstacles between the device and the repeater) or NLoS (non-line-of-sight, i.e. the repeater finds an indirect trajectory that bounces the signal using objects). \textit{Figure \ref{fig:5G_performances_graphs} (b)} shows how throughput varies in response of physical obstacles (a human body and a hand) when there are no efficient trajectories to reach the device; \textit{figure \ref{fig:5G_performances_graphs} (c)}, instead, shows the same phenomena when there are many optimal trajectories for the signal waves.
+    \item \textbf{Placement relative to the connection source}\\
+    Even the way that the device is placed in space relatively to the connection source alters performances; generally speaking this is due to the placement of the mobile device's antenna but, in the 5G case, it also depends on the orientation angle relatively to the source (\textit{figure \ref{fig:5G_performances_graphs} (d)}).
+    \item \textbf{Weather}\\
+    Atmospheric conditions also alter slightly the efficiency of mobile connections, reaching up to 30\% reduction in throughput speed during rainfall on a 5G mobile network \cite{5g_performances}.
+\end{itemize}
+
+Since it will become the standard technology in the following years, a lot of examples using 5G have been used  but, even if with different severity, the same instability issues apply to the other mobile data connection technologies. Three approaches (in ascending order of complexity) can be used to deal with the mobile devices network instability:
+\begin{itemize}
+    \item \textbf{Allowing contributing to the Grid only while using a Wi-Fi connection}.
+    \item \textbf{Limiting contribution while on mobile data connection only to a few specific use cases} that do not require stability.
+    \item \textbf{Implementing smart context-aware mechanisms} that take the decision to allow or not mobile data contribution based on a combination of technology type, throughput, movement in space (using accelerometers) and possibly current weather condition (using GPS).
+\end{itemize}
+
+Considering that, currently, \textbf{mobile connectivity data plans still have limited (although increasing) traffic available each month}, not all users may want to dedicate it to the Grid contribution; hence, \textbf{the second approach is probably the best one} since it expands use cases and capabilities while not wasting effort on a slightly useful feature. Finally, active contribution to the Grid using mobile data increases battery consumption, which will now be discussed in the following section.
 
 \subsection{Battery consumption}
 Having devices that run on battery and are not connected to a reliable power source can be a source of problems for the Grid. \textbf{Sudden disconnections or failures has to be monitored anyway} since devices connected to a power source may be subjected to a sudden interruption of energy from the energy source or, more in general, can incur in any kind of error. \textbf{The problem with mobile devices is more about the increased possibility of unplanned interruptions due to energy exhaustion of the battery}.
@@ -18,11 +54,11 @@ There are \textbf{five main factors} that \textbf{affect power usage} in mobile 
 
 There are a set of \textbf{possible countermeasures} that limit the participation to the Grid only to devices that respect certain prerequisites that aims to mitigate this problem:
 \begin{itemize}
-    \item \textbf{External power source}\\
+    \item \textbf{External power source enforcement}\\
     The first obvious countermeasure is to only allow devices to contribute to the Grid while connected to a reliable power source. While certainly effective and totally feasible (since commonly mobile devices tend to be charged every day), on the other hand this can limit the percentage of contributors active in a certain moment;
-    \item \textbf{Battery health status}\\
+    \item \textbf{Battery health status check}\\
     Another method is checking for the device's battery health, allowing contribution to the Grid while disconnected from an external power source only to devices that have healthy battery units.
-    \item \textbf{Battery percentage}\\
+    \item \textbf{Battery percentage minimum level}\\
     The final countermeasure is allowing battery-powered contribution only when the device's battery is above a certain battery percentage.
 \end{itemize}
 The \textbf{best solution} to mitigate this problem is \textbf{a combination of the three countermeasures}, allowing healthy devices to contribute while above a certain battery percentage and limiting devices with an aged battery to only contribute while connected to a power source.
