@@ -67,7 +67,7 @@ On a final note, what discussed in this section can be mostly applied also to la
 
 \subsection{Even greater focus on security}
 \textbf{As the number of smartphone increases}, the number of computers used by people are gradually declining (\textit{figure \ref{fig:global_sales_of_pcs_and_smartphones}}); as a direct consequence of this phenomenon, \textbf{malicious attack efforts are now being redirected to exploiting mobile devices' vulnerabilities}.
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_3/images/mobile_vulnerabilities.jpg}
     \caption{Number (left) and distribution (right) of known vulnerabilities on iOS and Android from 2007 to 2019 \cite{mobile_security}}
@@ -94,4 +94,33 @@ Even though iOS has the advantage when it comes to sheer number of security brea
 This data highlights how it is particularly important to focus on the security of the Grid's Fabric Layer (\textit{section \ref{fig:fabric_layer}}) while dealing with mobile devices because, in the current panorama, they are the greatest source of security vulnerabilities, especially considering that the information inside them has great value for attackers.
 
 \subsection{Compatibility issues}
-TODO
+\textbf{Developing software for mobile devices tend to be more prone to compatibility issues} compared to desktop environments \textbf{due to the frequent changes that mobiles OSes undergo} in order to add new features, increase performances and enhance security. It is possible to distinguish between \textbf{two different types of compatibility} when it comes to software in relationship to the version of the supporting SDK:
+
+\begin{itemize}
+    \item \textbf{Forward compatibility}, i.e. developing software that will run even on future OS distributions.
+    \item \textbf{Backward compatibility}, i.e. developing software that runs also on older OS distributions.
+\end{itemize}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.4]{document/chapters/chapter_3/images/stat_counter_ios_android.png}
+    \caption{\href{https://gs.statcounter.com/}{Statcounter}'s statistics for OSes distribution between Android (top) and iOS (bottom) devices from July 2021 to July 2022}
+    \label{fig:stat_counter_ios_android}
+\end{figure}
+
+Google's mobile OS uses an \textbf{API level system} in order to \textbf{check for the compatibility} of applications \textbf{across different versions of the OS} running on devices.
+As the OS rapidly evolves, so \textbf{the API offered in the SDK frequently change}, \textbf{introducing compatibility problems}. Android documentation states that changes in API do not threaten forward compatibility, but this turns out to not really be the case:
+
+\begin{quotation}
+    \textit{"Even if Google claims that Android apps do not suffer from forward compatibility issues, mainly because removed APIs are still kept in the framework side as hidden APIs, forward compatibility induced APIs are still encouraged to be replaced because of security and performance concerns. Furthermore, since hidden APIs are also subject to remove or change, \textbf{forward compatibility is} also \textbf{not fully guaranteed in practice} anyway." \cite{automating_android_api_compatibility_issues}}
+\end{quotation}
+
+\textbf{Backward compatibility}, on the other hand, \textbf{tends not to be a great concern}, resulting only in incompatibility issues due to developers setting an improperly low \textbf{minSdkVersion} flag (in order to target as many devices as possible) without actually testing if the application works on older Android's releases.
+
+\begin{quotation}
+    \textit{"Accessing backward compatibility induced APIs, without proper protection, will simply result in app crashes, giving poor experience to end-user." \cite{automating_android_api_compatibility_issues}}
+\end{quotation}
+
+Similarly, \textbf{APIs in iOS' SDK have compatibility issues between different versions of the OS}; Since changes are generally less drastic, it is \textbf{easier to test} for compatibility issues (given also the limited number of different Apple devices), but, on the other hand, iOS development suffers from a great limitation: \textbf{development of native apps can only be done on Apple's line of computers}.
+
+Whether the development for Android and iOS devices uses native technologies or cross-platform technologies (such as React Native), \textbf{there is really no solution to this compatibility issue other than extensive testing} for every targeted version of both OSes, making the \textbf{development on such platforms more time-consuming and complex} both at the beginning and in the maintenance life cycle.
