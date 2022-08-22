@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QProxy-Based Cluster Architecture This architecture revolves around the idea of having N BASELINE (Barely Adequate Systems Leveraging Internet NEtworking) devices\\E$"}
