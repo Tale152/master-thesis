@@ -70,10 +70,10 @@ The Middleware service, being the most complex module among the three, is built 
 \end{itemize}
 
 \subsubsection{Interesting concepts and ideas}
-The main advantage of this idea is the increment in versatility and number of devices capable of using the Grid's services. Development on the requestor side is greatly simplified, removing heterogeneity since the actual complexity is moved to the Middleware gateway. To extend compatibility of devices, it is just necessary to implement the communication modules on the new client and add a new Adaption module in the Middleware service.
+The main advantage of this idea is the \textbf{versatility obtained by increasing the number of devices capable of using the Grid's services}. Development on the requestor side is greatly simplified, removing heterogeneity since the actual complexity is moved to the Middleware gateway. To extend compatibility of devices, it is just necessary to implement the communication modules on the new client and add a new Adaption module in the Middleware service.
 
-While this is surely a great advantage, it comes at a great price: the necessity to provide machines that act as a Middleware gateway. Considering that the computation is mainly done in such machines (with the collaboration of the peers inside the Grid), this results in an intense usage, increasing costs for the Grid owners.
-As the paper also states, there is also a problem with scalability; necessarily, multiple instances of Middleware gateways have to run in order to keep up with the demand. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, requiring mechanisms to deal with this issue.
+While this is surely a great advantage, \textbf{it comes at a great price: the necessity to provide machines that act as a Middleware gateway}. Considering that the computation is mainly done in such machines (with the collaboration of the peers inside the Grid), this results in an intense usage, \textbf{increasing costs for the Grid owners}.
+As the paper also states, there is also a \textbf{problem with scalability}. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, requiring mechanisms to deal with this issue.
 
 \subsection{Autonomous Mobile Middleware (2006)}
 TODO
