@@ -46,17 +46,17 @@ The architecture is organized in a \textbf{layer structure} (\textit{figure \ref
 \end{figure}
 \vspace{5mm}
 
-\noindent This layer \textbf{defines core communication and authentication protocols that are used for network transactions inside the Grid} in order to enable the exchange of data between fabric layer resources.
+\noindent This layer \textbf{defines core communication and authentication protocols that are used for network transactions inside the Grid} in order to enable the exchange of data among fabric layer resources.
 \begin{itemize}
     \item \textbf{Communication protocols}\\
-    This protocols handle transport, routing and naming. Technologies here are mapped to the TCP/IP stack, in particular to the Internet, Transport and Application layers; communication is built on already well established protocols like IP, TCP, UDP, DNS, etc... 
+    This protocols handle transport, routing and naming. Here, technologies are mapped to the TCP/IP stack, in particular to the Internet, Transport and Application layers; communication is built on already well-established protocols like IP, TCP, UDP, DNS, etc... 
     \item \textbf{Authentication protocols}\\
     Mechanisms regarding authentication must possess the following characteristics:
     \begin{itemize}
-        \item \textit{Single sign-on}: users authenticate just once and then have access to a multitude of resources;
-        \item \textit{Delegation}: a user should allow executing authorized instructions on its machine; 
+        \item \textit{Single sign-on}: users authenticate just once, and then they have access to a multitude of resources;
+        \item \textit{Delegation}: a user should allow executing authorized instructions on their machine; 
         \item \textit{Integration with various local security solutions}: the layer should include security solutions provided by the local machine;
-        \item \textit{Enable users control over authorization}: the user must be able to change authorizations regarding the resources that its machine offers.
+        \item \textit{Enable users' control over authorization}: the user must be able to change authorizations regarding the resources that their machine offers.
     \end{itemize}
 \end{itemize}
 
