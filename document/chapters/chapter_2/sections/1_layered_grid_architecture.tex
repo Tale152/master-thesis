@@ -68,7 +68,7 @@ The architecture is organized in a \textbf{layer structure} (\textit{figure \ref
     \label{fig:resource_layer}
 \end{figure}
 
-\noindent In the Resource layer, the primary focus is \textbf{the secure negotiation, initiation, monitoring, control, accounting and payment of \textit{individual} resources}; this means that \textbf{this layer is not concerned about global state the Grid is in} (that will be handled in the Collective layer), but just deals with communicating with a single machine. Here, protocols should be limited to a small set that capture fundamental mechanisms of sharing across different resource types while, at the same time, not overly constraining higher protocols defined in the Collective and Application layers.
+\noindent In the Resource layer, the primary focus is \textbf{the secure negotiation, initiation, monitoring, control, accounting and payment of \textit{individual} resources}; this means that \textbf{this layer is not concerned with the global state the Grid is in} (that will be handled in the Collective layer), but it just deals with communicating with a single machine. Here, protocols should be limited to a small set that captures fundamental mechanisms of sharing across different resource types while, at the same time, not overly constraining higher protocols defined in the Collective and Application layers.
 
 Implementations of the Resource layer \textbf{rely upon functions defined at fabric layer in combination with previous layer's communication and authentication protocols}, resulting in creating \textbf{APIs} used to utilize this layer's capabilities.
 Two protocol classes are defined at this level:
