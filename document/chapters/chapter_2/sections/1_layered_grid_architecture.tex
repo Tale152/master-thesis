@@ -25,13 +25,13 @@ The architecture is organized in a \textbf{layer structure} (\textit{figure \ref
     \label{fig:fabric_layer}
 \end{figure}
 
-\noindent This is the layer that \textbf{implements the local, resource-specific operations that occur on specific resources} (whether physical or logical) \textbf{as a result of sharing operations at higher levels}. The external access to such resources is mediated by protocols defined in the Grid, while \textbf{the internal working of this layer depends on the specific implementation that runs on a machine}; this organization results in a relatively tight interdependence on the operations defined in this layer and the operations defined in higher layers.
+\noindent This is the layer that \textbf{implements the local, resource-specific operations that occur on specific resources} (whether physical or logical) \textbf{as a result of sharing operations at higher levels}. The external access to such resources is mediated by protocols defined in the Grid, while \textbf{the internal workings of this layer depend on the specific implementation that runs on a machine}; this organization results in a relatively tight interdependence between the operations defined in this layer and the operations defined in higher layers.
 \vspace{30mm}
 
 \textbf{Operations in this layer should be as simple and minimal as possible in order to easily extend compatibility with as many devices as possible}; said operations must involve:
 \begin{itemize}
     \item \textbf{Enquiry functions}\\
-    Allow to discover the Node inside the Grid, as well as describe its resources and status. Resources description provides info about software and hardware capabilities, while status handling offers mechanisms to enquiry current load and queue state.
+    Allow to discover the Node inside the Grid, as well as describe its resources and status. Resources description provides info about software and hardware capabilities, while status handling offers mechanisms to enquire current load and queue state.
     \item \textbf{Resource management mechanisms}\\
     Allow performing operations using the resources offered by the Node, such as access to storage, computation and network.
 \end{itemize} 
