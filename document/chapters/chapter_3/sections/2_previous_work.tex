@@ -2,13 +2,12 @@
 In the past, a number of previous works been made about this topic. While the participation of mobile devices to the Grid was theorized, it was never concretized (especially due to technical limitations). This section presents three previous works that provide interesting concept and ideas that influence the solution offered by this work.
 
 \subsection{Proxy-Based Cluster Architecture (2002)}
-In early 2000s, Thomas Phan, Lloyd Huang and Chris Dulan 
-proposed a solution to integrate devices with low capabilities (such as PDAa) into Grid computing. The work is highly influenced by the technical difficulties resulting from the technological panorama at the time, trying to isolate the new devices in a sub-environment that can be integrated into the Grid without affecting its inner workings.
+In early 2000s, \textit{Thomas Phan}, \textit{Lloyd Huang} and \textit{Chris Dulan} proposed a solution to integrate devices with low capabilities (such as PDAa) into Grid computing. The work is highly influenced by the technical difficulties resulting from the technological panorama at the time, trying to \textbf{isolate the new devices in a sub-environment that can be integrated into the Grid without affecting its inner workings}.
 
 \subsubsection{Architecture}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{document/chapters/chapter_3/images/2002_architecture.png}
+    \includegraphics[scale=0.9]{document/chapters/chapter_3/images/2002_architecture.png}
     \caption{Proxy-Based Cluster Architecture \cite{integrating_mobile_devices_into_grid}}
     \label{fig:2002_architecture}
 \end{figure}
@@ -28,9 +27,8 @@ Furthermore, \textbf{the Interlocutor hides devices heterogeneity from the Grid}
 While using a local Interlocutor seems very effective, every benefit gained by the use of it comes at the cost of a great limitation: \textbf{when it comes to practically scaling the Grid, having the devices operating under the same local network makes extremely more difficult for volunteers to offer their devices}. It is still possible to use some sort of variation of an Interlocutor, but this obviously comes at the cost of loosing some benefits such the reduction of latency while operating in the same network.
 
 \subsection{Mobile-to-Grid Middleware (2005)}
-TODO
-% This architecture focuses on ENABLING mobile devices to use the Grid's potential, not participate
-The Middleware Gateway is the focal point in this architecture, allowing mobile devices (running a client) to access Grid's services through it; using this expedient, limitations on computational power needed on requestor's devices are eliminated, making possible to trigger complex operations even from a device that is not adequate in performances.
+While the previous work focused on mobile devices contributing to the Grid, this one (by \textit{Umar Kalim}, \textit{Hassan Jameel}, \textit{Ali Sajjad} and \textit{Sungyoung Lee}) provides a solution for \textbf{enabling the possibility for mobile devices to utilize the Grid's services}.
+The \textbf{Middleware gateway} represents the main element in this architecture, allowing mobile devices (running a client) to access Grid's services through it; using this expedient, limitations on computational power needed on requestor's devices are eliminated, making possible to \textbf{trigger complex operations even from a device that is not adequate in performances}.
 
 \subsubsection{Architecture}
 A machine devolved to act as a Middleware gateway runs three different modules:
@@ -45,10 +43,11 @@ A machine devolved to act as a Middleware gateway runs three different modules:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.75]{document/chapters/chapter_3/images/2005_architecture.png}
+    \includegraphics[scale=0.8]{document/chapters/chapter_3/images/2005_architecture.png}
     \caption{Mobile-to-Grid Middleware \cite{mobile_to_grid_middleware}}
     \label{fig:2005_architecture}
 \end{figure}
+\vspace{10mm}
 
 \begin{quotation}
     \textit{"Firstly the client application discovers and connects with the Middleware. Then the service, after authentication, submits its device specification along with the job request. The middleware then locates the relevant Grid service and after authorization forwards the request. The client may then request some status information (regarding the job or the service). If the client wishes to disconnect (and collect the result later), the Middleware would facilitate a soft state registration and to which would later help in the reintegration. After disconnection all the requests are served locally (with the cached information). Requests that result in updates at the Middleware service are logged for execution at reconnection. Upon reconnection pending instructions are executed and information updates at the client end are made to maintain consistency." \cite{mobile_to_grid_middleware}}
@@ -74,7 +73,6 @@ The Middleware service, being the most complex module among the three, is built 
 The main advantage of this idea is the increment in versatility and number of devices capable of using the Grid's services. Development on the requestor side is greatly simplified, removing heterogeneity since the actual complexity is moved to the Middleware gateway. To extend compatibility of devices, it is just necessary to implement the communication modules on the new client and add a new Adaption module in the Middleware service.
 
 While this is surely a great advantage, it comes at a great price: the necessity to provide machines that act as a Middleware gateway. Considering that the computation is mainly done in such machines (with the collaboration of the peers inside the Grid), this results in an intense usage, increasing costs for the Grid owners.
-
 As the paper also states, there is also a problem with scalability; necessarily, multiple instances of Middleware gateways have to run in order to keep up with the demand. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, requiring mechanisms to deal with this issue.
 
 \subsection{Autonomous Mobile Middleware (2006)}
