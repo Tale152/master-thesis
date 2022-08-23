@@ -48,9 +48,9 @@ On a final note, this dynamic instantiation in the nodes' context has to be cons
 
 
 \subsection{Resources discovery and selection}\label{resources_discovery_and_selection}
-The Collective layer (\textit{section \ref{fig:collective_layer}}) handles not only global interactions between collections of resources, but, first and foremost, has the responsibility of managing the discovery of resources and the selection of the correct ones to perform a task.
+Not only does the Collective layer (\textit{section \ref{fig:collective_layer}}) handles global interactions among collections of resources, but, first and foremost, it has the responsibility of managing the discovery of resources and the selection of the correct ones to perform a task.
 
-Cloud services devolved to this duty build a \textbf{map of all the nodes connected to the Grid, keeping track of also which resources they can offer}. With this knowledge, said services can \textbf{connect a requestor to the desired resources}, eventually \textbf{choosing the best fit between multiple possible resources of a certain type} that satisfy the condition for a certain task.
+Cloud services devolved to this duty build a \textbf{map of all the nodes connected to the Grid, keeping track of also which resources they can offer}. With this knowledge, said services can \textbf{connect a requestor to the desired resources}, eventually \textbf{choosing the best fit among multiple possible resources of a certain type} that satisfy the condition for a certain task.
 
 The map of the nodes connected to the Grid has to be designed to be stored in multiple server instances in order to respect the scalability discussed in the previous section.
 
