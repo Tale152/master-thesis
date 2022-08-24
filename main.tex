@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper,twoside]{report}
 % Import all the packages
 \input{settings/imports}
 % Set margins
@@ -13,9 +13,14 @@
 
 \begin{document}
 
-\pagenumbering{roman}
-
 \input{document/title-page}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+\pagenumbering{roman}
 
 \tableofcontents
 
