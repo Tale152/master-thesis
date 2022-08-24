@@ -7,12 +7,11 @@ In early 2000s, \textit{Thomas Phan}, \textit{Lloyd Huang} and \textit{Chris Dul
 \subsubsection{Architecture}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{document/chapters/chapter_3/images/2002_architecture.png}
+    \includegraphics[scale=0.85]{document/chapters/chapter_3/images/2002_architecture.png}
     \caption{Proxy-Based Cluster Architecture \cite{integrating_mobile_devices_into_grid}}
     \label{fig:2002_architecture}
 \end{figure}
 This architecture revolves around the idea of having a \textbf{cluster} constituted by a number of \textbf{BASELINE} (Barely Adequate Systems Leveraging Internet NEtworking) \textbf{devices} that act as \textbf{\textit{Minions}}. Such BASELINE devices coexist (in the \textbf{same wireless network}) with a \textbf{proxy device} powerful enough to coordinate them. In this architecture, this proxy device is known as \textbf{\textit{Interlocutor}}; this machine runs a software that acts as a middleware with an existing Grid system.
-
 \begin{quotation}
     \textit{"When a resource request arrives at the Interlocutor from a resource consumer, the request is handled by the Interlocutor. For simplicity, we proceed in this example with the assumption that the request is for CPU time to process incoming data. The interlocutor must decompose the request accordingly among its minions; [...]. After the problem has been distributed to the minions, the interlocutor waits for results and sends them back to the requester. The Interlocutor has the option of aggregating the data before responding with the result in order to amortize the cost of per-message communication overhead." \cite{integrating_mobile_devices_into_grid}}
 \end{quotation}
