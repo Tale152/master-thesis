@@ -78,13 +78,15 @@ As the paper also states, there is also a \textbf{problem with scalability}. If 
 TODO
 
 \subsubsection{Architecture}
-TODO
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.9]{document/chapters/chapter_3/images/2006_architecture.png}
     \caption{Autonomous Mobile Middleware \cite{towards_a_middleware_for_mobile_grids}}
     \label{fig:2006_architecture}
 \end{figure}
+
+The \textbf{Middleware} (A) act as a bridge that links \textbf{applications} (B) running on mobile devices and the Grid's services. The \textbf{Broker Module} service (D) manages resources, schedules jobs and monitors their execution \textbf{eventually saving results in a dedicated database} S2. The \textbf{Directory Module} service (C) manages information about nodes that participate into the Grid, keeping said information also in a dedicated database S1.
+Communication between a Middleware and the Grid's services is filtered by an \textbf{HTTP-XML Server module for nodes data representation}.
 
 \subsubsection{Protocols}
 TODO
