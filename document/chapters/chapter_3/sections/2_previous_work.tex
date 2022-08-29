@@ -25,7 +25,7 @@ Furthermore, \textbf{the Interlocutor hides devices heterogeneity from the Grid}
 
 While using a local Interlocutor seems very effective, every benefit gained by the use of it comes at the cost of a great limitation: \textbf{when it comes to practically scaling the Grid, having the devices operating under the same local network makes extremely more difficult for volunteers to offer their devices}. It is still possible to use some sort of variation of an Interlocutor, but this obviously comes at the cost of loosing some benefits such the reduction of latency while operating in the same network.
 
-\subsection{Mobile-to-Grid Middleware (2005)}
+\subsection{Mobile-to-Grid Middleware (2005)}\label{mobile_to_grid_middleware}
 While the previous work focused on mobile devices contributing to the Grid, this one (by \textit{Umar Kalim}, \textit{Hassan Jameel}, \textit{Ali Sajjad} and \textit{Sungyoung Lee}) provides a solution for \textbf{enabling the possibility for mobile devices to utilize the Grid's services}.
 The \textbf{Middleware gateway} represents the main element in this architecture, allowing mobile devices (running a client) to access Grid's services through it; using this expedient, limitations on computational power needed on requestor's devices are eliminated, making possible to \textbf{trigger complex operations even from a device that is not adequate in performances}.
 
@@ -75,24 +75,24 @@ While this is surely a great advantage, \textbf{it comes at a great price: the n
 As the paper also states, there is also a \textbf{problem with scalability}. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, requiring mechanisms to deal with this issue.
 
 \subsection{Autonomous Mobile Middleware (2006)}
-TODO
+Similarly to the previous work, \textit{Fabio Navarro, Alexandre Schulter, Fernando Koch, Marcos Assunção and Carlos B. Westphall}, propose a solution to \textbf{enable mobile devices to utilize the Grid's services}. Even through the idea is very similar, the \textbf{Middleware} changes physical location, becoming \textbf{integrated directly into the mobile devices}.
 
 \subsubsection{Architecture}
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.9]{document/chapters/chapter_3/images/2006_architecture.png}
     \caption{Autonomous Mobile Middleware \cite{towards_a_middleware_for_mobile_grids}}
     \label{fig:2006_architecture}
 \end{figure}
 
-The \textbf{Middleware} (A) act as a bridge that links \textbf{applications} (B) running on mobile devices and the Grid's services. The \textbf{Broker Module} service (D) manages resources, schedules jobs and monitors their execution \textbf{eventually saving results in a dedicated database} S2. The \textbf{Directory Module} service (C) manages information about nodes that participate into the Grid, keeping said information also in a dedicated database S1.
+\textit{Figure \ref{fig:2006_architecture}} shows the architecture proposed by this work. The \textbf{Middleware} (A) act as a bridge that links \textbf{applications} (B) running on mobile devices and the Grid's services. The \textbf{Broker Module} service (D) manages resources, schedules jobs and monitors their execution \textbf{eventually saving results in a dedicated database} S2. The \textbf{Directory Module} service (C) manages, through the use of the LDAP protocol, information about nodes that participate into the Grid, keeping said information also in a dedicated database S1.
 Communication between a Middleware and the Grid's services is filtered by an \textbf{HTTP-XML Server module for nodes data representation}.
 
-\subsubsection{Protocols}
-TODO
-
-\subsubsection{API examples}
-TODO
-
 \subsubsection{Interesting concepts and ideas}
-TODO
+This solution inverts the benefits and drawbacks of the \textit{section \ref{mobile_to_grid_middleware}}'s solution: \textbf{at the cost of moving back the complexity} from a dedicated external machine to the mobile device, \textbf{scalability is facilitated} while, at the same time, \textbf{costs to maintain the infrastructure running are decreased} for the Grid's owners.
+
+Considering that the ability of easily scale is the main strength of a Grid architecture, this is probably a better approach compared to the previous solution, especially because a correct application of the layered Grid architecture (\textit{section \ref{layered_grid_architecture}}) reduces complexity on the device side through the existence of the fabric layer.
+
+While pursuing this solution it is important to not forget one of the reasons why the previous work moved the Middleware out of the device: the computational load that such software component requires to run. \textbf{It is extremely important that a Middleware running on the mobile-side is as light-weight as possible in order to not overconsume resources and battery}.
+
+This work also highlights the \textbf{necessity of using a standard protocol to represent devices} inside the Grid. While HTTP-XML is a good solution, more modern standards can be applied such as using the JSON format.
