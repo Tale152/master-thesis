@@ -1,5 +1,5 @@
 \section{Previous works}
-In the past, a number of previous works been made about this topic. While the participation of mobile devices to the Grid was theorized, it was never concretized (especially due to technical limitations). This section presents three previous works that provide interesting concept and ideas that influence the solution offered by this work.
+In the past, a number of previous works has been made about this topic. While the participation of mobile devices to the Grid was theorized, it was never concretized (especially due to technical limitations). This section presents three previous works that provide interesting concepts and ideas that influence the solution offered by this work.
 
 \subsection{Proxy-Based Cluster Architecture (2002)}
 In early 2000s, \textit{Thomas Phan}, \textit{Lloyd Huang} and \textit{Chris Dulan} proposed a solution to integrate devices with low capabilities (such as PDAa) into Grid computing. The work is highly influenced by the technical difficulties resulting from the technological panorama at the time, trying to \textbf{isolate the new devices in a sub-environment that can be integrated into the Grid without affecting its inner workings}.
@@ -17,13 +17,13 @@ This architecture revolves around the idea of having a \textbf{cluster} constitu
 \end{quotation}
 
 \subsubsection{Interesting concepts and ideas}
-One of the strengths of such architecture is \textbf{delegation}; Minions rely entirely on the Interlocutor, taking only the active decision (based on the user's will) to either participate or not to the Grid. Having such division in responsibilities \textbf{simplifies the software running on BASELINE devices} (which was the one mostly affected by compatibility issues given the number of OSes for PDAs) while moving such complexity on the stabler and more standardized Interlocutor.
+One of the strengths of such architecture is \textbf{delegation}; Minions rely entirely on the Interlocutor, making only the active decision (based on the user's will) to either participate or not to the Grid. Having such division in responsibilities \textbf{simplifies the software running on BASELINE devices} (which was the one mostly affected by compatibility issues given the number of OSes for PDAs) while moving such complexity on the stabler and more standardized Interlocutor.
 Another advantage gained from this architecture is the \textbf{reduction of latency}. Since the devices operate under the same wireless network, a requestor that is located anywhere on the planet has only to execute a long request to the Interlocutor, while coordination in the cluster is almost instantaneous given the short distances.
-The local coordination allows \textbf{managing resources more easily} since the responsibility of determinate whether certain resources are available and/or adequate becomes distributed between all Interlocutors.
+The local coordination allows \textbf{managing resources more easily} since the responsibility of determining whether certain resources are available and/or adequate becomes distributed among all Interlocutors.
 \textbf{Device discovery is also greatly simplified} since the Grid services do not actually need to discover every single BASELINE device but only Interlocutors.
-Furthermore, \textbf{the Interlocutor hides devices heterogeneity from the Grid}, allowing also to possibility to apply mechanisms to compensate for BASELINE devices performances.
+Furthermore, \textbf{the Interlocutor hides devices heterogeneity from the Grid}, allowing also the possibility to apply mechanisms to compensate for BASELINE devices performances.
 
-While using a local Interlocutor seems very effective, every benefit gained by the use of it comes at the cost of a great limitation: \textbf{when it comes to practically scaling the Grid, having the devices operating under the same local network makes extremely more difficult for volunteers to offer their devices}. It is still possible to use some sort of variation of an Interlocutor, but this obviously comes at the cost of loosing some benefits such the reduction of latency while operating in the same network.
+While using a local Interlocutor seems very effective, every benefit gained from the use of it comes at the cost of a great limitation: \textbf{when it comes to practically scaling the Grid, having the devices operating under the same local network makes it extremely more difficult for volunteers to offer their devices}. It is still possible to use some sort of variation of an Interlocutor, but this obviously comes at the cost of losing some benefits such as the reduction of latency while operating in the same network.
 
 \subsection{Mobile-to-Grid Middleware (2005)}\label{mobile_to_grid_middleware}
 While the previous work focused on mobile devices contributing to the Grid, this one (by \textit{Umar Kalim}, \textit{Hassan Jameel}, \textit{Ali Sajjad} and \textit{Sungyoung Lee}) provides a solution for \textbf{enabling the possibility for mobile devices to utilize the Grid's services}.
@@ -52,16 +52,16 @@ A machine devolved to act as a Middleware gateway runs three different modules:
     \textit{"Firstly the client application discovers and connects with the Middleware. Then the service, after authentication, submits its device specification along with the job request. The middleware then locates the relevant Grid service and after authorization forwards the request. The client may then request some status information (regarding the job or the service). If the client wishes to disconnect (and collect the result later), the Middleware would facilitate a soft state registration and to which would later help in the reintegration. After disconnection all the requests are served locally (with the cached information). Requests that result in updates at the Middleware service are logged for execution at reconnection. Upon reconnection pending instructions are executed and information updates at the client end are made to maintain consistency." \cite{mobile_to_grid_middleware}}
 \end{quotation}
 
-The Middleware service, being the most complex module among the three, is built with a service layered architecture:
+Being the most complex module among the three, the Middleware service is built with a service layered architecture:
 \begin{itemize}
     \item \textbf{Broker service}\\
-    This service takes job requests from the Client devices and, after verifying that adequate Grid's services are available (using the Information service), downloads the code to be executed (from the device or from another source) and start to perform the job interacting with the Grid. Results are stored in the Knowledge management layer.
+    This service takes job requests from the Client devices and, after verifying that adequate Grid's services are available (using the Information service), it downloads the code to be executed (from the device or from another source) and starts to perform the job interacting with the Grid. Results are stored in the Knowledge management layer.
     \item \textbf{Knowledge management}\\
     This layer manages relevant information, both on the client side and on the Grid side. Here results are also scaled down and/or formatted before being returned to the Client device.
     \item \textbf{Security service}\\
     Here there are all the security measures used to create a safe and authenticated connection with both the mobile Client and the Grid. 
     \item \textbf{Information service}\\
-    With this service determinate which services and resources are available on the Grid.
+    Through this service, the Middleware is able to determinate which services and resources are available on the Grid.
     \item \textbf{Communication interface with the Grid}\\
     This layer handles the implementation of communication protocols established by the Grid.
     \item \textbf{Communication interface with the Client}\\
@@ -72,10 +72,10 @@ The Middleware service, being the most complex module among the three, is built 
 The main advantage of this idea is the \textbf{versatility obtained by increasing the number of devices capable of using the Grid's services}. Development on the requestor side is greatly simplified, removing heterogeneity since the actual complexity is moved to the Middleware gateway. To extend compatibility of devices, it is just necessary to implement the communication modules on the new client and add a new Adaption module in the Middleware service.
 
 While this is surely a great advantage, \textbf{it comes at a great price: the necessity to provide machines that act as a Middleware gateway}. Considering that the computation is mainly done in such machines (with the collaboration of the peers inside the Grid), this results in an intense usage, \textbf{increasing costs for the Grid owners}.
-As the paper also states, there is also a \textbf{problem with scalability}. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, requiring mechanisms to deal with this issue.
+As the paper also states, there is also a \textbf{problem with scalability}. If a client submits a task and disconnects from the gateway (whether voluntarily of involuntarily), there is no guarantee that it will later reconnect to the same Middleware gateway, thus requiring mechanisms to deal with this issue.
 
 \subsection{Autonomous Mobile Middleware (2006)}
-Similarly to the previous work, \textit{Fabio Navarro, Alexandre Schulter, Fernando Koch, Marcos Assunção and Carlos B. Westphall}, propose a solution to \textbf{enable mobile devices to utilize the Grid's services}. Even through the idea is very similar, the \textbf{Middleware} changes physical location, becoming \textbf{integrated directly into the mobile devices}.
+Similarly to the previous work, \textit{Fabio Navarro, Alexandre Schulter, Fernando Koch, Marcos Assunção and Carlos B. Westphall} propose a solution to \textbf{enable mobile devices to utilize the Grid's services}. Even though the idea is very similar, the \textbf{Middleware} changes physical location, becoming \textbf{integrated directly into the mobile devices}.
 
 \subsubsection{Architecture}
 \begin{figure}[!ht]
@@ -85,14 +85,14 @@ Similarly to the previous work, \textit{Fabio Navarro, Alexandre Schulter, Ferna
     \label{fig:2006_architecture}
 \end{figure}
 
-\textit{Figure \ref{fig:2006_architecture}} shows the architecture proposed by this work. The \textbf{Middleware} (A) act as a bridge that links \textbf{applications} (B) running on mobile devices and the Grid's services. The \textbf{Broker Module} service (D) manages resources, schedules jobs and monitors their execution \textbf{eventually saving results in a dedicated database} S2. The \textbf{Directory Module} service (C) manages, through the use of the LDAP protocol, information about nodes that participate into the Grid, keeping said information also in a dedicated database S1.
+\textit{Figure \ref{fig:2006_architecture}} shows the architecture proposed by this work. The \textbf{Middleware} (A) acts as a bridge that links \textbf{applications} (B) running on mobile devices and the Grid's services. The \textbf{Broker Module} service (D) manages resources, schedules jobs and monitors their execution \textbf{eventually saving results in a dedicated database} S2. Through the use of the LDAP protocol, the \textbf{Directory Module} service (C) manages information about nodes that participate into the Grid, keeping said information also in a dedicated database S1.
 Communication between a Middleware and the Grid's services is filtered by an \textbf{HTTP-XML Server module for nodes data representation}.
 
 \subsubsection{Interesting concepts and ideas}
 This solution inverts the benefits and drawbacks of the \textit{section \ref{mobile_to_grid_middleware}}'s solution: \textbf{at the cost of moving back the complexity} from a dedicated external machine to the mobile device, \textbf{scalability is facilitated} while, at the same time, \textbf{costs to maintain the infrastructure running are decreased} for the Grid's owners.
 
-Considering that the ability of easily scale is the main strength of a Grid architecture, this is probably a better approach compared to the previous solution, especially because a correct application of the layered Grid architecture (\textit{section \ref{layered_grid_architecture}}) reduces complexity on the device side through the existence of the fabric layer.
+Considering that the ability of easily scaling is the main strength of a Grid architecture, this is probably a better approach compared to the previous solution, especially because a correct application of the layered Grid architecture (\textit{section \ref{layered_grid_architecture}}) reduces complexity on the device side through the existence of the fabric layer.
 
-While pursuing this solution it is important to not forget one of the reasons why the previous work moved the Middleware out of the device: the computational load that such software component requires to run. \textbf{It is extremely important that a Middleware running on the mobile-side is as light-weight as possible in order to not overconsume resources and battery}.
+While pursuing this solution it is important not to forget one of the reasons why the previous work moved the Middleware out of the device: the computational load that such software component requires to run. \textbf{It is extremely important that a Middleware running on the mobile-side is as light-weight as possible in order not to overconsume resources and battery}.
 
 This work also highlights the \textbf{necessity of using a standard protocol to represent devices} inside the Grid. While HTTP-XML is a good solution, more modern standards can be applied such as using the JSON format.
