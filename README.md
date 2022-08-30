@@ -9,9 +9,9 @@
 ## About the thesis
 ### Title: __Integrating mobile devices into a scalable Grid Computing architecture designed to perform distributed computations__
 
-### Presented by: [Alessandro Talmi](https://github.com/Tale152)
+### Presented by: Dr. [Alessandro Talmi](https://github.com/Tale152)
 
-### Supervised by: [Alessandro Ricci](https://www.unibo.it/sitoweb/a.ricci)
+### Supervised by: Prof. [Alessandro Ricci](https://www.unibo.it/sitoweb/a.ricci)
 
 ### Abstract:
 The idea of Grid Computing originated at the beginning of the nineties and found its concrete applications in contexts like the SETI@home project; in said project, a lot of computers (offered by volunteers) cooperated performing distributed computations in the Grid environment attempting to analyze radio signals trying to find extraterrestrial life.  
