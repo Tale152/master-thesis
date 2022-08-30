@@ -8,6 +8,8 @@
 % Setting for the table of contents
 \input{settings/table_of_contents.tex}
  
+\newenvironment{dedication}{\chapter*{}\begin{flushright}\itshape}{\normalfont\end{flushright}}
+
 % Add bibliography source
 \addbibresource{document/bibliography.bib}
 
@@ -21,6 +23,10 @@
 \fancyfoot[C]{\thepage}
 
 \pagenumbering{roman}
+
+\begin{dedication}
+Do the hard work, \textbf{especially} when you don't feel like it.
+\end{dedication}
 
 \tableofcontents
 
