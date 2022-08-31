@@ -6,8 +6,18 @@
 \textbf{\href{https://hadoop.apache.org/}{Apache Hadoop}}, inspired by Google's work, integrates the MapReduce paradigm in its free-licensed framework, making it \textbf{one of the most used options} when it comes to applying distributed computations following this paradigm.
 
 \subsection{The programming model}
-TODO
-% including types
+In order to execute a MapReduce computation, it is required, as \textbf{input}, \textbf{a set of key/value pairs}. Said values are \textbf{modified through the Map and Reduce functions} and, ultimately, produce as \textbf{output another set of key/value pairs}. 
+
+The Map and Reduce functions are \textbf{written by the user} but in the background, through the framework, behave in the following way:
+\begin{itemize}
+    \item \textbf{Map}: \textit{(k1, v1) $\Longrightarrow$ list(k2, v2)}\\
+    The map function takes a single pair as input and produces a set of intermediate key/value pairs. The framework automatically merges the intermediate sets, grouping them using the keys. Said values are then passed as input to the Reduce function.
+    \item \textbf{Reduce}: \textit{(k2, list(v2)) $\Longrightarrow$ list(v2)}\\
+    The Reduce function uses the input provided by the automatic merge performed by the framework; every Reduce execution takes a pair of composed of the intermediate key and a collection of values associated to that key. Said pairs are provided using an iterator in order to work with collections that are too large to fit in memory. The values associated to the key are merged to form a possibly smaller set of values, resulting typically in one or zero output values produced as result (even though the function produces a list of values).
+\end{itemize}
+A programmer that implements a computation following this paradigm does not need to provide anything else but, \textbf{behind the scenes}, the framework performs additional operations such as the \textbf{Splitting} (that divides the input in smaller parts to be executed on the multiple workers) and the \textbf{Shuffling} (that merges the output of the individual Map functions).
+
+Even though the functioning of this paradigm is conceptually easy, the next section analyzes its execution flow with a concrete example.
 
 \subsection{Execution flow}
 TODO
