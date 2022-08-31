@@ -15,12 +15,12 @@ The Map and Reduce functions are \textbf{written by the user} but in the backgro
     \item \textbf{Reduce}: \textit{(k2, list(v2)) $\Longrightarrow$ list(v2)}\\
     The Reduce function uses the input provided by the automatic merge performed by the framework; every Reduce execution takes a pair of composed of the intermediate key and a collection of values associated to that key. Said pairs are provided using an iterator in order to work with collections that are too large to fit in memory. The values associated to the key are merged to form a possibly smaller set of values, resulting typically in one or zero output values produced as result (even though the function produces a list of values).
 \end{itemize}
-A programmer that implements a computation following this paradigm does not need to provide anything else but, \textbf{behind the scenes}, the framework performs additional operations such as the \textbf{Splitting} (that divides the input in smaller parts to be executed on the multiple workers) and the \textbf{Shuffling} (that merges the output of the individual Map functions).
+A programmer that implements a computation following this paradigm does not need to provide anything else but, \textbf{behind the scenes}, the framework performs additional operations such as \textbf{Splitting} (that divides the input in smaller parts to be executed on the multiple workers), \textbf{Shuffling} (that merges the output of the individual Map functions) and \textbf{Collect} (that reunites results produced by the various workers).
 
 Even though the functioning of this paradigm is conceptually easy, the next section analyzes its execution flow with a concrete example.
 
 \subsection{Execution flow}
-TODO
+In this example (\textit{figure \ref{fig:mapreduce_example}}), a simple word count will be performed: given a source of text, the algorithm will count the occurrences of every word appearing in the text.
 
 \begin{figure}[H]
     \centering
@@ -28,6 +28,8 @@ TODO
     \caption{Example of word count expressed through the MapReduce paradigm \cite{mapreduce_example_site}}
     \label{fig:mapreduce_example}
 \end{figure}
+
+The process begins with splitting the input in smaller portions, in this case the text is split by row. On the resulting portions, the Map function is performed; in this example, every word (that is used as a key) is mapped to the value "1" (since it is one appearance of said word). The results are then grouped through the Shuffling operation, using the key as the grouping criteria. Finally, the Reduce function is executed, in different machines, on every group (the example sums the values in order to get the final number of occurrences for every word); the results of the Reduce operations is then collected, obtaining the final collection of key/value pairs.
 
 \begin{figure}[H]
     \centering
