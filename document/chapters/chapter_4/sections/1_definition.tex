@@ -19,7 +19,7 @@ A programmer that implements a computation following this paradigm does not need
 
 Even though the functioning of this paradigm is conceptually easy, the next section analyzes its execution flow with a concrete example.
 
-\subsection{Execution flow}
+\subsection{Example}
 In this example (\textit{figure \ref{fig:mapreduce_example}}), a simple word count will be performed: given a source of text, the algorithm will count the occurrences of every word appearing in the text.
 
 \begin{figure}[H]
@@ -30,6 +30,8 @@ In this example (\textit{figure \ref{fig:mapreduce_example}}), a simple word cou
 \end{figure}
 
 The process begins with splitting the input in smaller portions, in this case the text is split by row. On the resulting portions, the Map function is performed; in this example, every word (that is used as a key) is mapped to the value "1" (since it is one appearance of said word). The results are then grouped through the Shuffling operation, using the key as the grouping criteria. Finally, the Reduce function is executed, in different machines, on every group (the example sums the values in order to get the final number of occurrences for every word); the results of the Reduce operations is then collected, obtaining the final collection of key/value pairs.
+
+\subsection{Execution flow}
 
 \begin{figure}[H]
     \centering
