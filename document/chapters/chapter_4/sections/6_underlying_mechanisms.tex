@@ -2,7 +2,13 @@
 TODO
 
 \subsection{Data structures}
-TODO
+As anticipated during the exploration of the workflow, the Master acts as a coordinator and an intermediary between the Worker nodes; it mainly keeps two data structures in memory:
+\begin{itemize}
+    \item \textbf{Tasks' state}\\
+    For every Map task and every Reduce task (for a total number of M + R), the Master keeps track of the current state, that can be either idle, in progress or completed.
+    \item \textbf{Intermediate results location}\\
+    The master stores the locations and sizes of the R intermediate file regions produced by the map task in order to communicate said data to the Reduce Workers that are in the "in progress" state.
+\end{itemize}
 
 \subsection{Task granularity}
 TODO
