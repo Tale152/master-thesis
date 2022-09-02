@@ -8,7 +8,15 @@ When it comes to understanding the actual flow of execution in a MapReduce clust
 \end{itemize}
 The partitioning function, M and R can be set by the user. Typically, MapReduce operations performed at Google have M=200000 and R=5000 with 2000 machines \cite{google_mapreduce}.
 
-\begin{figure}[H]
+The Master, acting as coordinator and intermediary between the Worker nodes, mainly keeps two data structures in memory:
+\begin{itemize}
+    \item \textbf{Tasks' state}\\
+    For every Map task and every Reduce task (for a total number of M + R), the Master keeps track of the current state, that can be either idle, in progress or completed.
+    \item \textbf{Intermediate results location}\\
+    The master stores the locations and sizes of the R intermediate file regions produced by the map task in order to communicate said data to the Reduce Workers that are in the "in progress" state.
+\end{itemize}
+
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.75]{document/chapters/chapter_4/images/mapreduce_execution_flow.png}
     \caption{MapReduce execution flow \cite{google_mapreduce}}
