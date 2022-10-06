@@ -54,12 +54,17 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Customer Dashboard}\label{customer_dashboard}\\
     A software entity through which a \textit{Customer} can manage its present and past \textit{Grid Service Invocations} and check the relative \textit{Fees} as well as registering a payment method used to pay such \textit{Fees}.
     \item \textbf{MapReduce Service}\label{mapreduce_service}\\
-    A particular \textit{Grid Service} that performs a MapReduce computation over the \textit{Grid} utilizing a \textit{Node} as \textit{MapReduce Master} and several nodes as \textit{Map Workers} and \textit{Reduce Workers}.
+    A particular incarnation of a \textit{Grid Service} that performs a MapReduce computation over the \textit{Grid} utilizing a \textit{Node} as \textit{MapReduce Master} and several nodes as \textit{Map Workers} and \textit{Reduce Workers}.
     \item \textbf{MapReduce Master}\label{mapreduce_master}\\
-    \item \textbf{Map Task}\label{map_task}\\
+    TODO
     \item \textbf{Map Worker}\label{map_worker}\\
-    \item \textbf{Reduce Task}\label{reduce_task}\\
+    A \textit{Node}, coordinated by the \textit{MapReduce Master}, that executes \textit{Map Tasks} and send the results to the correct \textit{Reduce Worker}.
+    \item \textbf{Map Task}\label{map_task}\\
+    TODO
     \item \textbf{Reduce Worker}\label{reduce_worker}\\
+    A \textit{Node}, coordinated by the \textit{MapReduce Master}, that executes \textit{Reduce Tasks} on data received by \textit{Map Workers}.
+    \item \textbf{Reduce Task}\label{reduce_task}\\
+    TODO
     \item \textbf{Fee}\label{fee}\\
     A monetary amount that the \textit{Customer} needs to pay in order to perform a \textit{Grid Service Invocation}. The amount is influenced by the type of service requested and the quantity of resources employed to complete such service.
     \item \textbf{Reward}\label{reward}\\
