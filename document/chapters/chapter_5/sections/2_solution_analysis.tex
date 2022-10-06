@@ -8,6 +8,11 @@ Finally, the requirements will be presented, aiming to provide a clear set of cr
 \subsection{Domain: Ubiquitous Language}
 Before continuing, it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate; in order to do so, the Ubiquitous Language tool (coming from the Domain Driven Design discipline) will be used. From this point and forward, the terms listed here will uniquely be used to identify its mapped concept:
 \begin{itemize}
+    \item \textbf{Contributor}\label{contributor}\\
+    \item \textbf{Contribution}\label{contribution}\\
+    \item \textbf{Customer}\label{customer}\\
+    \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
+    \item \textbf{Grid Owner}\label{grid_owner}\\
     \item \textbf{Grid}\label{grid}\\
     The system as a whole (owned by the \textit{Grid Owners}), based on the Grid computing principles. It offers various \textit{Grid Services} and, architecturally, it is composed by a multitude of \textit{Cloud Services}, a dynamically ever-changing number of \textit{Nodes} (provided by \textit{Contributors}) and an also variable number of \textit{Invoking Endpoints} (owned by \textit{Customers}) used to invoke its Grid Services. The parts composing the Grid are organized following the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}).
     \item \textbf{Grid Service}\label{grid_service}\\
@@ -30,12 +35,9 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Customer Custom Application}\label{customer_custom_application}\\
     Software application, developed by the \textit{Customer}, that uses the \textit{Invoking Endpoint} software abstraction in order to integrate \textit{Grid Services} into such custom application ran on an \textit{Invoking Device}.
     \item \textbf{Invoking Device}\label{invoking_device}\\
-    \item \textbf{Contribution}\label{contribution}\\
-    \item \textbf{Contributor}\label{contributor}\\
+    A device that runs the \textit{Customer Custom Application}. Such device can be owned by the \textit{Customer} itself or by people using the \textit{Customer Custom Application} that the \textit{Customer} is commercializing. In regard to the \textit{Grid}, the focal point here is that it is a device that is performing a \textit{Grid Service Invocation} through the \textit{Customer Custom Application} that is utilizing the \textit{Invoking Endpoint} software.
     \item \textbf{Contributor Dashboard}\label{contributor_dashboard}\\
-    \item \textbf{Customer}\label{customer}\\
     \item \textbf{Customer Dashboard}\label{customer_dashboard}\\
-    \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
     \item \textbf{MapReduce Service}\label{mapreduce_service}\\
     \item \textbf{Task}\label{task}\\
     \item \textbf{MapReduce Master}\label{mapreduce_master}\\
@@ -49,7 +51,6 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Rewards Threshhold}\label{rewards_threshold}\\
     \item \textbf{Rewards Balance}\label{rewards_balance}\\
     \item \textbf{Access policies}\label{access_policies}\\
-    \item \textbf{Grid Owner}\label{grid_owner}\\
 \end{itemize}
 \subsection{Use cases}
 TODO
