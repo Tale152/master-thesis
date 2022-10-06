@@ -8,30 +8,37 @@ Finally, the requirements will be presented, aiming to provide a clear set of cr
 \subsection{Domain}
 Before continuing, it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate; in order to do so, the Ubiquitous Language tool (coming from the Domain Driven Design discipline) will be used. From this point and forward, the terms listed here will uniquely be used to identify its mapped concept:
 \begin{itemize}
-    \item \textbf{Grid}\\
-    \item \textbf{Node}\\
-    \item \textbf{Contribution}\\
-    \item \textbf{Contributor}\\
-    \item \textbf{Contributing Device}\\
-    \item \textbf{Contributor Dashboard}\\
-    \item \textbf{Customer}\\
-    \item \textbf{Customer Dashboard}\\
-    \item \textbf{Grid Service}\\
-    \item \textbf{Grid Service Invocation}\\
-    \item \textbf{MapReduce Service}\\
-    \item \textbf{Invoking Device}\\
-    \item \textbf{Task}\\
-    \item \textbf{MapReduce Master}\\
-    \item \textbf{Map Task}\\
-    \item \textbf{Map Worker}\\
-    \item \textbf{Reduce Task}\\
-    \item \textbf{Reduce Worker}\\
-    \item \textbf{Fee}\\
-    \item \textbf{Reward}\\
-    \item \textbf{Rewards Redemption}\\
-    \item \textbf{Rewards Treshhold}\\
-    \item \textbf{Rewards Balance}\\
-    \item \textbf{Access policies}\\
+    \item \textbf{Grid}\label{grid}\\
+    The system as a whole, based on the Grid computing principles. It offers various \textit{Grid Services} and, architecturally, it is composed by a multitude of \textit{Cloud Services}, a dynamically ever-changing number of \textit{Nodes} (provided by \textit{Contributors}) and an also variable number of \textit{Invoking Endpoints} (owned by \textit{Customers}) used to invoke its Grid Services.
+    \item \textbf{Grid Service}\label{grid_service}\\
+    A service (computation, storage, etc...) offered by the \textit{Grid} which is requested by a \textit{Customer} through an \textit{Invoking Endpoint}, paying the corresponding \textit{Fee}. In order to be performed, the \textit{Cloud services} coordinate the \textit{Contribution} offered by the \textit{Nodes} offered by \textit{Contributors}. One particular concretization of a Grid Service is the \textit{MapReduce service}.
+    \item \textbf{Cloud Service}\label{cloud_service}\\
+    A backend server operating in the Cloud. Its duties depend on its role, but the distinct traits of a Cloud Service include being owned and maintained by the \textit{Grid Owners} and the ability to coordinate the \textit{Contribution} of \textit{Nodes} participating in the \textit{Grid} and the access to \textit{Grid Services} invoked by \textit{Invoking Endpoints}. 
+    \item \textbf{Node}\label{node}\\
+    \item \textbf{Resource}\label{resource}\\
+    \item \textbf{Contribution}\label{contribution}\\
+    \item \textbf{Contributor}\label{contributor}\\
+    \item \textbf{Contributing Device}\label{contributing_device}\\
+    \item \textbf{Contributor Dashboard}\label{contributor_dashboard}\\
+    \item \textbf{Customer}\label{customer}\\
+    \item \textbf{Customer Dashboard}\label{customer_dashboard}\\
+    \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
+    \item \textbf{MapReduce Service}\label{mapreduce_service}\\
+    \item \textbf{Invoking Endpoint}\label{invoking_endpoint}\\
+    \item \textbf{Invoking Device}\label{invoking_device}\\
+    \item \textbf{Task}\label{task}\\
+    \item \textbf{MapReduce Master}\label{mapreduce_master}\\
+    \item \textbf{Map Task}\label{map_task}\\
+    \item \textbf{Map Worker}\label{map_worker}\\
+    \item \textbf{Reduce Task}\label{reduce_task}\\
+    \item \textbf{Reduce Worker}\label{reduce_worker}\\
+    \item \textbf{Fee}\label{fee}\\
+    \item \textbf{Reward}\label{reward}\\
+    \item \textbf{Rewards Redemption}\label{rewards_redemption}\\
+    \item \textbf{Rewards Threshhold}\label{rewards_threshold}\\
+    \item \textbf{Rewards Balance}\label{rewards_balance}\\
+    \item \textbf{Access policies}\label{access_policies}\\
+    \item \textbf{Grid Owner}\label{grid_owner}\\
 \end{itemize}
 \subsection{Use cases}
 TODO
