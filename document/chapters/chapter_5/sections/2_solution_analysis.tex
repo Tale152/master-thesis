@@ -6,12 +6,12 @@ Then, use cases will be discussed, explaining what the system needs to do, seen 
 Finally, the requirements will be presented, aiming to provide a clear set of criteria to satisfy for a system that wants to use the Transparent scheduling model over heterogeneous devices.
 
 \subsection{Domain: Ubiquitous Language}
-Before continuing, it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate; in order to do so, the Ubiquitous Language tool (coming from the Domain Driven Design discipline \cite{ddd}) will be used. From this point and forward, a term listed here will be uniquely used to identify its mapped concept:
+Before continuing, it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate; in order to do so, the Ubiquitous Language (UL) tool, coming from the Domain Driven Design discipline \cite{ddd}, will be used. From this point and forward, a term listed here will be uniquely used to identify its mapped concept:
 \begin{itemize}
     \item \textbf{Contributor}\label{contributor}\\
-    A person (up until this point identified as the Volunteer in Volunteer Computing) which offers one or more \textit{Contributing Devices} in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services}. Through its \textit{Contribution}, it gains \textit{Rewards} that are accumulated in its \textit{Reward Balance}; once a certain \textit{Reward Threshold} is reached, a Contributor can perform a \textit{Rewards Redemption}. The Contributor can manage its data through a \textit{Contributor Dashboard}.
+    A person (up until this point identified as the Volunteer in Volunteer Computing) which offers one or more \textit{Contributing Endpoints} in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services}. Through its \textit{Contribution}, it gains \textit{Rewards} that are accumulated in its \textit{Reward Balance}; once a certain \textit{Reward Threshold} is reached, a Contributor can perform a \textit{Rewards Redemption}. The Contributor can manage its data through a \textit{Contributor Dashboard}.
     \item \textbf{Contribution}\label{contribution}\\
-    The automated act performed by a \textit{Contributing Device} (offered by a \textit{Contributor}) in order to complete \textit{Grid Services} and, consequently, gain \textit{Rewards}.
+    The automated act performed by a \textit{Contributing Endpoint} (offered by a \textit{Contributor}) in order to complete \textit{Grid Services} and, consequently, gain \textit{Rewards}.
     \item \textbf{Customer}\label{customer}\\
     An entity (whether a single person, a business, etc...) that wants to perform a \textit{Grid Service Invocation} through an \textit{Invoking Endpoint} integrated into a \textit{Customer Custom Application}. This entity can manage its data and past \textit{Service Invocations} and \textit{Fees} utilizing a \textit{Customer Dashboard}.
     \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
@@ -21,22 +21,28 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Grid}\label{grid}\\
     The system as a whole (owned by the \textit{Grid Owners}), based on the Grid computing principles. It offers various \textit{Grid Services} and, architecturally, it is composed by a multitude of \textit{Cloud Services}, a dynamically ever-changing number of \textit{Nodes} (provided by \textit{Contributors}) and an also variable number of \textit{Invoking Endpoints} (owned by \textit{Customers}) used to invoke its Grid Services. The parts composing the Grid are organized following the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}).
     \item \textbf{Grid Service}\label{grid_service}\\
-    A service (computation, storage, etc...) offered by the \textit{Grid} which is requested by a \textit{Customer} through an \textit{Invoking Endpoint}, paying the corresponding \textit{Fee} (which can vary depending on the amount of \textit{Resources} requested). In order to be performed, the \textit{Cloud services} coordinate the \textit{Contribution} by the \textit{Nodes} (which perform \textit{Tasks}) offered by \textit{Contributors} (who gain \textit{Rewards} for such Contributions). One particular concretization of a Grid Service is the \textit{MapReduce service}. In relation to the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), Grid Services all together embody the Collective Layer (\textit{section \ref{fig:collective_layer}}).
+    A service (computation, storage, etc...) offered by the \textit{Grid} which is requested by a \textit{Customer} through an \textit{Invoking Endpoint}, paying the corresponding \textit{Fee} (which can vary depending on the amount of \textit{Resources} requested). In order to be performed, the \textit{Cloud services} coordinate the \textit{Contribution} by the \textit{Nodes} (which perform \textit{Tasks}) offered by \textit{Contributors} (who gain \textit{Rewards} for such Contributions). One particular concretization of a Grid Service is the \textit{MapReduce service}.
     \item \textbf{Cloud Service}\label{cloud_service}\\
-    A backend server, maintained by the \textit{Grid Owners}, operating in the Cloud. Its duties depend on its role, but the distinct traits of a Cloud Service include being owned and maintained by the \textit{Grid Owners} and the ability to coordinate the \textit{Contribution} of \textit{Nodes} participating in the \textit{Grid} and the access to \textit{Grid Services} invoked by \textit{Invoking Endpoints}. 
+    A backend server, maintained by the \textit{Grid Owners}, operating in the Cloud. Its duties depend on its role, but the distinct traits of a Cloud Service include being owned and maintained by the \textit{Grid Owners} and the ability to coordinate the \textit{Contribution} of \textit{Nodes} participating in the \textit{Grid} and the access to \textit{Grid Services} invoked by \textit{Invoking Endpoints}. In relation to the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), Cloud Services all together embody the Collective Layer (\textit{section \ref{fig:collective_layer}}) as shown in \textit{figure \ref{fig:layered_grid_architecture_and_ul}}.
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/layered_grid_architecture_and_ul.png}
+        \caption{UL relationship with Layered Grid Architecture}
+        \label{fig:layered_grid_architecture_and_ul}
+    \end{figure}
     \item \textbf{Node}\label{node}\\
-    A Node is an abstraction representing a software entity providing the mechanisms used by a \textit{Contributing Device} (owned by a \textit{Contributor}) to connect to the \textit{Grid} (through the \textit{Cloud Services}) in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services} offering \textit{Resources} and executing \textit{Tasks}. Referring to the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), a Node can be logically mapped to the concrete realization of the Resource and Connectivity layers (\textit{section \ref{resource_layer}} and \textit{\ref{connectivity_layer}}), as well as the definition of the Fabric layer interfaces (\textit{section \ref{fig:fabric_layer}}) which will be concretely implemented in the \textit{Contributing Device}.
-    \item \textbf{Contributing Device}\label{contributing_device}\\
-    A client device (Computer, Smartphone or Tablet), owned by a \textit{Contributor}, which is able to perform a \textit{Contribution} finalized to completing \textit{Grid Services}; such \textit{Contribution} is performed by the software (running on the Contributing Device) that is built interfacing with the \textit{Node} software abstraction. Not all Contributing Devices are able to perform every \textit{Grid Service} that can exist; such ability is determined by the \textit{Resources} that the specific Contributing Device can offer. A Contributing Device can be logically mapped to the concrete implementation of the Fabric Layer (\textit{section \ref{fig:fabric_layer}}) of the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}).
+    A Node is an abstraction representing a software entity providing the mechanisms used by a \textit{Contributing Endpoint} (owned by a \textit{Contributor}) to connect to the \textit{Grid} (through the \textit{Cloud Services}) in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services} offering \textit{Resources} and executing \textit{Tasks}. Referring to the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), a Node can be logically mapped to the concrete realization of the Resource and Connectivity layers (\textit{section \ref{resource_layer}} and \textit{\ref{connectivity_layer}}), as well as the definition of the Fabric layer interfaces (\textit{section \ref{fig:fabric_layer}}) which will be concretely implemented in the \textit{Contributing Endpoint} (\textit{figure \ref{fig:layered_grid_architecture_and_ul}}).
+    \item \textbf{Contributing Endpoint}\label{contributing_device}\\
+    A client device (Computer, Smartphone or Tablet), owned by a \textit{Contributor}, which is able to perform a \textit{Contribution} finalized to completing \textit{Grid Services}; such \textit{Contribution} is performed by the software (running on the Contributing Endpoint) that is built interfacing with the \textit{Node} software abstraction. Not all Contributing Endpoints are able to perform every \textit{Grid Service} that can exist; such ability is determined by the \textit{Resources} that the specific Contributing Endpoint can offer. A Contributing Endpoint can be logically mapped (\textit{figure \ref{fig:layered_grid_architecture_and_ul}}) to the concrete implementation of the Fabric Layer (\textit{section \ref{fig:fabric_layer}}) of the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}).
     \item \textbf{Resource}\label{resource}\\
-    An abstraction representing what a \textit{Contributing Device} can offer (through the \textit{Node} software) in order to offer a \textit{Contribution} to the completion of a \textit{Grid Service}. A resource can belong to one of the following types:
+    An abstraction representing what a \textit{Contributing Endpoint} can offer (through the \textit{Node} software) in order to offer a \textit{Contribution} to the completion of a \textit{Grid Service}. A resource can belong to one of the following types:
     \begin{itemize}
         \item Hardware (processor, memory, disk, etc...)
         \item Software (OS, supported programming languages, compatible \textit{Tasks}, etc...)
         \item Network (connection type, download speed, upload speed, etc...)
     \end{itemize}
     \item \textbf{Invoking Endpoint}\label{invoking_endpoint}\\
-    An abstraction representing a software entity providing the mechanisms used by an \textit{Invoking Device} (owned by a \textit{Customer}) in order to perform a \textit{Grid Service Invocation}. This abstraction is used in a \textit{Customer Custom Application}, integrating the \textit{Grid Services} into such application. Continuing the mapping to the fundamental Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), an Invoking Endpoint (together with the \textit{Customer Custom Application}), embodies the Application Layer (\textit{section \ref{fig:application_layer}}).
+    An abstraction representing a software entity providing the mechanisms used by an \textit{Invoking Device} (owned by a \textit{Customer}) in order to perform a \textit{Grid Service Invocation}. This abstraction is used in a \textit{Customer Custom Application}, integrating the \textit{Grid Services} into such application. Continuing the mapping (\textit{figure \ref{fig:layered_grid_architecture_and_ul}}) to the fundamental Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), an Invoking Endpoint (together with the \textit{Customer Custom Application}), embodies the Application Layer (\textit{section \ref{fig:application_layer}}).
     \item \textbf{Customer Custom Application}\label{customer_custom_application}\\
     Software application, developed by the \textit{Customer}, that uses the \textit{Invoking Endpoint} software abstraction in order to integrate \textit{Grid Services} into such custom application ran on an \textit{Invoking Device}.
     \item \textbf{Invoking Device}\label{invoking_device}\\
@@ -57,6 +63,7 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Rewards Balance}\label{rewards_balance}\\
     \item \textbf{Access policies}\label{access_policies}\\
 \end{itemize}
+
 \subsection{Use cases}
 TODO
 
@@ -85,7 +92,7 @@ All the requirements that are necessary for the successful completion of a compl
     \item \textbf{Registration and identification}
     \begin{itemize}
         \item The Contributor must be able to register to the Grid system in order to uniquely identify contributions regarding its devices participating in the Grid.
-        \item Once authenticated to a contributing device, the Contributor must not be requested to authenticate again unless it is absolutely necessary.
+        \item Once authenticated to a Contributing Endpoint, the Contributor must not be requested to authenticate again unless it is absolutely necessary.
     \end{itemize}
     \item \textbf{Contribution}
     \begin{itemize}
@@ -178,7 +185,7 @@ Requirements that are important but not necessary for a production release and c
 \paragraph{Contributor side}
 \begin{itemize}
     \item It should be possible to see the status of every device owned by the Contributor.
-    \item It should be possible, from the contributing device, to see the local current status.
+    \item It should be possible, from the Contributing Endpoint, to see the local current status.
     \item It should be possible to limit the access to certain resources of the device.
     \item It should be possible to manually enable/disable the contribution of a device.
     \item It should be possible to schedule a trigger (time and/or events) to start/stop the contribution.
