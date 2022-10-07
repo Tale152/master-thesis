@@ -86,23 +86,30 @@ Before continuing, it is important to specify the nomenclatures and relative def
     \item \textbf{Access Policies}\label{access_policies}\\
     \textit{Contribution Endpoint}-specific Access policies defined by the \textit{Contributor}, specifying which \textit{Resources} are offered to the \textit{Grid} for \textit{Contribution}.
 \end{itemize}
+\vspace{20mm}
 
-\subsection{Use cases}
-TODO
+\subsection{Use Cases}
+This section presents the Use Cases diagrams, graphically explaining what features need to be available from the point of view of the two actors interacting with the Grid: the Contributor and the Customer.
 
-%\begin{figure}[!ht]
-    %\centering
-    %\includegraphics[width=\linewidth]{document/chapters/chapter_5/images/contributor_use_cases.jpg}
-    %\caption{Contributor's use cases diagram}
-    %\label{fig:use_cases_contributor}
-%\end{figure}
+An explanation of single use cases here is omitted since the previous section indirectly explained already the non-trivial ones; furthermore, in the next chapter, \textit{section TODO} will show how said use cases are realized using Grid entities collaborating among each other, making redundant a detailed explanation here.
 
-%\begin{figure}[!ht]
-    %\centering
-    %\includegraphics[width=\linewidth]{document/chapters/chapter_5/images/customer_use_cases.jpg}
-    %\caption{Customer's use cases diagram}
-    %\label{fig:use_cases_customer}
-%\end{figure}
+\begin{itemize}
+\item \textbf{Contributor}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.65]{document/chapters/chapter_5/images/contributor_use_cases.jpg}
+    \caption{Use Cases diagram - Contributor}
+    \label{fig:use_cases_contributor}
+\end{figure}
+
+\item \textbf{Customer}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.67]{document/chapters/chapter_5/images/customer_use_cases.jpg}
+    \caption{Use cases diagram - Customer}
+    \label{fig:use_cases_customer}
+\end{figure}
+\end{itemize}
 
 \subsection{Requirements: MoSCoW Prioritization}
 Now that it is clear what the system needs to do from the perspective of the two major actors utilizing it (Contributor and Customer), it is possible to create a list of requirements that such system needs to satisfy. To do so, the MoSCoW method will be used.
