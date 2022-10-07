@@ -144,7 +144,6 @@ All the requirements that are necessary for the successful completion of a first
     \item \textbf{Security}
     \begin{itemize}
         \item Execution environment-specific security measures must be implemented to protect the Contributor.
-        \item The Contributor must be able to customize Access Policies to its Contributing Endpoints.
     \end{itemize}
     \item \textbf{User experience}
     \begin{itemize}
@@ -219,17 +218,17 @@ Requirements that are important but not necessary for a production release and c
 
 \paragraph{Contributor area}
 \begin{itemize}
-    \item It should be possible to see the status of every device owned by the Contributor.
-    \item It should be possible, from the Contributing Endpoint, to see the local current status.
-    \item It should be possible to limit the access to certain resources of the device.
-    \item It should be possible to manually enable/disable the contribution of a device.
-    \item It should be possible to schedule a trigger (time and/or events) to start/stop the contribution.
-    \item The applications used by the Contributors should limit usage of resources if the user is actively using the device in order to not have a negative impact on user experience (avoiding incentives for the user to uninstall the application).
+    \item It should be possible to see the status of every Contributing Endpoint owned by the Contributor.
+    \item It should be possible, from a Contributing Endpoint, to see the local current status.
+    \item The Contributor must be able to customize Access Policies to its Contributing Endpoints.
+    \item It should be possible to manually enable/disable Contribution of a Contributing Endpoint.
+    \item It should be possible to schedule a trigger (time and/or events) to start/stop the Contribution.
+    \item The Contributing Endpoint should limit usage of resources if the user is actively using the device in order to not have a negative impact on user experience (avoiding incentives for the user to uninstall the application).
 \end{itemize}
 \paragraph{Customer area}
 \begin{itemize}
     \item There should be a tool for testing the Map and Reduce functions.
-    \item It should be possible to specify the minimum capabilities of the devices involved in the execution of a Grid service.
+    \item It should be possible to specify the minimum Resources of the Contributing Endpoints involved in the execution of a Grid Service.
 \end{itemize}
 \paragraph{Grid owner area}
 \begin{itemize}
@@ -247,9 +246,9 @@ Requirements that are nice to have but have a much smaller impact when left out 
 Requirements that have been recognized as not a priority for the release timeframe.
 \paragraph{Contributor area}
 \begin{itemize}
-    \item Development of a browser-based contribution limited to certain types of Grid services.
+    \item Development of a browser-based Contribution limited to certain types of Grid Services.
 \end{itemize}
 \paragraph{Grid owner area}
 \begin{itemize}
-    \item Development of additional Grid services other than MapReduce
+    \item Development of additional Grid Services other than MapReduce.
 \end{itemize}
