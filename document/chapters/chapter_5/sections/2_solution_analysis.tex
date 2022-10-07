@@ -7,13 +7,21 @@ Finally, the requirements will be presented, aiming to provide a clear set of cr
 
 \subsection{Domain: Ubiquitous Language}
 Before continuing, it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate; in order to do so, the Ubiquitous Language (UL) tool, coming from the Domain Driven Design discipline \cite{ddd}, will be used. From this point and forward, a term listed here will be uniquely used to identify its mapped concept:
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/ul.jpg}
+    \caption{Ubiquitous Language}
+    \label{fig:ul}
+\end{figure}
 \begin{itemize}
     \item \textbf{Contributor}\label{contributor}\\
     A person (up until this point identified as the Volunteer in Volunteer Computing) which offers one or more \textit{Contributing Endpoints} in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services}. Through its \textit{Contribution}, it gains \textit{Rewards} that are accumulated in its \textit{Reward Balance}; once a certain \textit{Reward Threshold} is reached, a Contributor can perform a \textit{Rewards Redemption}. The Contributor can manage its data through a \textit{Contributor Dashboard}.
+    \vspace{10mm}
     \item \textbf{Contribution}\label{contribution}\\
     The automated act performed by a \textit{Contributing Endpoint} (offered by a \textit{Contributor}) in order to complete \textit{Grid Services} and, consequently, gain \textit{Rewards}.
     \item \textbf{Customer}\label{customer}\\
     An entity (whether a single person, a business, etc...) that wants to perform a \textit{Grid Service Invocation} through an \textit{Invoking Endpoint} integrated into a \textit{Customer Custom Application}. This entity can manage its data and past \textit{Service Invocations} and \textit{Fees} utilizing a \textit{Customer Dashboard}.
+    \vspace{10mm}
     \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
     The act, requested by a \textit{Customer} through the use of an \textit{Invoking Endpoint}, of requesting a certain amount of \textit{Resources} (paying, proportionally, a \textit{Fee}) in order to perform a \textit{Grid Service}.
     \item \textbf{Grid Owner}\label{grid_owner}\\
