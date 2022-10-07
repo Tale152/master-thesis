@@ -90,27 +90,38 @@ Before continuing, it is important to specify the nomenclatures and relative def
 \subsection{Use cases}
 TODO
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/contributor_use_cases.jpg}
-    \caption{Contributor's use cases diagram}
-    \label{fig:use_cases_contributor}
-\end{figure}
+%\begin{figure}[!ht]
+    %\centering
+    %\includegraphics[width=\linewidth]{document/chapters/chapter_5/images/contributor_use_cases.jpg}
+    %\caption{Contributor's use cases diagram}
+    %\label{fig:use_cases_contributor}
+%\end{figure}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/customer_use_cases.jpg}
-    \caption{Customer's use cases diagram}
-    \label{fig:use_cases_customer}
-\end{figure}
+%\begin{figure}[!ht]
+    %\centering
+    %\includegraphics[width=\linewidth]{document/chapters/chapter_5/images/customer_use_cases.jpg}
+    %\caption{Customer's use cases diagram}
+    %\label{fig:use_cases_customer}
+%\end{figure}
 
-\subsection{Requirements}
-TODO Moscow explanation and requisite type mapping (and types explanation).
+\subsection{Requirements: MoSCoW Prioritization}
+Now that it is clear what the system needs to do from the perspective of the two major actors utilizing it (Contributor and Customer), it is possible to create a list of requirements that such system needs to satisfy. To do so, the MoSCoW method will be used.
+
+The MoSCoW method for requirements categorization presents five different categories to put requirements into, ordered by priority. The categories, in descending order, are the following:
+\begin{itemize}
+    \item \textbf{Must have}
+    \item \textbf{Should have}
+    \item \textbf{Could have}
+    \item \textbf{Won't have}
+\end{itemize}
+Other than priority, this methodology focuses also on the concept of release, aiming to use an evolutionary approach; this means that in a first production release it is not necessary to satisfy all requirements but just the one with higher priority (Must have), laving the satisfaction of the remaining requirements to subsequent versions (always trying to first satisfy remaining requirements with the highest priority).
+
+Requirements in this list are also divided in three areas: Contributor, Customer and Grid Owner; the last area in particular (which was not included in the use cases) is introduced to assign tasks that are more technical in nature but are necessary to the success of the project, both in the short term (first working release) and in the long term (easily introduce new features) given the particular technical nature of this Domain.
 
 \subsubsection{Must have}
 All the requirements that are necessary for the successful completion of a complete production release.
 
-\paragraph{Contributor side}
+\paragraph{Contributor area}
 \begin{itemize}
     \item \textbf{Registration and identification}
     \begin{itemize}
@@ -140,7 +151,7 @@ All the requirements that are necessary for the successful completion of a compl
         \item The application running on mobile devices (used to contribute to the Grid) must be aware of the type of connection used in order not to drain data from the Consumer mobile plan (unless the Consumer allows this possibility).
     \end{itemize}
 \end{itemize}
-\paragraph{Customer side}
+\paragraph{Customer area}
 \begin{itemize}
     \item \textbf{Registration and identification}
     \begin{itemize}
@@ -165,7 +176,7 @@ All the requirements that are necessary for the successful completion of a compl
         \item The Customer must be able to define the data source for the MapReduce execution (whether from the invoking device or an external source).
     \end{itemize}
 \end{itemize}
-\paragraph{Project side}
+\paragraph{Grid owner area}
 \begin{itemize}
     \item \textbf{Scalability}
     \begin{itemize}
@@ -205,7 +216,7 @@ All the requirements that are necessary for the successful completion of a compl
 \subsubsection{Should have}
 Requirements that are important but not necessary for a production release and can be postponed to subsequent releases.
 
-\paragraph{Contributor side}
+\paragraph{Contributor area}
 \begin{itemize}
     \item It should be possible to see the status of every device owned by the Contributor.
     \item It should be possible, from the Contributing Endpoint, to see the local current status.
@@ -214,30 +225,30 @@ Requirements that are important but not necessary for a production release and c
     \item It should be possible to schedule a trigger (time and/or events) to start/stop the contribution.
     \item The applications used by the Contributors should limit usage of resources if the user is actively using the device in order to not have a negative impact on user experience (avoiding incentives for the user to uninstall the application).
 \end{itemize}
-\paragraph{Customer side}
+\paragraph{Customer area}
 \begin{itemize}
     \item There should be a tool for testing the Map and Reduce functions.
     \item It should be possible to specify the minimum capabilities of the devices involved in the execution of a Grid service.
 \end{itemize}
-\paragraph{Project side}
+\paragraph{Grid owner area}
 \begin{itemize}
     \item There should be device-specific optimizations.
 \end{itemize}
 
 \subsubsection{Could have}
 Requirements that are nice to have but have a much smaller impact when left out of the release.
-\paragraph{Customer side}
+\paragraph{Customer area}
 \begin{itemize}
     \item There could be a standardized MapReduce web tool that enables less specialized organizations (from a technological point of view) to perform operations constructed by a facilitated GUI.
 \end{itemize}
 
 \subsubsection{Won't have}
 Requirements that have been recognized as not a priority for the release timeframe.
-\paragraph{Contributor side}
+\paragraph{Contributor area}
 \begin{itemize}
     \item Development of a browser-based contribution limited to certain types of Grid services.
 \end{itemize}
-\paragraph{Project side}
+\paragraph{Grid owner area}
 \begin{itemize}
     \item Development of additional Grid services other than MapReduce
 \end{itemize}
