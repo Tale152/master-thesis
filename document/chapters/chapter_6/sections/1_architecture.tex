@@ -15,15 +15,25 @@ This section describes the software architecture proposed by this project in ord
 \end{figure}
 
 \subsection{Cloud Services Area}\label{cloud_services_area}
-TODO
-% sub sub sections? probably
-% focus on describing which kind of communication interfaces they expose
+The Cloud services follow a Hexagonal architecture composed by a multitude of microservices (\textit{Figure \ref{fig:architecture_cloud_services}}). Each Microservice is accessed through communication interfaces (whether Rest APIs or Web Sockets, depending on the particular microservice needs) and belong to one of the following layers:
+\begin{itemize}
+    \item \textbf{Business logic}\\
+    Microservices that expose core business logic for Grid functionalities realization and data managing. Entities that  reside here are protected, meaning that they are isolated from the outside and their functionalities can only be accessed through the entities placed in the Adapters layer.
+    \item \textbf{Adapters}\\
+    Microservices that expose functionalities accessed by the entities residing in the Contributor and Customer area; such functionalities are realized through combining the services offered by entities residing in the Business logic layer.
+\end{itemize}
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/architecture_cloud_services.jpg}
     \caption{Architecture: Cloud Services}
     \label{fig:architecture_cloud_services}
 \end{figure}
+
+\subsubsection{Business Logic}
+TODO
+
+\subsubsection{Adapters}
+TODO
 
 \subsection{Contributor area}\label{contributor_area}
 TODO
