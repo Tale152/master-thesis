@@ -65,9 +65,9 @@ Before continuing, \textbf{it is important to specify the nomenclatures and rela
     \item \textbf{MapReduce Service}\label{mapreduce_service}\\
     A particular incarnation of a \textit{Grid Service} that performs a MapReduce computation over the \textit{Grid} utilizing a \textit{Node} as \textit{MapReduce Master} and several nodes as \textit{Map Workers} and \textit{Reduce Workers}.
     \item \textbf{MapReduce Master}\label{mapreduce_master}\\
-    Role taken by a \textit{Node} in the execution of a \textit{MapReduce Service} its roles follow the ones described in \textit{section \ref{execution_flow}}.
+    Role taken by a \textit{Node} in the execution of a \textit{MapReduce Service}. Its roles follow the ones described in \textit{section \ref{execution_flow}}.
     \item \textbf{Map Worker}\label{map_worker}\\
-    A \textit{Node}, coordinated by the \textit{MapReduce Master}, that executes \textit{Map Tasks} and send the results to the correct \textit{Reduce Worker}.
+    A \textit{Node}, coordinated by the \textit{MapReduce Master}, that executes \textit{Map Tasks} and sends the results to the correct \textit{Reduce Worker}.
     \item \textbf{Map Task}\label{map_task}\\
     A concrete \textit{Task} performed by a \textit{Map Worker}. A Map function provided by the \textit{Customer} (obtained through the \textit{MapReduce Master} coordination) is executed on data of which the location is specified also by the \textit{Consumer}.
     \item \textbf{Reduce Worker}\label{reduce_worker}\\
@@ -92,7 +92,7 @@ Before continuing, \textbf{it is important to specify the nomenclatures and rela
 \subsection{Use Cases}
 This section presents the \textbf{Use Cases diagrams}, \textbf{graphically explaining what features need to be available from the point of view of the two actors interacting with the Grid}: the Contributor and the Customer.
 
-An explanation of single use cases here is omitted since the previous section indirectly explained already the non-trivial ones; furthermore, in the next chapter, \textit{section TODO} will show how said use cases are realized using Grid entities collaborating among each other, making redundant a detailed explanation here.
+An explanation of single use cases here is omitted since the previous section already explained the non-trivial ones indirectly; furthermore, in the next chapter, \textit{section TODO} will show how said use cases are realized using Grid entities collaborating among each other, making redundant a detailed explanation here.
 
 \begin{itemize}
 \item \textbf{Contributor}
@@ -122,7 +122,7 @@ The MoSCoW method for \textbf{requirements categorization} presents \textbf{four
     \item \textbf{Could have}
     \item \textbf{Won't have}
 \end{itemize}
-Other than priority, \textbf{this methodology focuses also on the concept of release}, aiming to use an \textbf{evolutionary approach}; this means that \textbf{for a first production release it is not necessary to satisfy all requirements but just the one with higher priority} (Must have), laving the \textbf{satisfaction of the remaining requirements to subsequent versions} (always trying to first satisfy remaining requirements with the highest priority).
+Other than priority, \textbf{this methodology focuses also on the concept of release}, aiming to use an \textbf{evolutionary approach}; this means that \textbf{for a first production release it is not necessary to satisfy all requirements but just the one with higher priority} (Must have), leaving the \textbf{satisfaction of the remaining requirements to subsequent versions} (always trying to first satisfy remaining requirements with the highest priority).
 
 Requirements in this list are \textbf{also divided in three areas}: \textbf{Contributor, Customer and Grid Owner}; \textbf{the last area} in particular (which was not included in the use cases) \textbf{is introduced to assign tasks that are more technical in nature but are necessary to the success of the project}, both in the short term (first working release) and in the long term (easily introduce new features) \textbf{given the particular technical nature of this Domain}.
 
@@ -140,7 +140,7 @@ All the requirements that are necessary for the successful completion of a first
     \begin{itemize}
         \item It must be possible to Contribute to the Grid using a Contributing Endpoint running on any device among Computers, Smartphones and Tablets running the most popular respective Operative Systems.
         \item Configuration for the Contributor must be easy, guided and fast (5 minutes maximum).
-        \item Every device that the Contributor offers must be configured just once and require no additional efforts unless the Contributor chooses to change configurations like Access Policies.
+        \item Every device that the Contributor offers must be configured just once and requires no additional efforts unless the Contributor chooses to change configurations like Access Policies.
     \end{itemize}
     \item \textbf{Rewards}
     \begin{itemize}
@@ -173,7 +173,7 @@ All the requirements that are necessary for the successful completion of a first
     \end{itemize}
     \item \textbf{Framework utilization}
     \begin{itemize}
-        \item The Customer must be able to integrate the Invoking Endpoint in its own Customer Custom Application in to utilize the Grid Services.
+        \item The Customer must be able to integrate the Invoking Endpoint in its own Customer Custom Application in order to utilize the Grid Services.
         \item The Customer must be able to perform Grid Service Invocations from any adequate device (Computer, Tablet or Smartphone) using the integrated Invoking Endpoint.
         \item The Customer must be able to easily increase/decrease the amount of Resources tapped into, removing the underlying complexity.
     \end{itemize}
@@ -196,7 +196,7 @@ All the requirements that are necessary for the successful completion of a first
     \item \textbf{Efficiency}
     \begin{itemize}
         \item Employed resources (i.e. dedicated machines) used to run the Cloud Services must be adequate to the load that the system has to currently handle, dynamically adjusting to cut expenses.
-        \item The Grid must be geographically-aware and manage Nodes utilization taking in account physical distance in order to reduce latency, improving performances.
+        \item The Grid must be geographically-aware and manage Nodes utilization taking into account physical distance in order to reduce latency, improving performances.
         \item When possible, Grid Services must be implemented in a way that reduces traffic to the Grid's systems, moving such traffic to the Nodes.
         \item Every execution of a Grid Service must use Nodes that have sufficient Resources to complete the Tasks adequately.
     \end{itemize}
@@ -232,7 +232,7 @@ Requirements that are important but not necessary for a production release and c
     \item The Contributor must be able to customize Access Policies to its Contributing Endpoints.
     \item It should be possible to manually enable/disable Contribution of a Contributing Endpoint.
     \item It should be possible to schedule a trigger (time and/or events) to start/stop the Contribution.
-    \item The Contributing Endpoint should limit usage of resources if the user is actively using the device in order to not have a negative impact on user experience (avoiding incentives for the user to uninstall the application).
+    \item The Contributing Endpoint should limit usage of resources if the user is actively using the device in order not to have a negative impact on user experience (avoiding incentives for the user to uninstall the application).
 \end{itemize}
 \paragraph{Customer area}
 \begin{itemize}
@@ -252,7 +252,7 @@ Requirements that are nice to have but have a much smaller impact when left out 
 \end{itemize}
 
 \subsubsection{Won't have}
-Requirements that have been recognized as not a priority for the release timeframe.
+Requirements that have not been recognized as a priority for the release timeframe.
 \paragraph{Contributor area}
 \begin{itemize}
     \item Development of a browser-based Contribution limited to certain types of Grid Services.
