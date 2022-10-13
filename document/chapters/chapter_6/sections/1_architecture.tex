@@ -79,7 +79,8 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     Similarly to the Broker Discovery Service, the number of static instances easily can vary in the project's lifecycle. 
 
     \item \textbf{Authentication Service}\\
-    TODO
+    Before being able to communicate with any other Cloud Service belonging to the Adapters layer, any entity needs to authenticate to the Grid through this Cloud Service. Given that the two actors that require authentication are the Customer and the Contributor, the Authentication Service utilizes both the Customer Data Service and the Contributor Data Service in its functioning. As a consequence of the authentication, the entity that wants to interact with the Grid will receive a token that uniquely identifies it inside the Grid system.
+
     \item \textbf{Billing Service}\\
     TODO
     \item \textbf{Historian Service}\\
