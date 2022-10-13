@@ -47,7 +47,8 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     Concluding, this Cloud Service's importance is vital to the functioning and scalability of the Grid, requiring to expose communication interfaces for the discovery of Brokers, Resources obtainment and Grid coordination.
 
     \item \textbf{Customer Data Service}\\
-    TODO
+    REST server that provides APIs used to read and write data used to uniquely identify a Customer inside the system. It does not contain data about payments or logs about Grid events that involve the Customer since those are handled by the Accounting Service and the Log Service respectively.\\
+    Customers are, numerically speaking, considerably less compared to Contributors; this results in less frequent invocations of this Cloud Service's APIs and a far smaller volume of data to persist. Regarding the CAP theorem, it is then important to focus on a database technology that can grant Consistency and Partition Tolerance sacrificing Availability (e.g. MongoDB, BigTable, etc...).
     \item \textbf{Contributor Data Service}\\
     TODO
     \item \textbf{Accounting Service}\\
