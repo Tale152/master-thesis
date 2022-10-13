@@ -82,10 +82,15 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     Before being able to communicate with any other Cloud Service belonging to the Adapters layer, any entity needs to authenticate to the Grid through this Cloud Service. Given that the two actors that require authentication are the Customer and the Contributor, the Authentication Service utilizes both the Customer Data Service and the Contributor Data Service in its functioning. As a consequence of the authentication, the entity that wants to interact with the Grid will receive a token that uniquely identifies it inside the Grid system.
 
     \item \textbf{Billing Service}\\
-    TODO
+    Cloud Service exposing APIs used to make monetary transactions for Fee payments and Rewards Redemptions. It acts as an intermediary, protecting the actual payment process effectuated by the Accounting Service.
+    It does not offer access to info about past monetary transactions, leaving this responsibility to the Historian Service.
+
     \item \textbf{Historian Service}\\
-    TODO
+    The Historian Service exposes APIs that allow the read-only access to event already happened in the Grid System like monetary transactions, Contribution, Grid Services Invocations, etc...
+
 \end{itemize}
+\vspace{20mm}
+
 \subsection{Contributor area}\label{contributor_area}
 TODO
 
