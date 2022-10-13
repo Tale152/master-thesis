@@ -69,7 +69,8 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     Let us take, for example, a Grid Service Invocation: the Grid Master contacts a Broker Service instance that is geographically convenient in relationship to the location of the Invoking Endpoint; the Grid Master will delegate to the selected Broker Service instance the responsibility of gathering adequate Resources for the execution of the particular Grid Service requested. The Broker will then spread the request of said Resources to its connected Nodes and gather the responses of the ones that are adequate and available. The Broker will group the info needed to contact such nodes and forward it to the Grid Master that will then be responsible to forward in turn to the requestor.
 
     \item \textbf{Broker Discovery Service}\\
-    TODO
+    This REST server has just one simple responsibility: it provides to a Node the address of a Broker Service in order to make possible a connection between them. This discovery mechanism is necessary since, as already stated, the Broker Service instances are dynamically created and thus they do not possess a static address; on the contrary the Broker Discovery Service will necessarily need a static address known by the Nodes. The trafic directed to this Cloud Service and its computational load tend to be minimal and requires only one instance but, as time goes on and the contributing user base increases, new static instances can be added easily.
+
     \item \textbf{Grid Services Gateway Service}\\
     TODO
     \item \textbf{Authentication Service}\\
