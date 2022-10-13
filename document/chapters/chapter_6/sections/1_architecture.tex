@@ -54,7 +54,8 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     REST server that exposes APIs used to read and write data used to uniquely identify a Contributor and its devices inside the system. The same rules used in the Customer Data Service, regarding the handling of logs and payments data, also hold here; when it comes to the CAP theorem application, on the contrary, this Cloud Service requires AP database technologies (e.g. DynamoDB, Cassandra, etc...).
 
     \item \textbf{Accounting Service}\\
-    TODO
+    REST Cloud Service exposing APIs to perform and record the history of monetary transactions, involving both Customers and Contributors (i.e. Fees payments and Rewards Redemptions) inside the Grid; Consistency and Partition Tolerance here are key requirements.
+    
     \item \textbf{Log Service}\\
     TODO
 \end{itemize}
