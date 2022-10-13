@@ -54,10 +54,10 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     REST server that exposes APIs used to read and write data used to uniquely identify a Contributor and its devices inside the system. The same rules used in the Customer Data Service, regarding the handling of logs and payments data, also hold here; when it comes to the CAP theorem application, on the contrary, this Cloud Service requires AP database technologies (e.g. DynamoDB, Cassandra, etc...).
 
     \item \textbf{Accounting Service}\\
-    REST Cloud Service exposing APIs to perform and record the history of monetary transactions, involving both Customers and Contributors (i.e. Fees payments and Rewards Redemptions) inside the Grid; Consistency and Partition Tolerance here are key requirements.
-    
+    REST server exposing APIs to perform and record the history of monetary transactions, involving both Customers and Contributors (i.e. Fees payments and Rewards Redemptions) inside the Grid; Consistency and Partition Tolerance here are key requirements.
+
     \item \textbf{Log Service}\\
-    TODO
+    REST server providing APIs used to read and write unmodifiable logs about Contributions and Grid Services Invocations; this Cloud Service is particularly important to both monitor what is happening inside the Grid and also correctly identify which Node has performed a Contribution and how much of said Contribution it has done. Access speed is the most relevant factor here, making it acceptable to have eventual consistency but not delays; then, AP database technologies are required here. In particular, said AP database technology should use an RDF model (also known as Triplestore) which is particularly suited for log data.
 \end{itemize}
 
 \subsubsection{Adapters}
