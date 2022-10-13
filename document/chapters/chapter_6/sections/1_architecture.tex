@@ -92,12 +92,22 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
 \vspace{20mm}
 
 \subsection{Contributor area}\label{contributor_area}
-TODO
+The Contributor area, as shown in \textit{figure \ref{fig:architecture_contributor}}, comprehends three entities:
+\begin{itemize}
+    \item \textbf{Node}
+    \item \textbf{Contributing EndPoint}
+    \item \textbf{Contributor Dashboard}
+\end{itemize}
+The relevant Cloud Services are shown in order to explain the interactions that Node and the Contributor Dashboard have with them; in particular, the Grid Master Service is shown to emphatize the Grid Master - Broker - Node connection seen in \textit{figure \ref{fig:master_grid_load_balancing}}.
+
+Moreover, the Invoking Endpoint (which belongs to the Customer area) and the additional Node instance are included to show the connections that a Node can have with other entities that do not belong to the Cloud Services.
+
+\vspace{5mm}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/architecture_contributor.jpg}
-    \caption{Architecture: Contributor-relevant view}
+    \caption{Architecture: Contributor area}
     \label{fig:architecture_contributor}
 \end{figure}
 
