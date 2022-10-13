@@ -61,10 +61,13 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
 \end{itemize}
 
 \subsubsection{Adapters}
-TODO
 \begin{itemize}
     \item \textbf{Broker Service}\\
-    TODO
+    Cloud Service that acts as middleware between the Grid Master and the Nodes (\textit{figure \ref{fig:master_grid_load_balancing}}). There are as many instances as needed to sustain the load of the connections to the Nodes; instances are created and removed by the Grid Master taking in account the geographical location of said Nodes in order to reduce latency for the Broker-Node connection.
+    The Broker executes the coordination commands given by the Grid Master while also managing the Nodes connected through its communication channels exposed by its Web Socket.
+    
+    Let us take, for example, a Grid Service Invocation: the Grid Master contacts a Broker Service instance that is geographically convenient in relationship to the location of the Invoking Endpoint; the Grid Master will delegate to the selected Broker Service instance the responsibility of gathering adequate Resources for the execution of the particular Grid Service requested. The Broker will then spread the request of said Resources to its connected Nodes and gather the responses of the ones that are adequate and available. The Broker will group the info needed to contact such nodes and forward it to the Grid Master that will then be responsible to forward in turn to the requestor.
+
     \item \textbf{Broker Discovery Service}\\
     TODO
     \item \textbf{Grid Services Gateway Service}\\
