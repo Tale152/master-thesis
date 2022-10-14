@@ -112,19 +112,25 @@ Moreover, the Invoking Endpoint (which belongs to the Customer area) and the add
 \end{figure}
 
 \subsubsection{Node}
-This is the primary entity when it comest to contribution.
+This is the primary entity when it comes to contribution.
 
-Continuing the definition provided in the Ubiquitous Language (\textit{section \ref{ubiquitous_language}}), this software abstraction is identifiable as a set of core Contribution functionalities and logic which needs to be integrated (through the offered SDK) to an actual software application (Contributing Endpoint) capable of interacting with the specific resources of the device that is running it; thus, a Node exists in order to get a fast integration with as much devices as possible to maximise the compatibility for Contribution.
+Continuing the definition provided in the Ubiquitous Language (\textit{section \ref{ubiquitous_language}}), this software abstraction is identifiable as a set of core Contribution functionalities and logic which needs to be integrated (through the offered SDK) to an actual software application (Contributing Endpoint) capable of interacting with the specific resources of the device that is running it; thus, a Node exists in order to get a fast integration with as many devices as possible to maximize the compatibility for Contribution.
 
 Since there model of this solution aims specifically to grant the access to Grid Services also to low-spec devices, it is important to delegate as much work as possible to the Nodes. In order to complete a Grid Service, the Node can Contribute in one of the following ways (depending on the particular Service):
 \begin{itemize}
 \item \textbf{Direct communication with the Invoking Endpoint}\\
-TODO % explain socket to Invoking Endpoint and example of not distributed computation
+A Node is connected, through a Web Socket, directly to the Invoking Endpoint. Let us take, for example, a hypothetical Grid Service that consists of delegating a computation to a single Node (i.e. non-distributed computation); the Node (Slave) and the Invoking Endpoint (Master) will exchange messages in order for the Invoking Endpoint to provide to the Node the necessary data and coordinating the Node that will actually perform the resource-demanding computation. In this communication mode a Node acts only passively.
+
+Another example, relevant for this thesis work, is the connection between an Invoking Endpoint and a Node acting as MapReduce Master (\textit{figure TODO}).
 \item \textbf{Communication with another Node}\\
-TODO % explain socket to other Node and example of MapReduce master connection (also emphasis on the fact that in this case a Node takes a coordinating role)
+A Node is connected, through a Web Socket, to another Node; there are indeed circumstances that, for the completion of a particular Grid Service, require direct communication among Nodes. While in the other communication type the Node had only a passive role, here one of the two nodes needs to act as Master while the other(s) as Slave(s). 
+
+Continuing the MapReduce example, a Node acting as MapReduce Master is connected to multiple nodes acting either as Map Workers or Reduce Workers (\textit{figure TODO}).
 \end{itemize}
 
-With the goal of reducing complexity when it comes to compatibility (\textit{sections \ref{standardized_mobile_market} and \ref{compatibility_issues}}), the number of different Node incarnations (different for technologies used to be integrable in certain devices) should be very low; ideally, just one implementation that can be integrated with a great number of Contributing Endpoints should exist to maximise the integration speed benefits.
+Once again, a Grid Service is a service performed by Nodes that Contribute, communicating with each other and performing Tasks in order to reach the end goal; the Task concept is vital here since, while every Node will have the same communication interfaces, different Contributing Endpoints will implement Tasks based on the device's capabilities. That means that, when concretized through the Contributing Endpoint, not all Nodes will be able to execute every possible Task, but only the ones that are compatible with the Resources possessed (e.g.: an iPhone running iOS will not be able to perform a MapReduce computation that uses Map and/or Reduce functions written in Java).
+
+With the goal of reducing complexity compatibility wise (\textit{sections \ref{standardized_mobile_market} and \ref{compatibility_issues}}), the number of different Node incarnations (that differ for the technologies used to develop it) should be very low; ideally, just one implementation, that can be integrated with a great number of Contributing Endpoints, should exist to maximize the integration speed benefits.
 
 \subsubsection{Contributing Endpoint}
 TODO
