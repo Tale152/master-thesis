@@ -141,11 +141,21 @@ A Dashboard, used by the Contributor, to perform operations linked to its Contri
 This is certainly an easier (compared to Node and Contributing Endpoint) and more traditional client application, requiring only to contact Cloud Services in order to represent through a GUI the information obtained, as well as performing some operations specified in the Contributor's use case diagram (\textit{figure \ref{fig:use_cases_contributor}}). 
 
 \subsection{Customer area}\label{customer_area}
-TODO
+\textit{Figure \ref{fig:architecture_customer}} shows the three entities belonging to this area:
+\begin{itemize}
+    \item \textbf{Invoking Endpoint}
+    \item \textbf{Customer Custom Application}
+    \item \textbf{Customer Dashboard}
+\end{itemize}
+As for the Contributor area, the relevant Cloud Services and the Node instance are shown to emphasize how these entities collaborate with each other.
+
+It is also important to highlight the fact that both the Customer Custom Application User and the Customer itself are present in the figure since the actor using the Customer Custom Application do not necessarily coincide with the Customer; who the Customer Custom Application User actually is highly depends on the application itself.
+\vspace{8mm}
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/architecture_customer.jpg}
-    \caption{Architecture: Customer-relevant view}
+    \caption{Architecture: Customer area}
     \label{fig:architecture_customer}
 \end{figure}
 
