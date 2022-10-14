@@ -167,8 +167,9 @@ Many Invoking Endpoint implementations can exist, depending on the target execut
 An Invoking Endpoint (after being authenticated through the Authentication Service) contacts the Grid Services Gateway Service in order to request a Service Invocation and, as a consequence of that, creates a connection to the provided Node(s). In order to grant the possibility of Grid Services invocation from low-spec devices, the Invoking Endpoint needs just to perform a lightweight coordination of the Resources obtained while the computationally demanding work is executed by the Nodes connected; in cases where the coordination is too complex and demanding to realistically be executed from any device, the Invoking Endpoint just connects to a Node which actually performs the coordination: An example of such occurrence is the MapReduce Service where the MapReduce Master is the one performing the coordination of Map Workers and Reduce Workers while the Invoking Endpoint is only connected to the MapReduce Master.
 
 \subsubsection{Customer Custom Application}
-TODO
-% focus on sdk
+An application utilizing the Invoking Endpoint. It is developed by the Customer and utilizes Grid Services (offered by the Invoking Endpoint) in order to build complex behaviors that are dependent on the application's domain.
+
+Grid Services Invocation happens through the invocation of the functions exposed by the Invoking Endpoint's SDK, masking the underlying complexity requiring for the Customer to specify some parameters (like, eventually, the quantity of Resources that it wants to use).
 
 \subsubsection{Customer Dashboard}
 TODO
