@@ -86,7 +86,7 @@ The Cloud services follow a Hexagonal architecture composed by a multitude of mi
     It does not offer access to info about past monetary transactions, leaving this responsibility to the Historian Service.
 
     \item \textbf{Historian Service}\\
-    The Historian Service exposes APIs that allow the read-only access to event already happened in the Grid System like monetary transactions, Contribution, Grid Services Invocations, etc...
+    The Historian Service exposes APIs that allow the read-only access to event already happened in the Grid System as well as the registration of new events like monetary transactions, Contribution, Grid Services Invocations, etc...
 
 \end{itemize}
 \vspace{20mm}
@@ -160,8 +160,11 @@ It is also important to highlight the fact that both the Customer Custom Applica
 \end{figure}
 
 \subsubsection{Invoking Endpoint}
-TODO
-% High level grid draw.io: something similar to MapReduce but for a general task
+The Invoking Endpoint is the main software entity used by the Customer to perform Grid Services Invocations. It is a library, developed by the Grid Owner, that can be integrated as a dependency and utilized into any software solution through the use of the exposed SDK; in particular, an application utilizing an Invoking Endpoint is identified as Customer Custom Application.
+
+Many Invoking Endpoint implementations can exist, depending on the target execution environment and which Grid Services that specific Invoking Endpoint wants to grant access to (a Customer may want to use only a certain type of Grid Service); the requirement for any Invoking Endpoint is, in order to connect to a Node in a Grid Service Invocation, to conform to the communication interfaces belonging to the Grid Services which is interested to use.
+
+An Invoking Endpoint (after being authenticated through the Authentication Service) contacts the Grid Services Gateway Service in order to request a Service Invocation and, as a consequence of that, creates a connection to the provided Node(s). In order to grant the possibility of Grid Services invocation from low-spec devices, the Invoking Endpoint needs just to perform a lightweight coordination of the Resources obtained while the computationally demanding work is executed by the Nodes connected; in cases where the coordination is too complex and demanding to realistically be executed from any device, the Invoking Endpoint just connects to a Node which actually performs the coordination: An example of such occurrence is the MapReduce Service where the MapReduce Master is the one performing the coordination of Map Workers and Reduce Workers while the Invoking Endpoint is only connected to the MapReduce Master.
 
 \subsubsection{Customer Custom Application}
 TODO
