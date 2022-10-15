@@ -72,23 +72,26 @@ This section will show how the entities introduced in the Architecture just pres
 
     The process starts with the Invoking Endpoint requesting a Grid Service to the Grid Services Gateway Service that, will first retrieve the Customer's payment method data (omitted in \textit{figure \ref{fig:use_cases_satisfaction_node_contribution}} for simplicity) and then contact the Accounting Service to pay the Fee required for the Grid Service Invocation; then, the Grid Services Gateway Service will contact the Grid Master Service in order to obtain the address of a Broker Service instance.
 
-    The Invoking Endpoint, now having B1's address, contacts it and established a connection that, once performed, allows the Invoking Endpoint to request Resources. B1 broadcasts the request to all its Nodes, specifying the requirements needed for the Grid Service requested. The Nodes that are currently available and satisfy the requirements take charge of the request and contact Invoking Endpoint and, if the Endpoint accepts it, a connection is created. Finally, the Invoking Endpoint is able to send Tasks that the Node will perform.
+    The Invoking Endpoint, now having B1's address, contacts it and established a connection that, once performed, allows the Invoking Endpoint to request Resources. B1 broadcasts the request to all its Nodes, specifying the requirements needed for the Grid Service requested. The Nodes that are currently available, possess compatible Access Policies and do satisfy the requirements, take charge of the request and contact Invoking Endpoint and, if the Endpoint accepts it, a connection is created. Finally, the Invoking Endpoint is able to send Tasks that the Node will perform.
 
     The process describes an Invoking Endpoint to Node connection; when the connection needs to be established between Nodes, the process is very similar. First the Invoking Endpoint to Node connection is created; then, another Resource request will ask for a Contribution to the Nodes but the exchanged messages (containing the Master Node address) will specify that a Node to Node connection is required. Depending on the particular Grid Service then, the Master Node itself will provide the Tasks to its Slave Nodes.
 
     \begin{itemize}
-        \item \textit{Accumulate Rewards}\\
+        \item \textbf{\textit{Accumulate Rewards}}\\
         \begin{figure}[!ht]
             \centering
-            \includegraphics[scale=0.65]{document/chapters/chapter_6/images/use_cases_satisfaction_rewards_accumulation.jpg}
-            \caption{Rewards accumulation}
+            \includegraphics[scale=0.6]{document/chapters/chapter_6/images/use_cases_satisfaction_rewards_accumulation.jpg}
+            \caption{Customer's Rewards accumulation}
             \label{fig:use_cases_satisfaction_rewards_accumulation}
         \end{figure}
-        \item \textit{Manually start/stop Contribution from the Contributing Endpoint}\\
+        
+        Upon a Node's Contribution, the Invoking Endpoint groups Contribution info and sends them to the Historian Service that will then proceed to store them through the Log Service.
+
+        \item \textbf{\textit{Manually start/stop Contribution from the Contributing Endpoint}}\\
         % no need for diagram
-        \item \textit{Configure Access Policies to the Contributing Endpoint's Resources}\\
+        \item \textbf{\textit{Configure Access Policies to the Contributing Endpoint's Resources}}\\
         % no need for diagram
-        \item \textit{Check if Contributing Endpoints are currently Contributing}\\
+        \item \textbf{\textit{Check if Contributing Endpoints are currently Contributing}}\\
         % no need for diagram
     \end{itemize}
     \item \textbf{Manage Contribution data through a Dashboard}\\
