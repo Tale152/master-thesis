@@ -46,12 +46,22 @@ This section will show how the entities introduced in the Architecture just pres
     \end{itemize}
 
     \item \textbf{Passively Contribute offering a compatible device}\\
+    When it comes to Contribution, the first step that actually needs to be performed is for a Node to connect to the Grid.
+    \vspace{12mm}
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/use_cases_satisfaction_node_grid_connection.jpg}
         \caption{Connection to the Grid}
         \label{fig:use_cases_satisfaction_node_grid_connection}
     \end{figure}
+    \vspace{5mm}
+
+    First, independently of the Node, the Grid Master Service creates an instance of a Broker Service (there is always at least one instance of such Cloud Service) and, upon creating a connection with it, saves its address; said address is also sent to the Broker Discovery Service that, consequently, will always locally know the addresses of the Broker Service's instances.
+
+    The actual connection to the Grid is triggered automatically by the Contributing Endpoint once the prerequisites are met (an available internet connection is present, the device's battery is above a certain threshold, etc...). The Node will proceed to contact the Broker Discovery Service that (without needing to contact the Grid Master Service for every new Node request) then provides the address of the more geographically convenient Broker Service instance; with the information obtained, the Node completes it connection process contacting [B1]. 
+
+    Now that the Node is connected to the Grid, the actual Contribution can happen. In order to have a clear understanding of the full picture, a Grid Service Invocation needs to be explained alongside the Node's Contribution.
+    \vspace{10mm}
 
     \begin{figure}[!ht]
         \centering
@@ -59,6 +69,12 @@ This section will show how the entities introduced in the Architecture just pres
         \caption{Node Contribution}
         \label{fig:use_cases_satisfaction_node_contribution}
     \end{figure}
+
+    The process starts with the Invoking Endpoint requesting a Grid Service to the Grid Services Gateway Service that, will first retrieve the Customer's payment method data (omitted in \textit{figure \ref{fig:use_cases_satisfaction_node_contribution}} for simplicity) and then contact the Accounting Service to pay the Fee required for the Grid Service Invocation; then, the Grid Services Gateway Service will contact the Grid Master Service in order to obtain the address of a Broker Service instance.
+
+    The Invoking Endpoint, now having B1's address, contacts it and established a connection that, once performed, allows the Invoking Endpoint to request Resources. B1 broadcasts the request to all its Nodes, specifying the requirements needed for the Grid Service requested. The Nodes that are currently available and satisfy the requirements take charge of the request and contact Invoking Endpoint and, if the Endpoint accepts it, a connection is created. Finally, the Invoking Endpoint is able to send Tasks that the Node will perform.
+
+    The process describes an Invoking Endpoint to Node connection; when the connection needs to be established between Nodes, the process is very similar. First the Invoking Endpoint to Node connection is created; then, another Resource request will ask for a Contribution to the Nodes but the exchanged messages (containing the Master Node address) will specify that a Node to Node connection is required. Depending on the particular Grid Service then, the Master Node itself will provide the Tasks to its Slave Nodes.
 
     \begin{itemize}
         \item \textit{Accumulate Rewards}\\
