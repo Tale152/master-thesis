@@ -97,31 +97,40 @@ This section will show how the entities introduced in the Architecture just pres
 
         \item \textbf{\textit{Check if Contributing Endpoints are currently Contributing}}\\
         The Node exposes functions that tell the current status regarding the Grid connection and if a Contribution to a Task is currently being performed; such information is displayed in the Contributing Endpoint's GUI.
-        
+
     \end{itemize}
-    \item \textbf{Manage Contribution data through a Dashboard}\\
+    \item \textbf{Manage Contribution data through a Dashboard}
     \begin{itemize}
-        \item \textit{Check past Contributions}\\
+        \item \textbf{\textit{Check past Contributions}}\\
         \begin{figure}[!ht]
             \centering
             \includegraphics[scale=0.65]{document/chapters/chapter_6/images/use_cases_satisfaction_past_contributions_check.jpg}
             \caption{Contributor's past Contributions check}
             \label{fig:use_cases_satisfaction_past_contributions_check}
         \end{figure}
-        \item \textit{Check Rewards Balance}\\
+
+        The Contributor Dashboard contacts the Historian Service, asking for the past contributions linked to the Contributor's Contributing Endpoints; the Historian Service contacts the Log service where the data is stored (see \textit{figure \ref{fig:use_cases_satisfaction_rewards_accumulation}}). Finally, the information is retrieved and then shown in the Contributor Dashboard.
+
+        \item \textbf{\textit{Check Rewards Balance}}\\
         \begin{figure}[!ht]
             \centering
-            \includegraphics[scale=0.65]{document/chapters/chapter_6/images/use_cases_satisfaction_rewards_balance.jpg}
+            \includegraphics[scale=0.6]{document/chapters/chapter_6/images/use_cases_satisfaction_rewards_balance.jpg}
             \caption{Contributor's Rewards Balance check}
             \label{fig:use_cases_satisfaction_rewards_balance}
         \end{figure}
-        \item \textit{Rewards Redemption}\\
+
+        The Contributor Data retrieves, through a communication with the Billing Service, its current Rewards Balance. In order to calculate the current balance, the Billing service contacts both the Log Service (to obtain the Contribution data) and the Accounting Service (to obtain past Rewards Redemptions). The Rewards Balance is calculated by the Billing Service by summing the monetary value of the Contributions and subtracting from it the total Rewards Redemption. 
+
+        \item \textbf{\textit{Rewards Redemption}}\\
         \begin{figure}[!ht]
             \centering
             \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/use_cases_satisfaction_rewards_redemption.jpg}
             \caption{Contributor's Rewards Redemption}
             \label{fig:use_cases_satisfaction_rewards_redemption}
         \end{figure}
+
+        The Contributor Dashboard asks the Billing Service the execution of a Rewards Redemption. First the Contributors Data Service is contacted in order to retrieve the Contributor's payment method; then, the Log Service is contacted in order to retrieve the past Contributions data. Finally, the Accounting Service is interpellated, asking for the actual operation. The Accounting Service (that can access the past Rewards Redemptions on its own), performs the calculus of the Current Balance and, if the Balance is equal or higher than Rewards Threshold and, at the same time, compatible with the requested sum to redeem, the operation is finalized contacting a Third-party Banking System.
+
     \end{itemize}
 \end{itemize}
 
