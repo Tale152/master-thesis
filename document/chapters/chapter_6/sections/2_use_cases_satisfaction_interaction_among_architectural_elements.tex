@@ -1,18 +1,20 @@
 \section{Use cases satisfaction: entities interactions}\label{use_cases_satisfaction}
-TODO
+This section will show how the entities introduced in the Architecture just presented actually cooperate with each other in order to satisfy the use cases previously discussed in \textit{section \ref{use_cases}}. 
 
 \subsection{Contributor}
-TODO
-
+\vspace{5mm}
 \begin{itemize}
     \item \textbf{Register}\\
-    TODO
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=1.1]{document/chapters/chapter_6/images/use_cases_satisfaction_contributor_register.jpg}
+        \includegraphics[scale=1.15]{document/chapters/chapter_6/images/use_cases_satisfaction_contributor_register.jpg}
         \caption{Contributor registration}
         \label{fig:use_cases_satisfaction_contributor_register}
     \end{figure}
+
+    A Contributor registers to the Grid system creating an account using the Contributor Dashboard; once it has inputted the necessary data, the Dashboard will contact the Authentication with the dedicated API that, in turn, will contact the Contributors Data Service, actually completing the registration process.
+    \vspace{20mm}
+
     \item \textbf{Login}\\
     \begin{itemize}
         \item \textit{Login to a Dashboard}\\
