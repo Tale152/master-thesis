@@ -84,15 +84,20 @@ This section will show how the entities introduced in the Architecture just pres
             \caption{Customer's Rewards accumulation}
             \label{fig:use_cases_satisfaction_rewards_accumulation}
         \end{figure}
-        
+
         Upon a Node's Contribution, the Invoking Endpoint groups Contribution info and sends them to the Historian Service that will then proceed to store them through the Log Service.
 
         \item \textbf{\textit{Manually start/stop Contribution from the Contributing Endpoint}}\\
-        % no need for diagram
+        A Contributor can manually stop its Contributing Endpoint from performing further Contributions; this results in that particular Contributing Endpoint interrupting the connection (established in \textit{figure \ref{fig:use_cases_satisfaction_node_grid_connection}}) with a Broker Service instance.
+        This action is performed by the Contributor's input in the running Contributing Endpoint that will simply invoke a Node's function instructing it to stop the connection and, consequently, never connecting again to the Grid until the Contributor allows it again.
+
         \item \textbf{\textit{Configure Access Policies to the Contributing Endpoint's Resources}}\\
-        % no need for diagram
+        When a Node receives a broadcasted Contribution request by the Broker Instance which is connected to, in order to decide if taking charge of the request or not, a series of conditions are evaluated; one of such conditions is the compatibility with the local Access Policies configured for that particular Contributing Endpoint. 
+        A Contributor, interacting with the Contributing Endpoint, can manually change the Access Policies that, from that moment, will be checked by the Node in its decision process. 
+
         \item \textbf{\textit{Check if Contributing Endpoints are currently Contributing}}\\
-        % no need for diagram
+        The Node exposes functions that tell the current status regarding the Grid connection and if a Contribution to a Task is currently being performed; such information is displayed in the Contributing Endpoint's GUI.
+        
     \end{itemize}
     \item \textbf{Manage Contribution data through a Dashboard}\\
     \begin{itemize}
