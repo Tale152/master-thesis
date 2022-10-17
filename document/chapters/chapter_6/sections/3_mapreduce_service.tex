@@ -55,24 +55,28 @@ When the MapReduce operation is completed, the Master will send a completion ins
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_4.png}
+    \includegraphics[scale=0.45]{document/chapters/chapter_6/images/map_worker_petri_net_4.png}
     \caption{Map Worker - Completion}
     \label{fig:map_worker_petri_net_4}
 \end{figure}
 
 \subsection{Reduce Worker}
-TODO
+The first steps of the reduce process are the same as the map ones: a connection to the MapReduce Master is established and a reduce function is received, gaining a connection token and an execution token (used for the same Resources' utilization optimization principle); here a disconnection can also occur and, if a timeout is reached, the process ends with a failure.
+
+The MapReduce Master sends the data about which IRs constitute a region (\textit{figure \ref{fig:reduce_worker_petri_net_1}} shows an example of a region composed by 10 IRs); the Reduce Worker also receives, progressively, the IRs from the Map Workers that have completed the execution of a map function and are instructed to send said data to a particular Reduce Worker. Once the all the IRs belonging to a region are received, the Reduce Worker performs the reduce function on said data, producing a result that is momentarily stored locally.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/reduce_worker_petri_net_1.png}
+    \includegraphics[scale=0.44]{document/chapters/chapter_6/images/reduce_worker_petri_net_1.png}
     \caption{Reduce Worker - Local result}
     \label{fig:reduce_worker_petri_net_1}
 \end{figure}
 
+A result correctly sent to the Master is deleted locally. A Reduce Worker handles multiple regions until the MapReduce process is completed; once the Master sends to the Worker a completion instruction the execution ends correctly (\textit{figure \ref{fig:reduce_worker_petri_net_2}}).
+
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/reduce_worker_petri_net_2.png}
+    \includegraphics[scale=0.44]{document/chapters/chapter_6/images/reduce_worker_petri_net_2.png}
     \caption{Reduce Worker - Completion}
     \label{fig:reduce_worker_petri_net_2}
 \end{figure}
