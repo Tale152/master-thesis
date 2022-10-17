@@ -159,11 +159,33 @@ Various Customer's use cases are satisfied using processes that are very similar
     \item \textbf{Easily integrate the Invoking Endpoint in a Customer Custom Application}\\
     \begin{itemize}
         \item \textbf{\textit{Invoke Grid Services through any Device}}\\
+        As previously explained, in certain Grid Services, the Invoking Endpoint demands the coordination of the obtained Resources to another Node (e.g.: MapReduce Service); this design choice allows to extend Grid Services invocation to also low-spec devices. On the technological requirements, this use case requires the existence of at least one compatible Invoking Endpoint implementation for every major platform.
+        The Grid Services Invocation process was previously described in \textit{figure \ref{fig:use_cases_satisfaction_node_contribution}}.
+
         \item \textbf{\textit{Request MapReduce service}}\\
+        An Invoking Endpoint implementation will need to expose methods (through the SDK) that enable the Customer Custom Application to perform a Grid Services Invocation.
+
+        While the specific design of the MapReduce Service will be explored in \textit{section \ref{mapreduce_service}}, \textit{figure \ref{fig:mapreduce_load_balancing}} shows a high level view of interactions in the execution of said Grid Service (continuing the example seen in \textit{figure \ref{fig:master_grid_load_balancing}}).
+
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/mapreduce_load_balancing.jpg}
+            \caption{High level view - MapReduce Service and load balancing}
+            \label{fig:mapreduce_load_balancing}
+        \end{figure}
+
+        The Invoking Endpoint connects with a Node acting as the MapReduce Master which, in turn, will act as coordinator for the execution of the MapReduce Service. Being the Contributing Nodes directly connected among each other, the Grid's load balancing (on the right) does not affect the execution.
+
+
         \begin{itemize}
             \item \textit{Define MapReduce data source}\\
+            This use case requires that the SDK exposed by the Invoking Endpoint allows to define the source of the data that needs to be analyzed, meaning that the data can come from the Invoking Endpoint directly or from an external source. This is done in order to actually being able to invoke the MapReduce Service from anywhere, since not all devices are able to contain large quantities of data.
+
             \item \textit{Define Resource quantity to use}\\
+            A Customer needs to specify, through the SDK, the quantity of Resources that it wants to reserve for the MapReduce Service execution; while having more resources certainly makes the execution faster, the Fee necessarily increases.
+
             \item \textit{Define Map and Reduce functions}\\
+            Lastly, the Customer necessarily needs to define the Map and Reduce functions that will be utilized during the MapReduce Service execution; those are defined and provided through the usage of the Invoking Endpoint's SDK.
         \end{itemize}
     \end{itemize}
     \item \textbf{Manage requested Grid Services data through a Dashboard}\\
