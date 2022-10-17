@@ -135,15 +135,26 @@ This section will show how the entities introduced in the Architecture just pres
 \end{itemize}
 
 \subsection{Customer}
+Various Customer's use cases are satisfied using processes that are very similar to the ones described in the Contributor's section; as a consequence, less dedicated diagrams will be used unless the process differs considerably from anything presented before.
 
 \begin{itemize}
     \item \textbf{Register}\\
-    The overall process is very similar to the one shown in \textit{figure \ref{fig:use_cases_satisfaction_contributor_register}}, interchanging the Contributor Dashboard with the Customer Dashboard and the Contributor Data Service with the Customer Data Service, respectively; while also the dedicated APIs are necessarily different, the registration process follows the same exact logical flow.
+    The overall process is very similar to the one shown in \textit{figure \ref{fig:use_cases_satisfaction_contributor_register}}, requiring only to interchange the Contributor Dashboard with the Customer Dashboard and the Contributor Data Service with the Customer Data Service, respectively; while also the dedicated APIs invoked are necessarily different, the registration process follows the same exact logical flow.
 
     \item \textbf{Login}\\
     \begin{itemize}
         \item \textbf{\textit{Login to a Dashboard}}\\
+        Starting from \textit{figure \ref{fig:use_cases_satisfaction_contributor_dashboard_login}}, the use case is satisfied applying the exact same entities interchanges described in the previous use case.
+
         \item \textbf{\textit{Authenticate for Grid Services Invocations}}\\
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/use_cases_satisfaction_invoking_endpoint_login.jpg}
+            \caption{Invoking Endpoint login}
+            \label{fig:use_cases_satisfaction_invoking_endpoint_login}
+        \end{figure}
+
+        Very similar process to the one described in \textit{figure \ref{fig:use_cases_satisfaction_node_login}}; given the interchanged entities and the different APIs involved, the key difference here resides in the fact that the Customer Custom Application will implement a custom behavior that will trigger the Invoking Endpoint's login. 
     \end{itemize}
     \item \textbf{Easily integrate the Invoking Endpoint in a Customer Custom Application}\\
     \begin{itemize}
