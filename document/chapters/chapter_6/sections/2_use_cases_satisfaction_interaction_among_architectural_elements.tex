@@ -191,8 +191,28 @@ Various Customer's use cases are satisfied using processes that are very similar
     \item \textbf{Manage requested Grid Services data through a Dashboard}\\
     \begin{itemize}
         \item \textbf{\textit{Check Grid Services Invocations history}}\\
+        Very similar to \textit{figure \ref{fig:use_cases_satisfaction_past_contributions_check}}, using the Customer Dashboard and dedicated APIs instead.
+
         \item \textbf{\textit{Check running Grid Services Invocations}}\\
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/use_cases_satisfaction_current_grid_services.jpg}
+            \caption{Running Grid Services Invocations check}
+            \label{fig:use_cases_satisfaction_current_grid_services}
+        \end{figure}
+
+        The Customer Dashboard contacts the Grid Services Gateway Service in order to obtain info about the running Grid Services Invocations; then, the Grid Master is contacted which, in turn, will contact every Broker Service instance. Finally, every single Broker will broadcast the message to its connected Invoking Endpoints, asking for only the ones related to the Customer to respond. The responding Invoking Endpoints (if any), will return the data containing info about the current execution. The data will be progressively grouped and, in the end, returned as a final list to the Dashboard. 
+
         \item \textbf{\textit{Check past Grid Services Invocations Fees}}\\
-        \item \textbf{\textit{Manage payment methods}}\\
+        Assimilable to the process seen in \textit{figure \ref{fig:use_cases_satisfaction_past_contributions_check}}, with the Contributor Dashboard acting as the invoking entity.
+
+        \item \textbf{\textit{Manage payment method}}\\
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[scale=0.8]{document/chapters/chapter_6/images/use_cases_satisfaction_contributor_payment_method.jpg}
+            \caption{Contributor payment method retrieval}
+            \label{fig:use_cases_satisfaction_contributor_payment_method}
+        \end{figure}
+        The management (retrieval, insertion, delete and update) of the Contributor's payment method is performed through the Contributor Dashboard collaborating with the Billing Service that, in turn, contacts the Customer Data Service, where the payment data is actually stored.
     \end{itemize}
 \end{itemize}

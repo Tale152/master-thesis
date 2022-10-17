@@ -1,1 +1,2 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QProxy-Based Cluster Architecture This architecture revolves around the idea of having N BASELINE (Barely Adequate Systems Leveraging Internet NEtworking) devices\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QCheck past Grid Services Invocations Fees Assimilable to the process seen in figure \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, with the Contributor Dashboard acting as the invoking entity.\\E$"}
