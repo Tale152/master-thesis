@@ -7,6 +7,8 @@ Furthermore, in every Petri Net snapshot provided, transitions that can be trans
 \subsection{Map Worker}
 The process starts with the Map Worker establishing a connection with the MapReduce Master (\textit{figure \ref{fig:map_worker_petri_net_1}}).
 
+\vspace{5mm}
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_1.png}
@@ -16,6 +18,10 @@ The process starts with the Map Worker establishing a connection with the MapRed
 
 Ignoring, for the moment, the Disconnection' transition, the Map Worker receives the Map function from the MapReduce Master, obtaining a token for the Execution place and one for the Master Connected'' place. The distinction between the concepts of connection and execution is useful here since it is not always necessary to be connected to the Grid Master in order to execute some operations; through this distinction, Resources can be used efficiently even if a temporary disconnection occurs.
 
+\textit{Figure \ref{fig:map_worker_petri_net_2}} shows how, once the map function is received, the MapReduce Master starts to send the location where the data splits can be retrieved; the Map Worker retrieves the specified data and applies the map function to it producing the intermediate results (IR) as output.
+
+\vspace{5mm}
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_2.png}
@@ -23,12 +29,29 @@ Ignoring, for the moment, the Disconnection' transition, the Map Worker receives
     \label{fig:map_worker_petri_net_2}
 \end{figure}
 
+As can be seen from the operations executed, the Map Worker acts following the instructions received by the MapReduce master. While mapping, a data split can be assigned to multiple Map Workers, in order to increase fault tolerance; as a direct consequence, it is possible that a received split location is mapped by another Map Worker. Once the IR is already obtained on a particular split, the Map Worker sends a split revoked' instruction to every Map Worker assigned to that split. The two different split revoked transitions possess a conceptual difference:
+\begin{itemize}
+    \item Split revoked'\\
+    Here, the Map Worker that receives this instruction cannot possibly have applied the map function to the split, since the split revoked instruction is received only after the IR (produced by the mapping of that particular split) is reduced by a Reduce Worker. Practically speaking, the Map Worker drops the split, removing it from memory or avoiding downloading it entirely.
+    \item Split revoked''\\
+    In this situation, the Map Worker already performed the map operation on the considered split. Whether the IR that will be used for the reduce operation is actually the one locally produced or not is irrelevant; the direct consequence of receiving a split revoked instruction here is to remove from memory the IR. This is because the MapReduce Master can ask multiple times to the Map Worker to send the IR to a Reduce Worker (\textit{figure \ref{fig:map_worker_petri_net_3}}), requiring to maintain in memory (or on disk) the IR until the split revoked instruction is received.
+\end{itemize}
+
+\vspace{2mm}
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_3.png}
     \caption{Map Worker - Intermediate Result sent}
     \label{fig:map_worker_petri_net_3}
 \end{figure}
+
+\vspace{2mm}
+
+At any given time, the Map Worker can lose the connection with the MapReduce Master (Disconnection' and Disconnection'' transitions); before receiving the Map function, the process is necessarily locked until the connection is established once again or a timeout is reached, letting to a local failure. On the contrary, if the token on the execution place is present, on a disconnected state the Map Worker is still able to apply the map function on a split that is locally available; on the other hand, a timeout leading to a failure would also remove the execution token, effectively stopping the entire process.
+\vspace{8mm}
+
+When the MapReduce operation is completed, the Master will send a completion instruction that will result in the removal of the connection and execution tokens, correctly concluding the execution (\textit{figure \ref{fig:map_worker_petri_net_4}}).
 
 \begin{figure}[!ht]
     \centering
