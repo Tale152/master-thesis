@@ -5,7 +5,7 @@ Every Petri Net that will be presented assumes that the Resources' retrieval pro
 Furthermore, in every Petri Net snapshot provided, transitions that can be transitioned (in that particular configuration of the places) are highlighted in red to facilitate its understanding.
   
 \subsection{Map Worker}
-TODO
+The process starts with the Map Worker establishing a connection with the MapReduce Master (\textit{figure \ref{fig:map_worker_petri_net_1}}).
 
 \begin{figure}[!ht]
     \centering
@@ -13,6 +13,8 @@ TODO
     \caption{Map Worker - Start}
     \label{fig:map_worker_petri_net_1}
 \end{figure}
+
+Ignoring, for the moment, the Disconnection' transition, the Map Worker receives the Map function from the MapReduce Master, obtaining a token for the Execution place and one for the Master Connected'' place. The distinction between the concepts of connection and execution is useful here since it is not always necessary to be connected to the Grid Master in order to execute some operations; through this distinction, Resources can be used efficiently even if a temporary disconnection occurs.
 
 \begin{figure}[!ht]
     \centering
@@ -42,14 +44,14 @@ TODO
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/reduce_worker_petri_net_1.png}
     \caption{Reduce Worker - Local result}
-    \label{fig:map_worker_petri_net_1}
+    \label{fig:reduce_worker_petri_net_1}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/reduce_worker_petri_net_2.png}
     \caption{Reduce Worker - Completion}
-    \label{fig:map_worker_petri_net_2}
+    \label{fig:reduce_worker_petri_net_2}
 \end{figure}
 
 \subsection{MapReduce Master}
