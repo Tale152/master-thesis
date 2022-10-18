@@ -14,9 +14,9 @@ This section will show how the entities introduced in the Architecture just pres
     A Contributor registers to the Grid system creating an account using the Contributor Dashboard; once it has inputted the necessary data, the Dashboard will contact the Authentication with the dedicated API that, in turn, will contact the Contributors Data Service, actually completing the registration process.
 
     \item \textbf{Login}\\
-    When a Contributor performs a Login, both in the Dashboard case and in the Contributing Endpoint, it gets a token that will be used for every subsequent operation for both authenticating the communication with other entities and, at the same time, provide some useful data that will be used by said entities.
+    When a Contributor performs a Login, both in the Dashboard case and in the Contributing Endpoint, it gets a token that will be used for every subsequent operation for both authenticating the communication with other entities and, at the same time, providing some useful data that will be used by said entities.
     
-    Since the token is a prerequisite for every further interaction it will be omitted for simplicity in the subsequent single use case satisfaction discussions. 
+    Since the token is a prerequisite for every further interaction it will be omitted for the sake of simplicity in the subsequent single use case satisfaction discussions. 
      
     \begin{itemize}
         \item \textbf{\textit{Login to a Dashboard}}\\
@@ -38,7 +38,7 @@ This section will show how the entities introduced in the Architecture just pres
             \label{fig:use_cases_satisfaction_node_login}
         \end{figure}
 
-        Here, the Contributor Application is the one actually triggering the Login in its integrated Node; then, the Node's login differs from the Dashboard'one calling another dedicated API that also require to provide some additional info that will uniquely identify the device.
+        Here, the Contributor Application is the one actually triggering the Login in its integrated Node; then, the Node's login differs from the Dashboard's one calling another dedicated API that also requires to provide some additional info that will uniquely identify the device.
         
         The Customer only needs to make the active effort of registering its account; every Contributing Endpoint will be automatically added to its account if the credentials are correct and no matching device for its account is found.
         One important thing to notice is that the token does not exit the Node's scope.
@@ -58,7 +58,7 @@ This section will show how the entities introduced in the Architecture just pres
 
     First, independently of the Node, the Grid Master Service creates an instance of a Broker Service (there is always at least one instance of such Cloud Service) and, upon creating a connection with it, saves its address; said address is also sent to the Broker Discovery Service that, consequently, will always locally know the addresses of the Broker Service's instances.
 
-    The actual connection to the Grid is triggered automatically by the Contributing Endpoint once the prerequisites are met (an available internet connection is present, the device's battery is above a certain threshold, etc...). The Node will proceed to contact the Broker Discovery Service that (without needing to contact the Grid Master Service for every new Node request) then provides the address of the more geographically convenient Broker Service instance; with the information obtained, the Node completes it connection process contacting [B1]. 
+    The actual connection to the Grid is triggered automatically by the Contributing Endpoint once the prerequisites are met (an available Internet connection is present, the device's battery is above a certain threshold, etc...). The Node will proceed to contact the Broker Discovery Service that (without needing to contact the Grid Master Service for every new Node request) then provides the address of the more geographically convenient Broker Service instance; with the information obtained, the Node completes the connection process contacting [B1]. 
 
     Now that the Node is connected to the Grid, the actual Contribution can happen. In order to have a clear understanding of the full picture, a Grid Service Invocation needs to be explained alongside the Node's Contribution.
     \vspace{10mm}
@@ -72,7 +72,7 @@ This section will show how the entities introduced in the Architecture just pres
 
     The process starts with the Invoking Endpoint requesting a Grid Service to the Grid Services Gateway Service that, will first retrieve the Customer's payment method data (omitted in \textit{figure \ref{fig:use_cases_satisfaction_node_contribution}} for simplicity) and then contact the Accounting Service to pay the Fee required for the Grid Service Invocation; then, the Grid Services Gateway Service will contact the Grid Master Service in order to obtain the address of a Broker Service instance.
 
-    The Invoking Endpoint, now having B1's address, contacts it and established a connection that, once performed, allows the Invoking Endpoint to request Resources. B1 broadcasts the request to all its Nodes, specifying the requirements needed for the Grid Service requested. The Nodes that are currently available, possess compatible Access Policies and do satisfy the requirements, take charge of the request and contact Invoking Endpoint and, if the Endpoint accepts it, a connection is created. Finally, the Invoking Endpoint is able to send Tasks that the Node will perform.
+    The Invoking Endpoint, now having B1's address, contacts it and establishes a connection that, once performed, allows the Invoking Endpoint to request Resources. B1 broadcasts the request to all its Nodes, specifying the requirements needed for the Grid Service requested. The Nodes that are currently available, possess compatible Access Policies and do satisfy the requirements, take charge of the request and contact Invoking Endpoint and, if the Endpoint accepts it, a connection is created. Finally, the Invoking Endpoint is able to send Tasks that the Node will perform.
 
     The process describes an Invoking Endpoint to Node connection; when the connection needs to be established between Nodes, the process is very similar. First the Invoking Endpoint to Node connection is created; then, another Resource request will ask for a Contribution to the Nodes but the exchanged messages (containing the Master Node address) will specify that a Node to Node connection is required. Depending on the particular Grid Service then, the Master Node itself will provide the Tasks to its Slave Nodes.
 
@@ -92,7 +92,7 @@ This section will show how the entities introduced in the Architecture just pres
         This action is performed by the Contributor's input in the running Contributing Endpoint that will simply invoke a Node's function instructing it to stop the connection and, consequently, never connecting again to the Grid until the Contributor allows it again.
 
         \item \textbf{\textit{Configure Access Policies to the Contributing Endpoint's Resources}}\\
-        When a Node receives a broadcasted Contribution request by the Broker Instance which is connected to, in order to decide if taking charge of the request or not, a series of conditions are evaluated; one of such conditions is the compatibility with the local Access Policies configured for that particular Contributing Endpoint. 
+        When a Node receives a broadcasted Contribution request by the Broker Instance which is connected to, in order to decide whether to take charge of the request or not, a series of conditions are evaluated; one of such conditions is the compatibility with the local Access Policies configured for that particular Contributing Endpoint. 
         A Contributor, interacting with the Contributing Endpoint, can manually change the Access Policies that, from that moment, will be checked by the Node in its decision process. 
 
         \item \textbf{\textit{Check if Contributing Endpoints are currently Contributing}}\\
@@ -159,7 +159,7 @@ Various Customer's use cases are satisfied using processes that are very similar
     \item \textbf{Easily integrate the Invoking Endpoint in a Customer Custom Application}\\
     \begin{itemize}
         \item \textbf{\textit{Invoke Grid Services through any Device}}\\
-        As previously explained, in certain Grid Services, the Invoking Endpoint demands the coordination of the obtained Resources to another Node (e.g.: MapReduce Service); this design choice allows to extend Grid Services invocation to also low-spec devices. On the technological requirements, this use case requires the existence of at least one compatible Invoking Endpoint implementation for every major platform.
+        As previously explained, in certain Grid Services, the Invoking Endpoint demands the coordination of the obtained Resources to another Node (e.g.: MapReduce Service); this design choice allows to extend Grid Services invocation to also low-spec devices. As far as the technological requirements are concerned, this use case requires the existence of at least one compatible Invoking Endpoint implementation for every major platform.
         The Grid Services Invocation process was previously described in \textit{figure \ref{fig:use_cases_satisfaction_node_contribution}}.
 
         \item \textbf{\textit{Request MapReduce service}}\\
@@ -179,7 +179,7 @@ Various Customer's use cases are satisfied using processes that are very similar
 
         \begin{itemize}
             \item \textit{Define MapReduce data source}\\
-            This use case requires that the SDK exposed by the Invoking Endpoint allows to define the source of the data that needs to be analyzed, meaning that the data can come from the Invoking Endpoint directly or from an external source. This is done in order to actually being able to invoke the MapReduce Service from anywhere, since not all devices are able to contain large quantities of data.
+            This use case requires that the SDK exposed by the Invoking Endpoint allows to define the source of the data that needs to be analyzed, meaning that the data can come from the Invoking Endpoint directly or from an external source. This is done in order to actually be able to invoke the MapReduce Service from anywhere, since not all devices are able to contain large quantities of data.
 
             \item \textit{Define Resource quantity to use}\\
             A Customer needs to specify, through the SDK, the quantity of Resources that it wants to reserve for the MapReduce Service execution; while having more resources certainly makes the execution faster, the Fee necessarily increases.
