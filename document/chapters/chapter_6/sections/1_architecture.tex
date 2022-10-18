@@ -63,30 +63,29 @@ The \textbf{Cloud Services} follow a \textbf{hexagonal architecture} composed by
 \subsubsection{Adapters}
 \begin{itemize}
     \item \textbf{Broker Service}\\
-    Cloud Service that acts as middleware between the Grid Master and the Nodes (\textit{figure \ref{fig:master_grid_load_balancing}}). There are as many instances as needed to sustain the load of the connections to the Nodes; instances are created and removed by the Grid Master taking in account the geographical location of said Nodes in order to reduce latency for the Broker-Node connection.
-    The Broker executes the coordination commands given by the Grid Master while also managing the Nodes connected through its communication channels exposed by its Web Socket.
+    Cloud Service that \textbf{acts as middleware between the Grid Master and the Nodes} (\textit{figure \ref{fig:master_grid_load_balancing}}). There are \textbf{as many instances as needed to sustain the load of the connections to the Nodes}; instances are \textbf{created and removed by the Grid Master} taking in account the \textbf{geographical location} of said Nodes in order to reduce latency for the Broker-Node connection.
+    The Broker \textbf{executes the coordination commands given by the Grid Master} while \textbf{also managing the Nodes connected} through its communication channels exposed by its Web Socket.
     
     Let us take, for example, a Grid Service Invocation: the Grid Master contacts a Broker Service instance that is geographically convenient in relationship to the location of the Invoking Endpoint; the Grid Master will delegate to the selected Broker Service instance the responsibility of gathering adequate Resources for the execution of the particular Grid Service requested. The Broker will then spread the request of said Resources to its connected Nodes and gather the responses of the ones that are adequate and available. The Broker will group the info needed to contact such nodes and forward it to the Grid Master that will then be responsible to forward in turn to the requestor.
 
     \item \textbf{Broker Discovery Service}\\
-    This REST server has just one simple responsibility: it provides to a Node the address of a Broker Service in order to make possible a connection between them. This discovery mechanism is necessary since, as already stated, the Broker Service instances are dynamically created and thus they do not possess a static address; on the contrary the Broker Discovery Service will necessarily need a static address known by the Nodes. The trafic directed to this Cloud Service and its computational load tend to be minimal and requires only one instance but, as time goes on and the contributing user base increases, new static instances can be added easily.
+    This REST server has just one simple responsibility: \textbf{it provides to a Node the address of a Broker Service in order to make possible a connection between them}. This discovery mechanism is necessary since, as already stated, the Broker Service instances are dynamically created, and thus they do not possess a static address; on the contrary \textbf{the Broker Discovery Service will necessarily need a static address known by the Nodes}. The traffic directed to this Cloud Service and its computational load tend to be minimal and requires only one instance but, as time goes on and the contributing user base increases, new static instances can be added easily.
 
     \item \textbf{Grid Services Gateway Service}\\
-    In order for Invoking Endpoints to access Resources, they need interact with this REST server; it exposes APIs for a standardized and parameterized access to Resources through the Grid Service abstraction, meaning that a Customer expresses its request in terms of what Grid Service it wants to execute, not in terms of single Resources.
+    In order for Invoking Endpoints to access Resources, they need to interact with this REST server; \textbf{it exposes APIs for a standardized and parameterized access to Resources through the Grid Service abstraction}, meaning that a Customer expresses its request in terms of what Grid Service it wants to execute, not in terms of single Resources.
     
-    This Cloud Service is connected via Web Socket to the Grid Master Service in order to gather the necessary Resources but, before that, the Grid Services Gateway Service needs to contact the Accounting Service in order to execute the Fee payment. Lastly, the Cloud Service is also connected to the Log Service in order to register the Grid Service invocation and the consequent usage of Resources happened during the computation.
+    This Cloud Service is \textbf{connected via Web Socket to the Grid Master Service in order to gather the necessary Resources} but, before that, the Grid Services Gateway Service \textbf{needs to contact the Accounting Service} in order to execute the Fee payment. Lastly, the Cloud Service is \textbf{also connected to the Log Service} in order to register the Grid Service invocation and the consequent usage of Resources happened during the computation.
 
     Similarly to the Broker Discovery Service, the number of static instances easily can vary in the project's lifecycle. 
 
     \item \textbf{Authentication Service}\\
-    Before being able to communicate with any other Cloud Service belonging to the Adapters layer, any entity needs to authenticate to the Grid through this Cloud Service. Given that the two actors that require authentication are the Customer and the Contributor, the Authentication Service utilizes both the Customer Data Service and the Contributor Data Service in its functioning. As a consequence of the authentication, the entity that wants to interact with the Grid will receive a token that uniquely identifies it inside the Grid system.
+    Before being able to communicate with any other Cloud Service belonging to the Adapters layer, \textbf{any entity needs to authenticate to the Grid through this Cloud Service}. Given that \textbf{the two actors that require authentication are the Customer and the Contributor}, the Authentication Service utilizes both the \textbf{Customer Data Service and the Contributor Data Service} in its functioning. As a consequence of the authentication, the entity that wants to interact with the Grid will receive a \textbf{token that uniquely identifies it inside the Grid system}.
 
     \item \textbf{Billing Service}\\
-    Cloud Service exposing APIs used to make monetary transactions for Fee payments and Rewards Redemptions. It acts as an intermediary, protecting the actual payment process effectuated by the Accounting Service.
-    It does not offer access to info about past monetary transactions, leaving this responsibility to the Historian Service.
+    Cloud Service exposing APIs used \textbf{to make monetary transactions for Rewards Redemptions and access monetary balances}. It acts as an intermediary, protecting the actual payment process effectuated by the Accounting Service.
 
     \item \textbf{Historian Service}\\
-    The Historian Service exposes APIs that allow the read-only access to event already happened in the Grid System as well as the registration of new events like monetary transactions, Contribution, Grid Services Invocations, etc...
+    The Historian Service exposes APIs that allow the \textbf{read-only access to event already happened in the Grid System as well as the registration of new events} like monetary transactions, Contribution, Grid Services Invocations, etc...
 
 \end{itemize}
 \vspace{20mm}
@@ -95,7 +94,7 @@ The \textbf{Cloud Services} follow a \textbf{hexagonal architecture} composed by
 The Contributor area, as shown in \textit{figure \ref{fig:architecture_contributor}}, comprehends three entities:
 \begin{itemize}
     \item \textbf{Node}
-    \item \textbf{Contributing EndPoint}
+    \item \textbf{Contributing Endpoint}
     \item \textbf{Contributor Dashboard}
 \end{itemize}
 The relevant Cloud Services are shown in order to explain the interactions that Node and the Contributor Dashboard have with them; in particular, the Grid Master Service is shown to emphatize the Grid Master - Broker - Node connection seen in \textit{figure \ref{fig:master_grid_load_balancing}}.
