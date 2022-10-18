@@ -81,7 +81,7 @@ As the Map Worker's process, \textbf{a connection to the MapReduce Master is est
 \end{figure}
 
 \subsection{MapReduce Master}
-The Petri Net describing the process performed by the MapReduce Master focuses only on a single region, meaning that this operation needs to be performed (concurrently) for every data region. 
+\textbf{The Petri Net} describing the process performed by the MapReduce Master \textbf{focuses only on a single region}, meaning that \textbf{this operation needs to be performed (concurrently) for each data region}. 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_1.png}
@@ -89,12 +89,12 @@ The Petri Net describing the process performed by the MapReduce Master focuses o
     \label{fig:master_petri_net_1}
 \end{figure}
 
-For this particular example, the region is constituted by 4 splits and the Customer required a quantity of Resources that resulted in the Contribution of 5 Map Workers; a region is handled by a single Reduce Worker, so there is only one token representing it.
+For this particular example, the region is constituted by 4 splits and the Customer required a quantity of Resources that resulted in the Contribution of 5 Map Workers; \textbf{a region is handled by a single Reduce Worker}, so there is only one token representing it.
 
-Initially, the Map and Reduce Workers are required but not connected (Requested MWs and Requested RW places); they can transition to a connected state but, if something goes wrong, they can also disconnect. \textit{Figure \ref{fig:master_petri_net_1}} shows a situation where 3 Map Workers and the Reduce Worker have joined. Workers can continue to join and leave until the MapReduce computation for the region is completed, removing the execution token.
+Initially, \textbf{the Map and Reduce Workers are required but not connected} (\textit{Requested MWs} and \textit{Requested RW} places); they can \textbf{transition to a connected state} but, if something goes wrong, they \textbf{can also disconnect}. \textit{Figure \ref{fig:master_petri_net_1}} shows a situation where 3 Map Workers and the Reduce Worker have joined. \textbf{Workers can continue to join and leave until the MapReduce computation for the region is completed}, removing the execution token.
 
-Having at least one MW available, the mapping process can begin (\textit{figure \ref{fig:master_petri_net_2}}). A split belonging to the region is assigned to an available MW which will perform the Map operation on it (it is assumed that the Worker possesses the map function, abstracted for simplicity). If the mapping happens successfully, the region's IRs are accumulated; in case that a Map Worker is lost during the map execution, the split needs to be computed by another worker and is placed back in the regions splits place (and the another token in the requested MWs is also placed).
-It can also happen that a region IR is lost due to the disconnection of the Map Worker that is still keeping the result in memory; this occurrence also adds again said split in the region splits that still needs to be mapped (since its IR is unreachable).
+\textbf{Having at least one MW available, the mapping process can begin} (\textit{figure \ref{fig:master_petri_net_2}}). A \textbf{split} belonging to the region is \textbf{assigned to an available MW which will perform the Map operation on it} (it is assumed that the Worker possesses the map function, abstracted for simplicity). If the mapping happens successfully, \textbf{the region's IRs are accumulated}; \textbf{in case that a Map Worker is lost} during the map execution, \textbf{the split needs to be computed by another Worke}r and is \textbf{placed back in the \textit{Regions splits} place} (and the another token in the requested MWs is also placed).
+It can also happen that \textbf{a region's IR is lost due to the disconnection of the Map Worker that is still keeping the result in memory}; this occurrence also \textbf{adds again said split in the \textit{Region splits}} that still needs to be mapped (since its IR is unreachable).
 
 \begin{figure}[!ht]
     \centering
@@ -103,7 +103,7 @@ It can also happen that a region IR is lost due to the disconnection of the Map 
     \label{fig:master_petri_net_2}
 \end{figure}
 
-Once all the region's split are mapped to intermediate results (\textit{figure \ref{fig:master_petri_net_3}}), the reduce process can start (assuming that a RW is connected).
+Once \textbf{all the region's split are mapped} to intermediate results (\textit{figure \ref{fig:master_petri_net_3}}), \textbf{the reduce process can start} (assuming that a RW is connected).
 
 \begin{figure}[!ht]
     \centering
@@ -112,7 +112,7 @@ Once all the region's split are mapped to intermediate results (\textit{figure \
     \label{fig:master_petri_net_3}
 \end{figure}
 
-While the reduce function is being applied, the region token is removed due to the fact that no more splits for this region needs to be mapped (\textit{figure \ref{fig:master_petri_net_4}}). A failure can also happen here, since the Reduce Worker can disconnect during the reduce function execution; in this case, the region token is restored and a new Reduce Worker is required.
+While the reduce function is being applied, the region token is removed due to the fact that no more splits for this region needs to be mapped (\textit{figure \ref{fig:master_petri_net_4}}). \textbf{A failure can also happen here, since the Reduce Worker can disconnect during the reduce function execution; in this case, the region token is restored and a new Reduce Worker is required}.
 
 \vspace{5mm}
 
@@ -123,7 +123,7 @@ While the reduce function is being applied, the region token is removed due to t
     \label{fig:master_petri_net_4}
 \end{figure}
 
-If the reduce function is completed successfully (as shown in \textit{figure \ref{fig:master_petri_net_5}}), the result for the considered region is obtained. As stated before, the overall MapReduce execution will end once every region is computed, providing to the Customer all the regional results. 
+\textbf{If the reduce function is completed successfully} (as shown in \textit{figure \ref{fig:master_petri_net_5}}), \textbf{the region's result is obtained}. As stated before, the overall MapReduce execution will end once every region is computed, providing to the Customer all the regional results. 
 
 \begin{figure}[!ht]
     \centering
