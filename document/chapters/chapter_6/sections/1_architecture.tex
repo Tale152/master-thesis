@@ -111,33 +111,33 @@ Moreover, the Invoking Endpoint (which belongs to the Customer area) and the add
 \end{figure}
 
 \subsubsection{Node}
-This is the primary entity when it comes to contribution.
-Continuing the definition provided in the Ubiquitous Language (\textit{section \ref{ubiquitous_language}}), this software abstraction is identifiable as a set of core Contribution functionalities and logic which needs to be integrated (through the offered SDK) to an actual software application (Contributing Endpoint) capable of interacting with the specific resources of the device that is running it; thus, a Node exists in order to get a fast integration with as many devices as possible to maximize the compatibility for Contribution, removing the need to reimplement everything for every new Contributing Endpoint.
+This is the \textbf{primary entity when it comes to contribution}.
+Continuing the definition provided in the Ubiquitous Language (\textit{section \ref{ubiquitous_language}}), this software abstraction is identifiable as a \textbf{set of core Contribution functionalities and logic which needs to be integrated} (through the offered SDK) \textbf{to an actual software application} (Contributing Endpoint) capable of \textbf{interacting with the specific resources of the device that is running on}; thus, a Node exists in order to get a \textbf{fast integration with as many devices as possible to maximize the compatibility for Contribution}, removing the need to reimplement everything for every new Contributing Endpoint.
 
-The model of this solution aims to grant the access to Grid Services also to low-spec devices; thus, it is important to delegate as much work as possible to the Nodes. In order to complete a Grid Service, the Node can Contribute in one of the following ways (depending on the particular Service):
+The model of this solution aims to grant the access to Grid Services also to low-spec devices; thus, it is important to \textbf{delegate as much work as possible to the Nodes}. In order to complete a Grid Service, the Node can \textbf{Contribute in one of the following ways} (depending on the particular Service):
 \begin{itemize}
 \item \textbf{Direct communication with the Invoking Endpoint}\\
 A Node is connected, through a Web Socket, directly to the Invoking Endpoint. Let us take, for example, a hypothetical Grid Service that consists of delegating a computation to a single Node (i.e. non-distributed computation); the Node (Slave) and the Invoking Endpoint (Master) will exchange messages in order for the Invoking Endpoint to provide to the Node the necessary data and coordinating the Node that will actually perform the resource-demanding computation. In this communication mode a Node acts only passively.
-Another example, relevant for this thesis work, is the connection between an Invoking Endpoint and a Node acting as MapReduce Master (\textit{figure TODO}).
+Another example, relevant for this thesis work, is the connection between an Invoking Endpoint and a Node acting as MapReduce Master (\textit{figure \ref{fig:mapreduce_load_balancing}}).
 \item \textbf{Communication with another Node}\\
 A Node is connected, through a Web Socket, to another Node; there are indeed circumstances that, for the completion of a particular Grid Service, require direct communication among Nodes. While in the other communication type the Node had only a passive role, here one of the two nodes needs to act as Master while the other(s) as Slave(s). 
-Continuing the MapReduce example, a Node acting as MapReduce Master is connected to multiple nodes acting either as Map Workers or Reduce Workers (\textit{figure TODO}).
+Continuing the MapReduce example, a Node acting as MapReduce Master is connected to multiple nodes acting either as Map Workers or Reduce Workers (\textit{figure \ref{fig:mapreduce_load_balancing}}).
 \end{itemize}
 
-Once again, a Grid Service is performed by Nodes that Contribute, communicating with each other, performing Tasks in order to reach the end goal; the Task concept is vital here since, while every Node will have the same communication interfaces, different Contributing Endpoints will implement Tasks based on the device's capabilities. That means that, when concretized through the Contributing Endpoint, not all Nodes will be able to execute every possible Task, but only the ones that are compatible with the Resources possessed (e.g.: an iPhone running iOS will not be able to perform a MapReduce computation that uses Map and/or Reduce functions written in Java).
+Once again, a Grid Service is performed by Nodes that Contribute, communicating with each other, performing Tasks in order to reach the end goal; the Task concept is vital here since, \textbf{while every Node will have the same communication interfaces}, \textbf{different Contributing Endpoints will implement Tasks based on the device's capabilities}. That means that, when concretized through the Contributing Endpoint, \textbf{not all Nodes will be able to execute every possible Task}, but only the ones that are compatible with the Resources possessed (e.g.: an iPhone running iOS will not be able to perform a MapReduce computation that uses Map and/or Reduce functions written in Java).
 
-With the goal of reducing complexity, compatibility wise (\textit{sections \ref{standardized_mobile_market} and \ref{compatibility_issues}}), the number of different Node incarnations (that differ for the technologies used to develop it) should be very low; ideally, just one implementation, integrable with a great number of Contributing Endpoints, should exist to maximize the integration speed benefits.
+\textbf{With the goal of reducing complexity}, compatibility wise (\textit{sections \ref{standardized_mobile_market} and \ref{compatibility_issues}}), \textbf{the number of different Node incarnations} (that differ for the technologies used to develop it) \textbf{should be very low}; ideally, just one implementation, integrable with a great number of Contributing Endpoints, should exist to maximize the integration speed benefits.
 
 \subsubsection{Contributing Endpoint}
-A Contributing Endpoint is a concrete application that will be used by the Contributor. Through the Node's SDK, it implements device-specific access to Resources and, consequently, the Tasks that this particular Contributing Endpoint implementation will be able to support.
+A Contributing Endpoint is a \textbf{concrete application that will be used by the Contributor}. Through the Node's SDK, \textbf{it implements device-specific access to Resources and, consequently, the Tasks that this particular Contributing Endpoint implementation will be able to support}.
 
-In particular, it is important that a concrete implementation incorporates the security measures available for that particular execution environment (collaborating with the general security mechanisms of the Grid).
-There can be different Contributing Endpoint implementations, with every new one expanding the number of devices able to Contribute.
+In particular, it is important that a concrete implementation incorporates the \textbf{security measures available for that particular execution environment} (collaborating with the general security mechanisms of the Grid).
+\textbf{There can be different Contributing Endpoint implementations}, with every new one expanding the number of devices able to Contribute.
 
 \subsubsection{Contributor Dashboard}
-A Dashboard, used by the Contributor, to perform operations linked to its Contribution (Rewards Redemption, checking past Contributions, etc...); it should serve as a unified way to access to information regarding all its different Contributing Endpoints.
+A Dashboard, \textbf{used by the Contributor, to perform operations linked to its Contribution} (Rewards Redemption, checking past Contributions, etc...); it should serve as a \textbf{unified way to access to information regarding all its different Contributing Endpoints}.
 
-This is certainly an easier (compared to Node and Contributing Endpoint) and more traditional client application, requiring only to contact Cloud Services in order to represent through a GUI the information obtained, as well as performing some operations specified in the Contributor's use case diagram (\textit{figure \ref{fig:use_cases_contributor}}). 
+This is certainly an easier and more traditional client application, requiring only to contact Cloud Services to represent through a GUI the information obtained, as well as performing some operations specified in the Contributor's use case diagram (\textit{figure \ref{fig:use_cases_contributor}}). 
 
 \subsection{Customer area}\label{customer_area}
 \textit{Figure \ref{fig:architecture_customer}} shows the three entities belonging to this area:
