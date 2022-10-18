@@ -15,12 +15,12 @@ This section describes the software architecture proposed by this project in ord
 \end{figure}
 
 \subsection{Cloud Services Area}\label{cloud_services_area}
-The Cloud services follow a Hexagonal architecture composed by a multitude of microservices (\textit{Figure \ref{fig:architecture_cloud_services}}). Each Microservice is accessed through communication interfaces (whether Rest APIs or Web Sockets, depending on the particular microservice needs) and belong to one of the following layers:
+The \textbf{Cloud Services} follow a \textbf{hexagonal architecture} composed by a multitude of \textbf{microservices} (\textit{Figure \ref{fig:architecture_cloud_services}}). Each Microservice is \textbf{accessed through communication interfaces} (whether \textbf{Rest APIs and/or Web Sockets}, depending on the particular microservice needs) \textbf{and belong to one of the following two layers}:
 \begin{itemize}
     \item \textbf{Business logic}\\
-    Microservices that expose core business logic for Grid functionalities realization and data managing. Entities that  reside here are protected, meaning that they are isolated from the outside and their functionalities can only be accessed through the entities placed in the Adapters layer.
+    Microservices that \textbf{expose core business logic for Grid functionalities realization and data managing}. Entities that  reside here are \textbf{protected}, meaning that they are isolated from the outside and \textbf{their functionalities can only be accessed through the entities placed in the Adapters layer}.
     \item \textbf{Adapters}\\
-    Microservices that expose functionalities accessed by the entities residing in the Contributor and Customer area; such functionalities are realized through combining the services offered by entities residing in the Business logic layer.
+    Microservices that \textbf{expose functionalities accessed by the entities residing in the Contributor and Customer area}; such functionalities are \textbf{realized combining the services} offered by entities residing \textbf{in the Business logic layer}.
 \end{itemize}
 \begin{figure}[!ht]
     \centering
