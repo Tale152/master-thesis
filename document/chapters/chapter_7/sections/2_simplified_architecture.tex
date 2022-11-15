@@ -1,5 +1,5 @@
 \section{Simplified architecture}
-TODO
+\textit{Figure \ref{fig:simplified_architecture}} shows a complete view of the entities composing the simplified architecture for the Interconnected project (that can be compared to the full architecture shown in \textit{figure \ref{fig:architecture_complete}}).
 
 \begin{figure}[!ht]
     \centering
@@ -8,11 +8,34 @@ TODO
     \label{fig:simplified_architecture}
 \end{figure}
 
+\vspace{10mm}
+
+All the entities composing the architecture are implemented using technologies based on Node.js which offers useful, popular and well maintained frameworks as well as an easy to use concurrency model based on an event loop.
+
 \subsection{Broker Service}
-TODO
+TODO technologies and stuff
+
+The only Cloud Service present is the Broker Service; since only one instance (with a static address) of such Cloud Service is required to sustain the workload of the few devices connected, a dynamic handling and discovery of multiple instances is thus not required. As a direct consequence of that, the complementary entities that handled the dynamic system for scalability (Grid Master Service, Broker Discovery Service and Grid Services Gateway Service) are not needed and thus Nodes and Invoking Endpoints communicate directly with the Broker Service without first undergoing the discovery processes described in \textit{section \ref{use_cases_satisfaction}}.
 
 \subsection{Interconnected Node}
-TODO
+TODO technologies and stuff
+
+The Node entity concretizes its P2P connectivity requirements through the use of the WebRTC (Real-Time Communication for the Web) protocol; such communication standard it is used to send audio and video data among peers, as well as any kind of structured non-media data. In order for the peers to establish the connection, first the signaling process needs to be completed: the peers, through a third intermediary (the Broker Service), exchange some information required for the connection to happen; the Peer that initializes the connection creates an SDP (Signaling Description Protocol) object, denominated "offer". When the other Peer receives such data, it also creates its SDP object denominated "answer". Once each Peers posses both generated SDP data, they finalize the connection exchanging some ICE (Interactive Connectivity Establishment) candidates; such ICE candidates needs to be specified when realizing a WebRTC connection since they are the actual servers that allow the P2P connection. There are two types of servers involved:
+\begin{itemize}
+    \item \textbf{STUN} (Session Traversal Utilities for NAT)\\
+    Used by Peers that resides behind the same NAT; through this server the IP info of each Peer are retrieved and a direct P2P connection can be established.
+    \item \textbf{TURN} (Traversal Using Relays around NAT)\\
+    Used by Peers that resides in different NATs; through this server the limitations of a NAT are overcome, creating an indirect P2P connection that uses the TURN server to forward the messages among the two Peers.
+\end{itemize}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{document/chapters/chapter_7/images/webrtc.jpeg}
+    \caption{WebRTC - STUN and TURN servers}
+    \label{fig:webrtc}
+\end{figure}
+
+Free STUN and TURN servers (used by this prototype) are available thanks to the \textbf{\href{https://www.metered.ca/tools/openrelay/}{Open Relay}} initiative.
 
 \subsection{Interconnected Mobile Client}
 TODO
