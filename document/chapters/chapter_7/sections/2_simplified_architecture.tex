@@ -13,9 +13,11 @@
 All the entities composing the architecture are implemented using technologies based on Node.js which offers useful, popular and well maintained frameworks as well as an easy to use concurrency model based on an event loop.
 
 \subsection{Broker Service}
-TODO technologies and stuff
+The only Cloud Service present in this simplified architecture is the Broker Service; since only one instance (with a static address) of such Cloud Service is required to sustain the workload of the few devices connected, a dynamic handling and discovery of multiple instances is thus not required. As a direct consequence of that, the complementary entities that handled the dynamic system for scalability (Grid Master Service, Broker Discovery Service and Grid Services Gateway Service) are not needed and thus Nodes and Invoking Endpoints communicate directly with the Broker Service without first undergoing the discovery processes described in \textit{section \ref{use_cases_satisfaction}}.
 
-The only Cloud Service present is the Broker Service; since only one instance (with a static address) of such Cloud Service is required to sustain the workload of the few devices connected, a dynamic handling and discovery of multiple instances is thus not required. As a direct consequence of that, the complementary entities that handled the dynamic system for scalability (Grid Master Service, Broker Discovery Service and Grid Services Gateway Service) are not needed and thus Nodes and Invoking Endpoints communicate directly with the Broker Service without first undergoing the discovery processes described in \textit{section \ref{use_cases_satisfaction}}.
+The prototype's Broker Service is implemented by using the Typescript language and utilizes Socket.io in order to create a web server that is reachable via WebSocket protocol; through the use of this technology, Invoking Endpoints are able to deposit requests for the recruitment of Nodes that will be used to perform computations. The messages involved in the recruiting process and the general Grid connection will be discussed in \textit{section \ref{coordination}}.
+
+In order to have a running instance of the Broker Service that also has a static address reachable from anywhere, a Docker image is created which, in turn, is executed in a container through the use of Amazon ECS (Elastic Container Service). More details about the deployment of this entity will be discussed later in \textit{section \ref{devops}}.
 
 \subsection{Interconnected Node}
 TODO technologies and stuff
