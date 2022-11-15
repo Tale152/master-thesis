@@ -20,9 +20,9 @@ The prototype's Broker Service is implemented by using the Typescript language a
 In order to have a running instance of the Broker Service that also has a static address reachable from anywhere, a Docker image is created which, in turn, is executed in a container through the use of Amazon ECS (Elastic Container Service). More details about the deployment of this entity will be discussed later in \textit{section \ref{devops}}.
 
 \subsection{Interconnected Node}
-The Node entity, which in the Interconnected project takes the name of "Interconnected Node", contains all the logic regarding the contribution of a device, and it is distributed through NPM as a Node.js dependency that is used by the concrete clients targeting various devices.
+The Node entity, which in the Interconnected project takes the name of "Interconnected Node", contains all the logic regarding the contribution of a device, and it is distributed through NPM as a Node.js dependency that is then integrated in the concrete clients targeting various devices.
 
-Interconnected Node is also developed by using the Typescript language and, being this a client in the WebSocket connection, it utilizes the client-side implementation of the Socket.io framework.
+Interconnected Node is also developed by using the Typescript language and, being this a client in the WebSocket connection to the Broker Service, it utilizes the client-side implementation of the Socket.io framework.
 
 The P2P connectivity requirements are concretized through the use of the WebRTC (Real-Time Communication for the Web) protocol; such communication standard it is used to send audio and video data among peers, as well as any kind of structured non-media data. In order for the peers to establish the connection, first the signaling process needs to be completed: the peers, through a third intermediary (the Broker Service), exchange some information required for the connection to happen; the Peer that initializes the connection creates an SDP (Signaling Description Protocol) object, denominated "offer". When the other Peer receives such data, it also creates its SDP object denominated "answer". Once each Peers posses both generated SDP data, they finalize the connection exchanging some ICE (Interactive Connectivity Establishment) candidates; such ICE candidates needs to be specified when realizing a WebRTC connection since they are the actual servers that allow the P2P connection. There are two types of servers involved:
 \begin{itemize}
@@ -34,14 +34,14 @@ The P2P connectivity requirements are concretized through the use of the WebRTC 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.2]{document/chapters/chapter_7/images/webrtc.jpeg}
+    \includegraphics[scale=0.15]{document/chapters/chapter_7/images/webrtc.jpeg}
     \caption{WebRTC - STUN and TURN servers \cite{stun_and_turn_servers}}
     \label{fig:webrtc}
 \end{figure}
 
-Free STUN and TURN servers (used by this prototype) are available thanks to the \textbf{\href{https://www.metered.ca/tools/openrelay/}{Open Relay}} initiative.
+Free STUN and TURN servers (used by this prototype) are available to the general public thanks to the \textbf{\href{https://www.metered.ca/tools/openrelay/}{Open Relay}} initiative.
 
-There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop implementation}} and a \textbf{\href{https://www.npmjs.com/package/react-native-webrtc}{React Native implementation}} of Node.js modules that allow to perform P2P connections utilizing the WebRTC protocol but, despite functioning in the same way and exposing the same interfaces with identical methods, the Desktop implementation does not work on React Native and vice versa. In order to circumvent this problem, the object handling the P2P connection is wrapped in an interface that needs to be implemented in the specific Desktop and Mobile implementations; this also allow to add some domain-specific logic, assigning to the Peer that initializes the connection the "Master" role and the "Slave" role to the other Peer. 
+There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop implementation}} and a \textbf{\href{https://www.npmjs.com/package/react-native-webrtc}{React Native implementation}} of Node.js modules that allow to perform P2P connections utilizing the WebRTC protocol but, despite functioning in the same way and exposing the same interfaces with identical methods, the Desktop implementation does not work on React Native and vice versa. In order to circumvent this problem, the object handling the P2P connection is wrapped in an interface that needs to be concretized in the specific Desktop and Mobile implementations (\textit{figure \ref{fig:p2p_wrapper}}); this also allow to add some domain-specific logic, assigning to the Peer that initializes the connection the "Master" role and the "Slave" role to the other Peer. 
 
 \begin{figure}[!ht]
     \centering
@@ -50,14 +50,16 @@ There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop imple
     \label{fig:p2p_wrapper}
 \end{figure}
 
+The construction of the client-specific objects is standardized through the utilization of the Builder pattern, allowing the internal logic of the Interconnected Node to create instances of such objects without actually possessing the concrete implementation. The P2P Builders (along with an unique device identifier) will then be passed at construction time to the InterconnectedNode Facade (\textit{\ref{fig:interconnected_node_facade}}) which exposes simple methods to interact with the core logic, hiding its complexity and requiring the specific client only to deal with presentational aspects and device-specific responsibilities.
+
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_7/images/interconnected_node_facade.png}
-    \caption{Interconnected Node facade}
+    \includegraphics[scale=0.6]{document/chapters/chapter_7/images/interconnected_node_facade.png}
+    \caption{Interconnected Node Facade}
     \label{fig:interconnected_node_facade}
 \end{figure}
 
-JOB AND TASK
+When it comes to the actual computational contribution that the Interconnected Node needs to perform, two key abstractions are present: Job and Task; a Job is an activity that a Slave Peer executes under the guidance of its Master that, after instructing the start of said Job, sends Tasks to execute in that specific Job. This abstraction results in the definition of common interfaces for Job and Task that are then concretized realizing new functionalities that will then be used to execute Grid Services (MapReduceMasterJob, MapReduceMapWorkerJob, etc...); through this mechanism, expanding the support for new Grid Services only requires to define new concrete Jobs and Tasks, realizing their logic and their handlers for the messages exchanged among Nodes.
 
 \subsection{Interconnected Mobile Client}
 TODO
