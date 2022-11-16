@@ -62,38 +62,52 @@ The construction of the client-specific objects is standardized through the util
 When it comes to the actual computational contribution that the Interconnected Node needs to perform, two key abstractions are present: Job and Task; a Job is an activity that a Slave Peer executes under the guidance of its Master that, after instructing the start of said Job, sends Tasks to execute in that specific Job. This abstraction results in the definition of common interfaces for Job and Task that are then concretized realizing new functionalities that will then be used to execute Grid Services (MapReduceMasterJob, MapReduceMapWorkerJob, etc...); through this mechanism, expanding the support for new Grid Services only requires to define new concrete Jobs and Tasks, realizing their logic and their handlers for the messages exchanged among Nodes.
 
 \subsection{Interconnected Mobile Client}
-TODO
+In this prototype, the mobile incarnation of the Contributing Endpoint takes the name of "Interconnected Mobile Client". The main technology used for realizing this client is React Native (which is also Node.js based); with this framework, it is possible to build mobile applications targeting both Android and iOS devices with just one code base while also taking advantage of most of the modules available on NPM.
+
+Thanks to this Node.js compatibility, the mobile client is able to use the Interconnected Node to connect to the Grid and perform contributions, only requiring to implement previously mentioned client-specific interfaces and to provide an ID for the device (given the limited number of devices in the prototype setting a UUID v4 is generated and used as the ID).
+
+Although React Native also allows targeting iOS devices, this prototype is tested only on Android devices; this limitation is caused by the previously mentioned lack of resources (in particular the unavailability of Apple devices to test it on) but, in theory, the application should also function on iPhones and iPads with little to no changes to the code base.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.15]{document/chapters/chapter_7/images/interconnected_mobile_home.png}
+    \includegraphics[scale=0.14]{document/chapters/chapter_7/images/interconnected_mobile_home.png}
     \caption{Interconnected Mobile Client}
     \label{fig:interconnected_mobile_home}
 \end{figure}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_7/images/interconnected_mobile_connection.png}
-    \caption{Interconnected Mobile Client - Connection}
-    \label{fig:interconnected_mobile_connection}
-\end{figure}
+\textit{Figure \ref{fig:interconnected_mobile_home}} shows the GUI of the application: by simply activating the "Enable Grid contribution" switch (\textit{figure \ref{fig:interconnected_mobile_connection}(a)}), the application starts a background process that continues to operate even after the application is closed; Android forces the developer to notify the user of the presence of a background activity by spawning a permanent notification (which can be seen in \textit{figure \ref{fig:notification_contribution}}) that will automatically be removed when the background activity is stopped by disabling the switch.
+
+This background process is responsible for checking a series of conditions (that are listed in the "Prerequisites" section of the GUI) which are necessary for Grid Contribution; when all the conditions are met, the Interconnected Node is started through the use of the previously mentioned Facade exposed by the module. In case even one of the prerequisites is not satisfied anymore, the Interconnected Node is stopped.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.3]{document/chapters/chapter_7/images/notification_contribution.png}
+    \includegraphics[scale=0.35]{document/chapters/chapter_7/images/notification_contribution.png}
     \caption{Interconnected Mobile Client - Grid contribution enabled notification}
     \label{fig:notification_contribution}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.3]{document/chapters/chapter_7/images/notification_completed.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_7/images/interconnected_mobile_connection.png}
+    \caption{Interconnected Mobile Client - Status}
+    \label{fig:interconnected_mobile_connection}
+\end{figure}
+
+\vspace{5mm}
+
+Despite being a background process, the user can check the application's status through the GUI's indicators: after the activation of the background process, the application remains in the "Not ready" state until all the Prerequisites are met (becoming green); after that, there is a transition to the "Connecting" state (\textit{figure \ref{fig:interconnected_mobile_connection}(b)}) and, once the Grid Connection is established, the "Online" state is reached (\textit{figure \ref{fig:interconnected_mobile_connection}(c)}).
+
+When a contribution to a Grid Service is currently being performed, the user is notified by a notification that, once the contribution is over, is then updated showing that the process is complete (\textit{figure \ref{fig:notification_completed}}).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.35]{document/chapters/chapter_7/images/notification_completed.png}
     \caption{Interconnected Mobile Client - Grid contribution completed notification}
     \label{fig:notification_completed}
 \end{figure}
 
 \subsection{Interconnected Desktop Client}
-TODO
+Despite being a background process, the user can check the application's status through the GUI's indicators: after the activation of the background process, the application remains in the "Not ready" state until all the Prerequisites are met (becoming green); after that, there is a transition to the "Connecting" state (\textit{figure \ref{fig:interconnected_mobile_connection}(b)}) and, once the Grid Connection is established, the "Online" state is reached (\textit{figure \ref{fig:interconnected_mobile_connection}(c)}).
 
 \begin{figure}[!ht]
     \centering
