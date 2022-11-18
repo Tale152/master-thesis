@@ -10,7 +10,7 @@
 
 \vspace{10mm}
 
-All the entities composing the architecture are implemented using technologies based on Node.js which offers useful, popular and well maintained frameworks as well as an easy to use concurrency model based on an event loop.
+All the entities composing the architecture are implemented using technologies based on Node.js which offers useful, popular and well-maintained frameworks as well as an easy-to-use concurrency model based on an event loop.
 
 \subsection{Broker Service}
 The only Cloud Service present in this simplified architecture is the Broker Service; since only one instance (with a static address) of such Cloud Service is required to sustain the workload of the few devices connected, a dynamic handling and discovery of multiple instances is thus not required. As a direct consequence of that, the complementary entities that handled the dynamic system for scalability (Grid Master Service, Broker Discovery Service and Grid Services Gateway Service) are not needed and thus Nodes and Invoking Endpoints communicate directly with the Broker Service without first undergoing the discovery processes described in \textit{section \ref{use_cases_satisfaction}}.
@@ -24,12 +24,12 @@ The Node entity, which in the Interconnected project takes the name of "Intercon
 
 Interconnected Node is also developed by using the Typescript language and, being this a client in the WebSocket connection to the Broker Service, it utilizes the client-side implementation of the Socket.io framework.
 
-The P2P connectivity requirements are concretized through the use of the WebRTC (Real-Time Communication for the Web) protocol; such communication standard it is used to send audio and video data among peers, as well as any kind of structured non-media data. In order for the peers to establish the connection, first the signaling process needs to be completed: the peers, through a third intermediary (the Broker Service), exchange some information required for the connection to happen; the Peer that initializes the connection creates an SDP (Signaling Description Protocol) object, denominated "offer". When the other Peer receives such data, it also creates its SDP object denominated "answer". Once each Peers posses both generated SDP data, they finalize the connection exchanging some ICE (Interactive Connectivity Establishment) candidates; such ICE candidates needs to be specified when realizing a WebRTC connection since they are the actual servers that allow the P2P connection. There are two types of servers involved:
+The P2P connectivity requirements are concretized through the use of the WebRTC (Real-Time Communication for the Web) protocol; such communication standard it is used to send audio and video data among peers, as well as any kind of structured non-media data. In order for the peers to establish the connection, first the signaling process needs to be completed: the peers, through a third intermediary (the Broker Service), exchange some information required for the connection to happen; the Peer that initializes the connection creates an SDP (Signaling Description Protocol) object, denominated "offer". When the other Peer receives such data, it also creates its SDP object denominated "answer". Once each Peer possesses both generated SDP data, they finalize the connection exchanging some ICE (Interactive Connectivity Establishment) candidates; such ICE candidates need to be specified when realizing a WebRTC connection since they are the actual servers that allow the P2P connection. There are two types of servers involved:
 \begin{itemize}
     \item \textbf{STUN} (Session Traversal Utilities for NAT)\\
-    Used by Peers that resides behind the same NAT; through this server the IP info of each Peer are retrieved and a direct P2P connection can be established.
+    Used by Peers that reside behind the same NAT; through this server the IP info of each Peer are retrieved and a direct P2P connection can be established.
     \item \textbf{TURN} (Traversal Using Relays around NAT)\\
-    Used by Peers that resides in different NATs; through this server the limitations of a NAT are overcome, creating an indirect P2P connection that uses the TURN server to forward the messages among the two Peers.
+    Used by Peers that reside in different NATs; through this server the limitations of a NAT are overcome, creating an indirect P2P connection that uses the TURN server to forward the messages among the two Peers.
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -41,7 +41,7 @@ The P2P connectivity requirements are concretized through the use of the WebRTC 
 
 Free STUN and TURN servers (used by this prototype) are available to the general public thanks to the \textbf{\href{https://www.metered.ca/tools/openrelay/}{Open Relay}} initiative.
 
-There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop implementation}} and a \textbf{\href{https://www.npmjs.com/package/react-native-webrtc}{React Native implementation}} of Node.js modules that allow to perform P2P connections utilizing the WebRTC protocol but, despite functioning in the same way and exposing the same interfaces with identical methods, the Desktop implementation does not work on React Native and vice versa. In order to circumvent this problem, the object handling the P2P connection is wrapped in an interface that needs to be concretized in the specific Desktop and Mobile implementations (\textit{figure \ref{fig:p2p_wrapper}}); this also allow to add some domain-specific logic, assigning to the Peer that initializes the connection the "Master" role and the "Slave" role to the other Peer. 
+There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop implementation}} and a \textbf{\href{https://www.npmjs.com/package/react-native-webrtc}{React Native implementation}} of Node.js modules that allow to perform P2P connections utilizing the WebRTC protocol but, despite functioning in the same way and exposing the same interfaces with identical methods, the Desktop implementation does not work on React Native and vice versa. In order to circumvent this problem, the object handling the P2P connection is wrapped in an interface that needs to be concretized in the specific Desktop and Mobile implementations (\textit{figure \ref{fig:p2p_wrapper}}); this also allows to add some domain-specific logic, assigning to the Peer that initializes the connection the "Master" role and the "Slave" role to the other Peer. 
 
 \begin{figure}[!ht]
     \centering
@@ -50,7 +50,7 @@ There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop imple
     \label{fig:p2p_wrapper}
 \end{figure}
 
-The construction of the client-specific objects is standardized through the utilization of the Builder pattern, allowing the internal logic of the Interconnected Node to create instances of such objects without actually possessing the concrete implementation. The P2P Builders (along with an unique device identifier) will then be passed at construction time to the InterconnectedNode Facade (\textit{\ref{fig:interconnected_node_facade}}) which exposes simple methods to interact with the core logic, hiding its complexity and requiring the specific client only to deal with presentational aspects and device-specific responsibilities.
+The construction of the client-specific objects is standardized through the utilization of the Builder pattern, allowing the internal logic of the Interconnected Node to create instances of such objects without actually possessing the concrete implementation. The P2P Builders (along with a unique device identifier) will then be passed at construction time to the InterconnectedNode Facade (\textit{\ref{fig:interconnected_node_facade}}) which exposes simple methods to interact with the core logic, hiding its complexity and requiring the specific client only to deal with presentational aspects and device-specific responsibilities.
 
 \begin{figure}[!ht]
     \centering
@@ -64,7 +64,7 @@ When it comes to the actual computational contribution that the Interconnected N
 \subsection{Interconnected Mobile Client}
 In this prototype, the mobile incarnation of the Contributing Endpoint takes the name of "Interconnected Mobile Client". The main technology used for realizing this client is React Native (which is also Node.js based); with this framework, it is possible to build mobile applications targeting both Android and iOS devices with just one code base while also taking advantage of most of the modules available on NPM.
 
-Thanks to this Node.js compatibility, the mobile client is able to use the Interconnected Node to connect to the Grid and perform contributions, only requiring to implement previously mentioned client-specific interfaces and to provide an ID for the device (given the limited number of devices in the prototype setting a UUID v4 is generated and used as the ID).
+Thanks to this Node.js compatibility, the mobile client is able to use the Interconnected Node to connect to the Grid and perform contributions, only requiring to implement previously mentioned client-specific interfaces and to provide an ID for the device (given the limited number of devices in the prototype setting, a UUID v4 is generated and used as the ID).
 
 Although React Native also allows targeting iOS devices, this prototype is tested only on Android devices; this limitation is caused by the previously mentioned lack of resources (in particular the unavailability of Apple devices to test it on) but, in theory, the application should also function on iPhones and iPads with little to no changes to the code base.
 
