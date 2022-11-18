@@ -61,7 +61,7 @@ As can be seen in \textit{figure \ref{fig:computation_final_result}}, after ever
 Five experiments were performed:
 \begin{itemize}
     \item 1000 values (10 regions, 100 points for each region)
-    \item 10000 values (100 regions, 100 points for each region)
+    \item 10000 values (100 regions, 100 points for each region)(shown in \textit{figure \ref{fig:computation_final_result}})
     \item 100000 values (100 regions, 1000 points for each region)
     \item 1000000 values (1000 regions, 1000 points for each region)
     \item 5000000 values (2000 regions, 2500 points for reach region)
@@ -94,7 +94,7 @@ The Invoking Endpoint Prototype instance was placed in the E location (although 
 Including the implicit MapReduce Master (which will be taken by one of the two computers), this adds up to the 7 devices specified earlier, which were used in each of the five experiments.
 
 \subsection{Results}
-TODO
+\textit{Figure \ref{fig:experiment_results}} shows the results for the five experiments performed, focusing on the total time and the average time taken by each value (both measured in milliseconds). Once again, these results were obtained using a very small pool of devices and the simplified nature of the MapReduce algorithm in this prototype significantly slows down the whole process (primarily because the intermediate results are first sent back to the MapReduce Master that then forwards them to the Reduce Worker, instead using a direct connection between Map Worker and Reduce Worker).
 
 \begin{figure}[!ht]
     \centering
@@ -102,6 +102,10 @@ TODO
     \caption{Experiment results}
     \label{fig:experiment_results}
 \end{figure}
+
+The first significant observation can be made looking at the first two experiments: the average time for each value drastically drops (\texttildelow6.7 times faster); this can be explained by considering that the total time also includes the recruitment phase where no computation is executed. In other terms, the number of values used in the first experiment is so small that their computation time becomes irrelevant, meaning that the recruitment phase is basically the only factor that influences the average time. The more values are computed (assuming the same number of devices are used), the less impactful the recruitment time becomes.
+
+Finally, \textit{figure \ref{fig:experiment_results_avg_ms_per_value}} focuses on comparing the average time for each value; it becomes apparent that, despite the not optimized algorithms used in this prototype, the more values are computed, the greater the advantage becomes, showing that a distributed computation participated also by mobile devices is not only feasible, but it can also provide value to the Customer.
 
 \begin{figure}[!ht]
     \centering
