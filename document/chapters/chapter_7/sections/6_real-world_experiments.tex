@@ -58,7 +58,24 @@ As can be seen in \textit{figure \ref{fig:computation_final_result}}, after ever
     \label{fig:computation_final_result}
 \end{figure}
 
+Five experiments were performed:
+\begin{itemize}
+    \item 1000 values (10 regions, 100 points for each region)
+    \item 10000 values (100 regions, 100 points for each region)
+    \item 100000 values (100 regions, 1000 points for each region)
+    \item 1000000 values (1000 regions, 1000 points for each region)
+    \item 5000000 values (2000 regions, 2500 points for reach region)
+\end{itemize}
+
 \subsection{Setup}
+The experiment was performed in a controlled environment, meaning that only these devices were connected to the Grid (\textit{figure \ref{fig:experiment_devices_setup}}):
+\begin{itemize}
+    \item \textbf{A}: 1 smartphone
+    \item \textbf{B}: 1 smartphone
+    \item \textbf{C}: 1 computer
+    \item \textbf{D}: 2 smartphones
+    \item \textbf{E}: 1 tablet and 1 computer
+\end{itemize}
 
 \begin{figure}[!ht]
     \centering
@@ -66,6 +83,15 @@ As can be seen in \textit{figure \ref{fig:computation_final_result}}, after ever
     \caption{Devices setup}
     \label{fig:experiment_devices_setup}
 \end{figure}
+
+The setup of Contributing Endpoints was thus composed by 2 Interconnected Desktop Clients and 5 Interconnected Mobile Clients, placed in a 100 km range in central Italy, which were forcibly chosen isolating them in a dedicated American server in order to perform multiple experiments with the same setup.
+
+The Invoking Endpoint Prototype instance was placed in the E location (although it was not executed in the same computer which ran the Interconnected Desktop Client); said Invoking Endpoint requested the following resources for executing the MapReduce computation:
+\begin{itemize}
+    \item 4 Map Workers
+    \item 2 Reduce Workers
+\end{itemize}
+Including the implicit MapReduce Master (which will be taken by one of the two computers), this adds up to the 7 devices specified earlier, which were used in each of the five experiments.
 
 \subsection{Results}
 TODO
