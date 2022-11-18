@@ -27,6 +27,10 @@ This phase is executed exchanging messages between the soon-to-be Peers using th
 
 The Node checks locally if it is compatible with the received request and, if all the conditions are true, it sends a RECRUITMENT\_ACCEPT message to the Broker Service which, upon receiving it, checks if the request is still unsatisfied, eventually forwarding the message to the entity that first emitted the request.
 
+From this point on, the P2P connection is initialized exchanging the WebRTC's required information (previously discussed in \textit{section \ref{interconnected_node}}): the Master sends a REQUEST\_CONNECTION message, containing its SPD offer and, in response, the Slave sends its SDP answer contained in a ANSWER\_CONNECTION message. Once the two Peers posses each other's SDP data structures, they start to exchange ICE candidates until they reach an agreement, finally opening the P2P connection, completing the Recruitment.
+
+Although the broadcast is executed once, the messages contained in the "Broker accepts Node recruitment" scope need to be exchanged every time a new P2P connection is established among two Peers.
+
 \subsection{P2P messaging}
 TODO
 \begin{figure}[!ht]

@@ -19,7 +19,7 @@ The prototype's Broker Service is implemented by using the Typescript language a
 
 In order to have a running instance of the Broker Service that also has a static address reachable from anywhere, a Docker image is created which, in turn, is executed in a container through the use of Amazon ECS (Elastic Container Service). More details about the deployment of this entity will be discussed later in \textit{section \ref{devops}}.
 
-\subsection{Interconnected Node}
+\subsection{Interconnected Node}\label{interconnected_node}
 The Node entity, which in the Interconnected project takes the name of "Interconnected Node", contains all the logic regarding the contribution of a device, and it is distributed through NPM as a Node.js dependency that is then integrated in the concrete clients targeting various devices.
 
 Interconnected Node is also developed by using the Typescript language and, being this a client in the WebSocket connection to the Broker Service, it utilizes the client-side implementation of the Socket.io framework.
