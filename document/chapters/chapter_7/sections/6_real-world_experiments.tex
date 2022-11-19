@@ -18,7 +18,7 @@ The operation chosen for the experiment is a \textbf{simple classification based
 
 \textbf{Given a Cartesian plane} (width: [0,1500], height: [0, 1000]) \textbf{and a set of 2D points} contained in it, \textbf{the map function takes as input one of said points and calculates the euclidean distance from each one of the centroids}; the centroid with \textbf{minimum distance among the three is then chosen, obtaining a key-value output} composed by the chosen class as the key and an array containing the computed point as the value (the array becomes relevant in the reduce function). It is important to note that, in comparing the distance among two points, the square root characterizing the euclidean distance is not needed and, therefore, it is not calculated in the map function.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Map function},captionpos=b]
 const mapFunction = (p) => {
     const x = p[0];
     const y = p[1];
@@ -35,7 +35,7 @@ const mapFunction = (p) => {
 
 Every data region is computed by the Map Workers and, \textbf{after every point in a particular region is classified, the output} (visualized in \textit{figure \ref{fig:computation_region_computation}}) \textbf{can be computed in the reduce function which simply reunites the intermediate results with the same key} (hence belonging to the same class) in a single array.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Reduce function},captionpos=b]
 const reduceFunction = (p1, p2) => {
     p1.push(p2[0]);
     return p1;
