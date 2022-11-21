@@ -94,7 +94,7 @@ The setup of Contributing Endpoints was thus composed by \textbf{2 Interconnecte
     \textbf{Including the implicit MapReduce Master} (which will be taken by one of the two computers), \textbf{this adds up to the 7 devices specified earlier}, which were used in each of the five experiments.
 
 \subsection{Results}
-\textit{Figure \ref{fig:experiment_results}} shows the \textbf{results for the five experiments performed}, focusing on the \textbf{total time} and the \textbf{average time taken by each value} (both \textbf{measured in milliseconds}). Once again, these results were obtained using a very small pool of devices and the simplified nature of the MapReduce algorithm in this prototype significantly slows down the whole process (primarily because the intermediate results are first sent back to the MapReduce Master that then forwards them to the Reduce Worker, instead using a direct connection between Map Worker and Reduce Worker).
+\textit{Figure \ref{fig:experiment_results}} shows the \textbf{results for the five experiments performed}, focusing on the \textbf{total time} and the \textbf{average time taken by each value} (both \textbf{measured in milliseconds}). Once again, these results were obtained using a very small pool of devices and the simplified nature of the MapReduce algorithm in this prototype significantly slows down the whole process (primarily because the intermediate results are first sent back to the MapReduce Master that then forwards them to the Reduce Worker, instead using a direct connection among Map Worker and Reduce Worker).
 
 \begin{figure}[!ht]
     \centering
