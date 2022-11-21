@@ -1,5 +1,5 @@
 \section{Coordination}\label{coordination}
-This section analyses the \textbf{messages exchanged between the entities composing the prototype architecture}. There are \textbf{three phases} in this coordination process:
+This section analyses the \textbf{messages exchanged among the entities composing the prototype architecture}. There are \textbf{three phases} in this coordination process:
 \begin{enumerate}
     \item \textbf{Grid connection}
     \item \textbf{Recruitment}
@@ -12,7 +12,7 @@ This phase \textbf{connects a Node} (whether used by the Mobile or the Desktop c
 \subsection{Recruitment}
 The recruitment phase \textbf{connects a requestor device} (that becomes the Master in the P2Pconnection) \textbf{to an actual device that will perform a Contribution} (becoming the Slave). \textbf{While a Slave is necessarily a Node, a Master can either be an Invoking Endpoint or a Node}, allowing to obtain either an \textbf{Invoking Endpoint to Node connection} or a \textbf{Node to Node connection}.
 
-This phase is \textbf{executed exchanging messages between the soon-to-be Peers using the previously established Socket connections, but ends with a direct P2P connection} between the Master and the Slave through the WebRTC framework.
+This phase is \textbf{executed exchanging messages among the soon-to-be Peers using the previously established Socket connections, but ends with a direct P2P connection} between the Master and the Slave through the WebRTC framework.
 
 \begin{figure}[!ht]
     \centering
@@ -25,7 +25,7 @@ This phase is \textbf{executed exchanging messages between the soon-to-be Peers 
 
 \textbf{The Node checks locally if it is compatible with the received request} and, if all the conditions are true, it sends a \textit{\textbf{RECRUITMENT\_ACCEPT}} message \textbf{to the Broker Service} which, upon receiving it, checks if the request is still unsatisfied, \textbf{eventually forwarding the message to the entity that first emitted the request}.
 
-From this point on, \textbf{the P2P connection is initialized exchanging the WebRTC's required information} (previously discussed in \textit{section \ref{interconnected_node}}): the \textbf{Master} sends a \textbf{\textit{REQUEST\_CONNECTION}} message, containing its \textbf{SPD offer} and, in response, the \textbf{Slave} sends its \textbf{SDP answer} contained in a \textbf{\textit{ANSWER\_CONNECTION}} message. Once the two Peers posses each other's SDP data structures, they \textbf{start exchanging ICE candidates until they reach an agreement, finally opening the P2P connection, completing the Recruitment}.
+From this point on, \textbf{the P2P connection is initialized exchanging the WebRTC's required information} (previously discussed in \textit{section \ref{interconnected_node}}): the \textbf{Master} sends a \textbf{\textit{REQUEST\_CONNECTION}} message, containing its \textbf{SPD offer} and, in response, the \textbf{Slave} sends its \textbf{SDP answer} contained in a \textbf{\textit{ANSWER\_CONNECTION}} message. Once the two Peers possess each other's SDP data structures, they \textbf{start exchanging ICE candidates until they reach an agreement, finally opening the P2P connection, completing the Recruitment}.
 
 Although the broadcast is executed once, the messages contained in the "Broker accepts Node recruitment" scope need to be exchanged every time a new P2P connection is established among two Peers.
 
