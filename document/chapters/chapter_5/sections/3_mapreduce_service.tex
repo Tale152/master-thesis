@@ -11,7 +11,7 @@ The process starts with the Map Worker \textbf{establishing a connection with th
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_1.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/map_worker_petri_net_1.png}
     \caption{Map Worker - Start}
     \label{fig:map_worker_petri_net_1}
 \end{figure}
@@ -24,7 +24,7 @@ Ignoring, for the moment, the \textit{Disconnection'} transition, \textbf{the Ma
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_2.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/map_worker_petri_net_2.png}
     \caption{Map Worker - Mapping}
     \label{fig:map_worker_petri_net_2}
 \end{figure}
@@ -41,7 +41,7 @@ As can be seen from the operations executed, \textbf{the Map Worker follows the 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/map_worker_petri_net_3.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/map_worker_petri_net_3.png}
     \caption{Map Worker - Intermediate Result sent}
     \label{fig:map_worker_petri_net_3}
 \end{figure}
@@ -54,7 +54,7 @@ When the MapReduce operation is completed, \textbf{the Master will send a comple
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.45]{document/chapters/chapter_6/images/map_worker_petri_net_4.png}
+    \includegraphics[scale=0.45]{document/chapters/chapter_5/images/map_worker_petri_net_4.png}
     \caption{Map Worker - Completion}
     \label{fig:map_worker_petri_net_4}
 \end{figure}
@@ -66,7 +66,7 @@ As the Map Worker's process, \textbf{a connection to the MapReduce Master is est
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.44]{document/chapters/chapter_6/images/reduce_worker_petri_net_1.png}
+    \includegraphics[scale=0.44]{document/chapters/chapter_5/images/reduce_worker_petri_net_1.png}
     \caption{Reduce Worker - Local result}
     \label{fig:reduce_worker_petri_net_1}
 \end{figure}
@@ -75,7 +75,7 @@ As the Map Worker's process, \textbf{a connection to the MapReduce Master is est
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.44]{document/chapters/chapter_6/images/reduce_worker_petri_net_2.png}
+    \includegraphics[scale=0.44]{document/chapters/chapter_5/images/reduce_worker_petri_net_2.png}
     \caption{Reduce Worker - Completion}
     \label{fig:reduce_worker_petri_net_2}
 \end{figure}
@@ -84,7 +84,7 @@ As the Map Worker's process, \textbf{a connection to the MapReduce Master is est
 \textbf{The Petri Net} describing the process performed by the MapReduce Master \textbf{focuses only on a single region}, meaning that \textbf{this operation needs to be performed (concurrently) for each data region}. 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_1.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/master_petri_net_1.png}
     \caption{MapReduce Master - Recruitment}
     \label{fig:master_petri_net_1}
 \end{figure}
@@ -98,7 +98,7 @@ It can also happen that \textbf{a region's IR is lost due to the disconnection o
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_2.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/master_petri_net_2.png}
     \caption{MapReduce Master - Mapping process}
     \label{fig:master_petri_net_2}
 \end{figure}
@@ -107,7 +107,7 @@ Once \textbf{all the region's split are mapped} to intermediate results (\textit
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_3.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/master_petri_net_3.png}
     \caption{MapReduce Master - Region Mapping completed}
     \label{fig:master_petri_net_3}
 \end{figure}
@@ -118,7 +118,7 @@ While the reduce function is being applied, the region token is removed due to t
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_4.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/master_petri_net_4.png}
     \caption{MapReduce Master - Reducing process}
     \label{fig:master_petri_net_4}
 \end{figure}
@@ -127,7 +127,7 @@ While the reduce function is being applied, the region token is removed due to t
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/master_petri_net_5.png}
+    \includegraphics[width=\linewidth]{document/chapters/chapter_5/images/master_petri_net_5.png}
     \caption{MapReduce Master - Region completed}
     \label{fig:master_petri_net_5}
 \end{figure}
