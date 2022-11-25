@@ -59,7 +59,9 @@ There are both a \textbf{\href{https://www.npmjs.com/package/wrtc}{Desktop imple
     \label{fig:interconnected_node_facade}
 \end{figure}
 
-When it comes to the \textbf{actual computational contribution} that the Interconnected Node needs to perform, \textbf{two key abstractions are present}: \textbf{Job} and \textbf{Task}; a Job is an activity that a Slave Peer executes under the guidance of its Master that, after instructing the start of said Job, sends Tasks to execute in that specific Job. \textbf{This abstraction results in the definition of common interfaces for Job and Task that are then concretized realizing new functionalities that will then be used to execute Grid Services} (MapReduceMasterJob, MapReduceMapWorkerJob, etc...); through this mechanism, expanding the support for new Grid Services only requires to define new concrete Jobs and Tasks, realizing their logic and their handlers for the messages exchanged among Nodes.
+When it comes to the \textbf{actual computational contribution} that the Interconnected Node needs to perform, \textbf{two key abstractions are present}: \textbf{Job} and \textbf{Task}; a Job is an activity that a Slave Peer executes under the guidance of its Master that, after instructing the start of said Job, sends Tasks to execute in that specific Job.
+
+\textbf{This abstraction results in the definition of common interfaces for Job and Task that are then concretized realizing new functionalities that will then be used to execute Grid Services} (MapReduceMasterJob, MapReduceMapWorkerJob, etc...); through this mechanism, expanding the support for new Grid Services only requires to define new concrete Jobs and Tasks, realizing their logic and their handlers for the messages exchanged among Nodes.
 
 \subsection{Interconnected Mobile Client}
 In this prototype, the \textbf{mobile incarnation of the Contributing Endpoint} takes the name of \textbf{"Interconnected Mobile Client"}. The main technology used for realizing this client is \textbf{React Native} (which is also \textbf{Node.js based}); with this framework, it is possible to \textbf{build mobile applications targeting both Android and iOS devices with just one code base} while also \textbf{taking advantage of most of the modules available on NPM}.
@@ -68,9 +70,11 @@ Thanks to this Node.js compatibility, \textbf{the mobile client is able to use t
 
 Although React Native also allows targeting iOS devices, \textbf{this prototype is tested only on Android devices}; this limitation is caused by the previously mentioned lack of resources (in particular the unavailability of Apple devices to test it on) but, in theory, the application should also function on iPhones and iPads with little to no changes to the code base.
 
+\vspace{10mm}
+
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.14]{document/chapters/chapter_6/images/interconnected_mobile_home.png}
+    \includegraphics[scale=0.12]{document/chapters/chapter_6/images/interconnected_mobile_home.png}
     \caption{Interconnected Mobile Client}
     \label{fig:interconnected_mobile_home}
 \end{figure}

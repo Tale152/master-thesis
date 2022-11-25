@@ -1,13 +1,13 @@
 \section{Proto-MapReduce}
-\textbf{The MapReduce implementation used in this prototype is a simplified version} of what was discussed in \textit{chapter \ref{the_mapreduce_paradigm}}; said simplifications, while making it \textbf{easier to implement}, have the \textbf{side effect of negatively influencing performances but}, given the available time limitations, they are \textbf{still acceptable in a prototypical context where the focus is to demonstrate the feasibility of mobile devices Contribution}.
+\textbf{The MapReduce implementation used in this prototype is a simplified version} of what discussed in \textit{appendix \ref{the_mapreduce_paradigm}}; said simplifications, while making it \textbf{easier to implement}, have the \textbf{side effect of negatively influencing performances but}, given the available time limitations, they are \textbf{still acceptable in a prototypical context where the focus is to demonstrate the feasibility of mobile devices Contribution}.
 
-\textbf{The first difference comes from how the data are handled}. As explained before, the MapReduce paradigms handles a number of splits M and applies progressively the Map function to said splits; the intermediate results are grouped by key (using a partitioning function) in order to obtain R (with R<M, typically) partitions which, upon allying the Reduce function, will produce R final results. This \textbf{simplified version}, on the contrary, \textbf{takes the M splits} and, after applying the Map function, \textbf{maintains the original grouping, producing M intermediate results}; said results are then \textbf{computed applying the Reduce function} to each of them, \textbf{producing the M final results}. As a consequence, \textbf{the number of input data regions is equal to the regions in the final results}.
+\textbf{The first difference comes from how the data are handled}. The MapReduce paradigms handles a number of splits M and applies progressively the Map function to said splits; the intermediate results are grouped by key (using a partitioning function) in order to obtain R (with R<M, typically) partitions which, upon allying the Reduce function, will produce R final results. This \textbf{simplified version}, on the contrary, \textbf{takes the M splits} and, after applying the Map function, \textbf{maintains the original grouping, producing M intermediate results}; said results are then \textbf{computed applying the Reduce function} to each of them, \textbf{producing the M final results}. As a consequence, \textbf{the number of input data regions is equal to the regions in the final results}.
 
 \vspace{10mm}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=1.18]{document/chapters/chapter_6/images/proto_mapreduce.png}
+    \includegraphics[scale=1]{document/chapters/chapter_6/images/proto_mapreduce.png}
     \caption{Proto-MapReduce Topology}
     \label{fig:proto_mapreduce}
 \end{figure}
@@ -26,4 +26,6 @@
 
 As can be easily deduced, the Invoking Endpoint Prototype acts as a Master in its P2P connection to the MapReduce Master, while Map and Reduce Workers only act as Slaves in their connection to the same entity, \textbf{making a Node} (the MapReduce Master in this case) \textbf{able to perform both the Master and the Slave roles at the same time}, with the consequence of showing \textbf{that the Map Worker to Reduce Worker connection is perfectly feasible in a future implementation} of these Jobs.
 
-\textbf{Thanks this topology, every computationally heavy operation is delegated to the Grid's Nodes and, thus, the Invocation can be performed even from a low-spec device}. On a final note, while performing a recruitment, various parameters can be specified about the resources that a device needs to possess; while the Map or Reduce Worker role can be taken by any device, \textbf{the MapReduce Master role is reserved to Desktop devices}. This choice is made \textbf{trying to obtain more stability} for the MapReduce process.  
+\textbf{Thanks to this topology, every computationally heavy operation is delegated to the Grid's Nodes and, thus, the Invocation can be performed even from a low-spec device}, increasing the versatility of the Grid. 
+
+On a final note, while performing a recruitment, various parameters can be specified about the resources that a device needs to possess; while the Map or Reduce Worker role can be taken by any device, \textbf{the MapReduce Master role is reserved to Desktop devices}. This choice is made \textbf{trying to obtain more stability} for the MapReduce process.  

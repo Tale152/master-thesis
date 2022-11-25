@@ -8,10 +8,9 @@ The operation chosen for the experiment is a \textbf{simple classification based
     \item \textbf{Green centroid} (700,100)
     \item \textbf{Blue centroid} (1300,700)
 \end{itemize}
-
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/computation_start.png}
+    \includegraphics[scale=0.9]{document/chapters/chapter_6/images/computation_start.png}
     \caption{Computation - Starting point}
     \label{fig:computation_start}
 \end{figure}
@@ -33,6 +32,13 @@ const mapFunction = (p) => {
 }
 \end{lstlisting}
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.9]{document/chapters/chapter_6/images/computation_region_computation.png}
+    \caption{Computation - Region computation}
+    \label{fig:computation_region_computation}
+\end{figure}
+
 Every data region is computed by the Map Workers and, \textbf{after every point in a particular region is classified, the output} (visualized in \textit{figure \ref{fig:computation_region_computation}}) \textbf{can be computed in the reduce function which simply reunites the intermediate results with the same key} (hence belonging to the same class) in a single array.
 
 \begin{lstlisting}[caption={Reduce function},captionpos=b]
@@ -42,18 +48,11 @@ const reduceFunction = (p1, p2) => {
 }
 \end{lstlisting}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/computation_region_computation.png}
-    \caption{Computation - Region computation}
-    \label{fig:computation_region_computation}
-\end{figure}
-
 As can be seen in \textit{figure \ref{fig:computation_final_result}}, after every region is mapped and then reduced, \textbf{each point is assigned to one of the three classes}.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\linewidth]{document/chapters/chapter_6/images/computation_final_result.png}
+    \includegraphics[scale=0.9]{document/chapters/chapter_6/images/computation_final_result.png}
     \caption{Computation - Final result}
     \label{fig:computation_final_result}
 \end{figure}
