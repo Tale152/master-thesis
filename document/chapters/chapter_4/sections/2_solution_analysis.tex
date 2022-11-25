@@ -6,20 +6,18 @@ Then, use cases will be discussed, explaining what the system needs to do, seen 
 Finally, the requirements will be presented, aiming to provide a clear set of criteria to satisfy for a system that wants to use the Transparent scheduling model over heterogeneous devices.
 
 \subsection{Domain: Ubiquitous Language}\label{ubiquitous_language}
-Before continuing, \textbf{it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate}; in order to do so, the \textbf{Ubiquitous Language} (UL) tool, coming from the \textbf{Domain Driven Design} discipline \cite{ddd}, will be used. From this point and forward, a term listed here will be uniquely used to identify its mapped concept:
+Before continuing, \textbf{it is important to specify the nomenclatures and relative definitions on what composes the domain in which the projects operate}; in order to do so, the \textbf{Ubiquitous Language} (UL) tool, coming from the \textbf{Domain Driven Design} (DDD) discipline \cite{ddd}, will be used. From this point and forward, a term listed here will be uniquely used to identify its mapped concept:
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{document/chapters/chapter_4/images/ul.jpg}
+    \caption{Ubiquitous Language}
+    \label{fig:ul}
+\end{figure}
 \begin{itemize}
     \item \textbf{Contributor}\label{contributor}\\
     A person (up until this point identified as the Volunteer in Volunteer Computing) which offers one or more \textit{Contributing Endpoints} in order to perform a \textit{Contribution} finalized to the completion of \textit{Grid Services}. Through its \textit{Contribution}, it gains \textit{Rewards} that are accumulated in its \textit{Reward Balance}; once a certain \textit{Reward Threshold} is reached, a Contributor can perform a \textit{Rewards Redemption}. The Contributor can manage its data through a \textit{Contributor Dashboard}.
-    \vspace{10mm}
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=\linewidth]{document/chapters/chapter_4/images/ul.jpg}
-        \caption{Ubiquitous Language}
-        \label{fig:ul}
-    \end{figure}
     \item \textbf{Contribution}\label{contribution}\\
     The automated act performed by a \textit{Contributing Endpoint} (offered by a \textit{Contributor}) in order to complete \textit{Grid Services} and, consequently, gain \textit{Rewards}.
-    \vspace{5mm}
     \item \textbf{Customer}\label{customer}\\
     An entity (whether a single person, a business, etc...) that wants to perform a \textit{Grid Service Invocation} through an \textit{Invoking Endpoint} integrated into a \textit{Customer Custom Application}. This entity can manage its data and past \textit{Service Invocations} and \textit{Fees} utilizing a \textit{Customer Dashboard}.
     \item \textbf{Grid Service Invocation}\label{grid_service_invocation}\\
@@ -36,7 +34,7 @@ Before continuing, \textbf{it is important to specify the nomenclatures and rela
     A backend server, maintained by the \textit{Grid Owners}, operating in the Cloud. Its duties depend on its role, but the distinct traits of a Cloud Service include being owned and maintained by the \textit{Grid Owners} and the ability to coordinate the \textit{Contribution} of \textit{Nodes} participating in the \textit{Grid} and the access to \textit{Grid Services} invoked by \textit{Invoking Endpoints}. In relation to the Layered Grid Architecture (\textit{section \ref{layered_grid_architecture}}), Cloud Services all together embody the Collective Layer (\textit{section \ref{fig:collective_layer}}) as shown in \textit{figure \ref{fig:layered_grid_architecture_and_ul}}.
     \begin{figure}[!ht]
         \centering
-        \includegraphics[width=\linewidth]{document/chapters/chapter_4/images/layered_grid_architecture_and_ul.png}
+        \includegraphics[scale=0.18]{document/chapters/chapter_4/images/layered_grid_architecture_and_ul.png}
         \caption{UL relationship with Layered Grid Architecture}
         \label{fig:layered_grid_architecture_and_ul}
     \end{figure}
@@ -67,7 +65,7 @@ Before continuing, \textbf{it is important to specify the nomenclatures and rela
     \item \textbf{MapReduce Service}\label{mapreduce_service_ul}\\
     A particular incarnation of a \textit{Grid Service} that performs a MapReduce computation over the \textit{Grid} utilizing a \textit{Node} as \textit{MapReduce Master} and several nodes as \textit{Map Workers} and \textit{Reduce Workers}.
     \item \textbf{MapReduce Master}\label{mapreduce_master}\\
-    Role taken by a \textit{Node} in the execution of a \textit{MapReduce Service}. Its roles follow the ones described in \textit{section \ref{execution_flow}}.
+    Role taken by a \textit{Node} in the execution of a \textit{MapReduce Service}. Its roles follow the ones described in \textit{appendix \ref{execution_flow}}.
     \item \textbf{Map Worker}\label{map_worker}\\
     A \textit{Node}, coordinated by the \textit{MapReduce Master}, that executes \textit{Map Tasks} and sends the results to the correct \textit{Reduce Worker}.
     \item \textbf{Map Task}\label{map_task}\\
@@ -89,7 +87,6 @@ Before continuing, \textbf{it is important to specify the nomenclatures and rela
     \item \textbf{Access Policies}\label{access_policies}\\
     \textit{Contribution Endpoint}-specific Access policies defined by the \textit{Contributor}, specifying which \textit{Resources} are offered to the \textit{Grid} for \textit{Contribution}.
 \end{itemize}
-\vspace{20mm}
 
 \subsection{Use Cases}\label{use_cases}
 This section presents the \textbf{Use Cases diagrams}, \textbf{graphically explaining what features need to be available from the point of view of the two actors interacting with the Grid}: the Contributor and the Customer.
@@ -100,16 +97,15 @@ An explanation of single use cases here is omitted since the previous section al
 \item \textbf{Contributor}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.62]{document/chapters/chapter_4/images/contributor_use_cases.jpg}
+    \includegraphics[scale=0.64]{document/chapters/chapter_4/images/contributor_use_cases.jpg}
     \caption{Use Cases diagram - Contributor}
     \label{fig:use_cases_contributor}
 \end{figure}
 
 \item \textbf{Customer}
-\vspace{10mm}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.62]{document/chapters/chapter_4/images/customer_use_cases.jpg}
+    \includegraphics[scale=0.64]{document/chapters/chapter_4/images/customer_use_cases.jpg}
     \caption{Use cases diagram - Customer}
     \label{fig:use_cases_customer}
 \end{figure}
@@ -118,6 +114,7 @@ An explanation of single use cases here is omitted since the previous section al
 \subsection{Requirements: MoSCoW Prioritization}
 Now that it is clear what the system needs to do from the perspective of the two major actors utilizing it (Contributor and Customer), it is possible to create a \textbf{list of requirements} that such system needs to satisfy; to do so, the \textbf{MoSCoW method} will be used.
 
+\vspace{10mm}
 The MoSCoW method for \textbf{requirements categorization} presents \textbf{four different} categories to put requirements into, \textbf{ordered by priority}. The categories, in descending order, are the following:
 \begin{itemize}
     \item \textbf{Must have}
@@ -169,25 +166,28 @@ All the requirements that are necessary for the successful completion of a first
         \item The Customer must be able to register to access Grid Services.
         \item The Customer must go through a verification process in order to be reliable and accountable before being able to use Grid Services.
     \end{itemize}
+    \vspace{5mm}
     \item \textbf{Payments}
     \begin{itemize}
         \item The Customer must be able to register its payment method once and use it every time it performs a Grid Service Invocation.
         \item The Customer must pay individual Grid Service Invocations.
     \end{itemize}
+    \vspace{5mm}
     \item \textbf{Framework utilization}
     \begin{itemize}
         \item The Customer must be able to integrate the Invoking Endpoint in its own Customer Custom Application in order to utilize the Grid Services.
         \item The Customer must be able to perform Grid Service Invocations from any adequate device (Computer, Tablet or Smartphone) using the integrated Invoking Endpoint.
         \item The Customer must be able to easily increase/decrease the amount of Resources tapped into, removing the underlying complexity.
     \end{itemize}
+    \vspace{5mm}
     \item \textbf{MapReduce service utilization}
     \begin{itemize}
         \item The Customer must be able to implement its own Map and Reduce functions in a MapReduce Service invocation.
         \item The MapReduce parameters, such as number of Map and Reduce workers, must be configurable by the Customer.
         \item The Customer must be able to define the data source for the MapReduce execution (whether from the Invoking Device or an external source).
     \end{itemize}
+    \vspace{5mm}
 \end{itemize}
-\vspace{10mm}
 \paragraph{Grid owner area}
 \begin{itemize}
     \item \textbf{Scalability}

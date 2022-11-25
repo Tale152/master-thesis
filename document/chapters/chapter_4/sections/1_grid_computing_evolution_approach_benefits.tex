@@ -1,9 +1,15 @@
 \section{Grid computing evolution: this project's solution}
-Coming from the overview on how Grid Computing works (\textit{chapter \ref{how_grid_computing_works}}), followed by the challenges and previous ideas on how to integrate mobile devices into the Grid (\textit{chapter \ref{integrating_mobile_devices_into_the_grid}}), finally concluded by an overview on the MapReduce paradigm (\textit{chapter \ref{the_mapreduce_paradigm}}), it is now time to expand this project's idea, already introduced in \textit{chapter \ref{introduction}}.
+Coming from the overview on how Grid Computing works (\textit{chapter \ref{how_grid_computing_works}}), followed by the challenges and previous ideas on how to integrate mobile devices into the Grid (\textit{chapter \ref{integrating_mobile_devices_into_the_grid}}), it is now time to expand this project's idea, already introduced in \textit{chapter \ref{introduction}}.
 
 The solution proposed by this work takes the name of \textbf{\textit{"Transparent scheduling model over heterogeneous devices"}}; the model aims to \textbf{maintain} the \textbf{core characteristics of a Grid computing system} while, at the same time, \textbf{redesign some aspects} in order to enhance and evolve its capabilities \textbf{to better accommodate new necessities arising from the current technological panorama}.
 
-In particular, this Grid computing system (following the Cloud Computing modern approach) aims to \textbf{offer services}, ranging from simple to complex ones, \textbf{to everyone that might need access to a large pool of computational resources}. \textbf{An example} of computationally demanding distributed service is the execution of a \textbf{MapReduce computation}, which will be the service \textbf{realized for this project's prototype}.
+In particular, this Grid computing system (following the Cloud Computing modern approach) aims to \textbf{offer services}, ranging from simple to complex ones, \textbf{to everyone that might need access to a large pool of computational resources}.
+
+\textbf{An example} of computationally demanding distributed service is the execution of a \textbf{MapReduce computation}, which will be the service \textbf{realized for this project's prototype}.
+
+\begin{info}
+    See \textit{appendix \ref{the_mapreduce_paradigm}} for an overview on the MapReduce paradigm.
+\end{info}
 
 This section, then, presents the \textbf{project's aspects that differ from a traditional Grid computing approach} and the reasons \textbf{why it might represent a viable alternative to current Cloud computing services}.
 
@@ -13,7 +19,6 @@ This project's aspect was discussed previously (\textit{section \ref{untapped_en
 
 One core characteristic emerges from the discussion of a previous work: \textbf{the contributing mobile devices need to autonomously interact with the Grid system}.
 This autonomy principle stands in direct contrast with the approach proposed by the work discussed in \textit{section \ref{proxy_based_cluster_architecture}}, but it is mandatory in a system where simplicity is key; moreover, \textbf{the limitation of an Interlocutor device is no longer justified with the performances of current mobile devices} given by the technological progress of the recent years. It is important to specify that, while mobile devices have now better performances, \textbf{technological limitations} (compared to contemporary computers) \textbf{still need to be taken into account while designing the solution}.
-
 The characteristics discussed in this section influence the solution's name:
 \begin{itemize}
     \item \textbf{Transparent scheduling}\\
@@ -54,6 +59,7 @@ The possibility of executing computationally heavy tasks even from low-performan
 
 \textbf{Realistically, performances of services ran on Grid computing systems will be slightly worse compared to services that host their dedicated machines}; this is mainly because of the potential faults arising from the less stable connection of the devices. \textbf{Nonetheless, this is a highly viable and much cheaper alternative in domains where performances are not a highly strict requirement and a little delay can be accepted, opening the possibility of using such services also to entities that do not have a lot of financial resources}.
 
+\vspace{10mm}
 Expanding the considerations seen up until now, \textbf{the Grid owners get value and a revenue from the Customers that}, at the same time, \textbf{save money accessing cheaper services}. \textbf{On the Volunteer side, there is a compensation} for doing absolutely nothing more than easily configuring a device once \textbf{and the environment is less impacted} while still performing advanced computations. In conclusion, \textbf{everyone wins}. 
 
 \subsection{Anticipating market trends: current devices' panorama}
