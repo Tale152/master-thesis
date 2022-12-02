@@ -29,11 +29,11 @@ Ignoring, for the moment, the \textit{Disconnection'} transition, \textbf{the Ma
     \label{fig:map_worker_petri_net_2}
 \end{figure}
 
-As can be seen from the operations executed, \textbf{the Map Worker follows the instructions received by the MapReduce Master}. While mapping, \textbf{a data split can be assigned to multiple Map Workers}, in order to increase fault tolerance; as a direct consequence, \textbf{it is possible that a received split location is mapped by another Map Worker}. \textbf{Once the IR is already obtained on a particular split, the Map Worker sends a split revoked' instruction to every Map Worker assigned to that split}. The two different split revoked transitions possess a conceptual difference:
+As can be seen from the operations executed, \textbf{the Map Worker follows the instructions received by the MapReduce Master}. While mapping, \textbf{a data split can be assigned to multiple Map Workers}, in order to increase fault tolerance; as a direct consequence, \textbf{it is possible that a received split location is mapped by another Map Worker}. \textbf{Once the IR is already obtained on a particular split, the Map Worker sends a split revoked(1) instruction to every Map Worker assigned to that split}. The two different split revoked transitions possess a conceptual difference:
 \begin{itemize}
-    \item \textit{\textbf{Split revoked'}}\\
+    \item \textit{\textbf{Split revoked(1)}}\\
     Here, \textbf{the Map Worker that receives this instruction cannot possibly have applied the map function to the split}, since the split revoked instruction is received only after the IR (produced by the mapping of that particular split) is reduced by a Reduce Worker. \textbf{Practically speaking, the Map Worker drops the split, removing it from memory or avoiding downloading it entirely}.
-    \item \textit{\textbf{Split revoked''}}\\
+    \item \textit{\textbf{Split revoked(2)}}\\
     In this situation, \textbf{the Map Worker already performed the map operation on the considered split}. Whether the IR that will be used for the reduce operation is actually the one locally produced or not is irrelevant; the direct consequence of receiving a split revoked instruction here is to \textbf{remove from memory the IR}. This is because \textbf{the MapReduce Master can ask multiple times to the Map Worker to send the IR to a Reduce Worke}r (\textit{figure \ref{fig:map_worker_petri_net_3}}), \textbf{requiring to maintain in memory} (or on disk) \textbf{the IR until the split revoked instruction is received}.
 \end{itemize}
 
